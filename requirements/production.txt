@@ -1,4 +1,5 @@
 django
+mysql-python
 south
 pyYAML
 PIL
