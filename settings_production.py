@@ -1,9 +1,9 @@
-from openportfolio.settings import *
+from recipemonkey.settings import *
 
 DEBUG = True
 
 
-STATIC_ROOT = '/usr/local/web/django/www/production/openportfolio/static'
+STATIC_ROOT = '/usr/local/web/django/www/production/recipemonkey/static'
 
 DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 DATABASE_NAME = 'recipemonkey'             # Or path to database file if using sqlite3.
