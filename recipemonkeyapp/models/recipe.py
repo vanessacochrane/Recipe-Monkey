@@ -1,56 +1,83 @@
 from django.db import models
 from recipemonkeyapp.models.instruction import Instruction
+from datetime import datetime
 
 class Recipe(models.Model):
 	
 	class Meta: 
 		app_label = 'recipemonkeyapp'
 	
-	CUISINE_CHOICES = (
-        (('Asian'), (
-				('jap','Japanese'),
-				('chi','Chinese'),
-				('ind','Indian'),
-				('tha','Thai'),
-			)
-		),
-		('Mediterranean'), (
-				('ita','Italian'),
-				('gre','Greek'),
-				('Middle Eastern')	
-			)
-		),
-		('European'), (
-				('French'),
-				('German'),
-			)
-		),
-		('Mexican'),
-		('Russian'),
-		('American'),
-		('Australian'),
-		('Unknown'),
-	 )
-		
+	
 	name=models.CharField(max_length=256)
-	cuisine=models.CharField(max_length=256, choices=CUISINE_CHOICES)
-	course=models.CharField(max_length=256)
-	serving=models.IntegerField()
-	servingMeasure=models.CharField(max_length=256)
-	source=models.CharField(max_length=256)
-	note=models.CharField(max_length=2048) 
-	#photo=models.ImageField()
-
+	cuisine=models.ForeignKey('Cuisine',null=True,blank=True)
+	course=models.CharField(max_length=256,null=True,blank=True)
+	serving=models.IntegerField(null=True,blank=True)
+	servingMeasure=models.CharField(max_length=256,null=True,blank=True)
+	source=models.ForeignKey('Source',null=True,blank=True)
+	note=models.TextField(null=True,blank=True)
+	photo=models.ImageField(upload_to='recipephotos',null=True,blank=True)
+ 	ingredients = models.ManyToManyField('GroceryItem', through='RecipeIngredient')
+	instructions = models.ManyToManyField('Instruction',related_name='steps')
+	
 	def __unicode__(self):
 		""" Returns the custom output string for this object
 		"""
 		return "%s" % (self.name) 
 
-	def list_steps(self):
+	def season(self):
 		
-		dqs=Instruction.objects.filter(recipe=self).order_by('order')
+		kis=self.recipeingredient_set.filter(keyIngredientFlag=True)
 		
-		for d in dqs:
-			print d
+		startDate=None
+		endDate=None
+		
+		for ki in kis:
+			
+			iSeasonStart=ki.item.seasonStart
+			iSeasonEnd=ki.item.seasonEnd
+			
+			if startDate is None:
+				startDate=iSeasonStart
+			
+			if endDate is None:
+				endDate=iSeasonEnd
+				
+			if startDate < iSeasonStart:
+				startDate = iSeasonStart
+			
+			if endDate > iSeasonEnd:
+				endDate = iSeasonEnd
+				
+				
+		return (startDate,endDate)
+	
+	@property
+	def seasonEnd(self):
+
+		return self.season()[1]
+
+
+	@property
+	def inSeason(self):
+		
+		
+	
+		today=datetime.today().date()
+
+		if self.seasonStart is None or self.seasonEnd is None:
+			return False
+
+		if today.month>=self.seasonStart.month and today.month<=self.seasonEnd.month:
+			return True
+		else:
+			return False
+
+
+	@property
+	def seasonStart(self):
+		
+		return self.season()[0]
+		
+		 
 		
 		
