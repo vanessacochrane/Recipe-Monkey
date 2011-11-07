@@ -13,3 +13,4 @@ install/staging.*
 install/production.*
 install/development.*
 install/org*
+192.*
