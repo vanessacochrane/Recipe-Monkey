@@ -62,7 +62,7 @@ class Migration(SchemaMigration):
             ('content_type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['contenttypes.ContentType'])),
             ('quantity', self.gf('django.db.models.fields.FloatField')()),
             ('dateAdded', self.gf('django.db.models.fields.DateField')(null=True, blank=True)),
-            ('dateChanged', self.gf('django.db.models.fields.DateField')(default=datetime.datetime(2011, 11, 7, 3, 51, 3, 309958))),
+            ('dateChanged', self.gf('django.db.models.fields.DateField')(auto_now_add=True, blank=True)),
         ))
         db.send_create_signal('recipemonkeyapp', ['StorageLog'])
 
@@ -352,7 +352,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'StorageLog'},
             'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['contenttypes.ContentType']"}),
             'dateAdded': ('django.db.models.fields.DateField', [], {'null': 'True', 'blank': 'True'}),
-            'dateChanged': ('django.db.models.fields.DateField', [], {'default': 'datetime.datetime(2011, 11, 7, 3, 51, 3, 333216)'}),
+            'dateChanged': ('django.db.models.fields.DateField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'object_id': ('django.db.models.fields.PositiveIntegerField', [], {}),
             'quantity': ('django.db.models.fields.FloatField', [], {}),
