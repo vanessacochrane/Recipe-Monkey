@@ -1,0 +1,68 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>RecipeMonkey: {% block title %}Home{% endblock %}</title>
+  
+
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/recipemonkey.css" type="text/css" />
+
+  {% block feeds %}{% endblock %}
+  
+  {% block extra_scripts %}{% endblock %}
+</head>
+<body class="{% block bodyclass %}{% endblock %}">
+  <div id="header">
+    <h1>RecipeMonkey</h1>
+    <div id="nav-main">
+      <span>
+        {% if user.is_authenticated %}
+          Logged in as <a href="/users/{{ user.username }}/">{{ user.username }}</a> (<a href="accounts/logout/">Log out</a>)
+        {% else %}
+          <a href="accounts/login/?next={% ifequal request.path "/accounts/logout/" %}/{% else %}{{ request.path }}{% endifequal %}">Log in</a>
+        {% endif %}
+      </span>
+      <ul>
+        {% if user.is_authenticated %}
+          <li id="nav-account"><a href="/users/{{ user.username }}/">You</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+
+ 
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="message {% if message.tags %} message_{{ message.tags }}{% else %}message_info{% endif %}">
+        <h4>{{ message }}</h4>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  <h2>{% block content_header %}{% endblock %}</h2>
+  <div id="content">
+    <div id="main">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </div>
+  
+  <div id="footer">
+    {% if user.is_authenticated %}
+    <div class="chunk">
+      <h3>Your account</h3>
+      <ul>
+        <li><a href="/users/{{ user.username }}/">User details</a></li>
+        <li><a href="/accounts/logout/">Log out</a></li>
+      </ul>
+    </div>
+    {% endif %}
+    <div class="chunk">
+
+    </div>
+    <p id="copyright"></p>
+  </div>
+</body>
+</html>

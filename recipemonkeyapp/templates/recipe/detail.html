@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block extra_scripts %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/recipeprint.css" type="text/css" media="print"/>
+{%endblock%}
+
+{% block title %}Recipes{% endblock %}
+{% block content %}
+
+<h2>{{recipe.name}}</h2>
+{% if recipe.photo %}
+	<div id="recipe-photo">
+    <img src="{{ recipe.photo.url }}" width="200px" height="200px" class="align-right frame"/>
+	</div>
+{% endif %}
+
+<h3>Ingredients</h3>
+<ul>
+{% for i in ingredients%}
+	<li {%if i.keyIngredientFlag %}class="keyingredient"{%endif%}>
+		
+			{{i.quantity}} {{i.quantityMeasure}} <a href="/recipemonkeyapp/groceryitem/{{i.item.id}}">{{i.item.name}}</a> <span id="available">(<i>available {{i.item.quantity}}</i>)</span>  {{i.processing}}
+	
+	</li> 
+{% endfor %}
+</ul>	
+
+<h3>Instructions</h3>
+<ul>
+{% for i in instructions%}
+
+	<li>{{i.step}}</li> 
+{% endfor %}
+</ul>
+
+{%if recipe.note %}
+<br/>
+<div id="recipe-note" class='note'>
+	{{recipe.note}}
+</div>
+<br/>
+	
+{%endif%}
+
+
+
+<b>Servings: </b>{{recipe.serving}}<br/>
+<b>Source: </b>{{recipe.source.name}}<br/>
+{%if recipe.seasonStart %}
+<b>Season: </b>{{recipe.seasonStart|date:"M"}} to {{recipe.seasonEnd|date:"M"}}
+{%endif %}
+
+{% endblock %}

@@ -1,0 +1,33 @@
+- fields: {name: fruit & vegetables, parent: null}
+  model: recipemonkeyapp.grocerycategory
+  pk: 1
+- fields: {name: dairy & eggs, parent: null}
+  model: recipemonkeyapp.grocerycategory
+  pk: 2
+- fields: {name: meat & poultry, parent: null}
+  model: recipemonkeyapp.grocerycategory
+  pk: 3
+- fields: {name: fish & seafood, parent: null}
+  model: recipemonkeyapp.grocerycategory
+  pk: 4
+- fields: {name: frozen, parent: null}
+  model: recipemonkeyapp.grocerycategory
+  pk: 5
+- fields: {name: fresh herbs, parent: null}
+  model: recipemonkeyapp.grocerycategory
+  pk: 6
+- fields: {name: 'tins, jars & bottles', parent: null}
+  model: recipemonkeyapp.grocerycategory
+  pk: 7
+- fields: {name: dried herbs & spices, parent: null}
+  model: recipemonkeyapp.grocerycategory
+  pk: 8
+- fields: {name: sugar, parent: null}
+  model: recipemonkeyapp.grocerycategory
+  pk: 9
+- fields: {name: 'pasta, rice & cereal', parent: null}
+  model: recipemonkeyapp.grocerycategory
+  pk: 10
+- fields: {name: other, parent: null}
+  model: recipemonkeyapp.grocerycategory
+  pk: 11

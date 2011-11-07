@@ -1,0 +1,20 @@
+/*Reset Style*/
+body {margin:0; padding:0; line-height: 1.4em; word-spacing:1px; letter-spacing:0.2px; font: 13px Arial, Helvetica,"Lucida Grande", serif; color: #000;}
+
+/*Remove Element*/
+#header,#footer,#available {display:none;}
+
+/* Show URL */
+a:link, a:visited {background: transparent; color:#333; text-decoration:none;}
+a:link[href^="http://"]:after, a[href^="http://"]:visited:after {content: " (" attr(href) ") "; font-size: 11px;}
+a[href^="http://"] {color:#000;}
+
+.note {
+  color: 0;
+  padding: 8px 10px;
+  border:2px solid;
+  border-radius: 0.4em;
+  -moz-border-radius: 0.4em;
+  -webkit-border-radius: 0.4em;
+  overflow-x: auto;
+}
