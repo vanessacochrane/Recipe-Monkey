@@ -40,7 +40,7 @@ class Recipe(models.Model):
 			iSeasonStart=ki.item.seasonStart
 			iSeasonEnd=ki.item.seasonEnd
 		
-			if iSeasonStart or iSeasonEnd or not ki.item.seasonal is None:
+			if iSeasonStart is None or iSeasonEnd is None or not ki.item.seasonal is None:
 				continue
 			
 			if startDate is None:
