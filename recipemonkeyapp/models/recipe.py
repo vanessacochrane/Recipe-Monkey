@@ -75,17 +75,18 @@ class Recipe(models.Model):
 			return False
 
 		if self.seasonEnd<self.seasonStart:
-			se=self.seasonStart
-			ss=self.seasonEnd
+			if today.month>=self.seasonStart.month or today.month<=self.seasonEnd.month:
+				return True
+			else:
+				return False
 		else:
-			se=self.seasonEnd
-			ss=self.seasonStart
+			if today.month>=self.seasonStart.month and today.month<=self.seasonEnd.month:
+				return True
+			else:
+				return False
+		
 
-		if today.month>=ss.month and today.month<=se.month:
-			return True
-		else:
-			return False
-
+	
 
 	@property
 	def seasonStart(self):
