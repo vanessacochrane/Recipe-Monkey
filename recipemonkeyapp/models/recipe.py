@@ -74,12 +74,12 @@ class Recipe(models.Model):
 		if self.seasonStart is None or self.seasonEnd is None:
 			return False
 
-		if self.SeasonEnd<self.SeasonStart:
-			se=self.SeasonStart
-			ss=self.SeasonEnd
+		if self.seasonEnd<self.seasonStart:
+			se=self.seasonStart
+			ss=self.seasonEnd
 		else:
-			se=self.SeasonEnd
-			ss=self.SeasonStart
+			se=self.seasonEnd
+			ss=self.seasonStart
 
 		if today.month>=ss.month and today.month<=se.month:
 			return True
