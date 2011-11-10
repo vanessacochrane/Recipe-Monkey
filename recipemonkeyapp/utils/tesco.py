@@ -216,6 +216,9 @@ def tesco_download():
 			g.EANBarcode=data['EANBarcode']
 			g.save()
 	
+		if g.tescoName != data['Name']:	
+			g.tescoName=data['Name']
+			g.save()
 		
 	
 def tesco_assignids():

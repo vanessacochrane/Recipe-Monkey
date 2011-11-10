@@ -14,7 +14,9 @@ class GroceryItem(models.Model):
 	seasonStart=models.DateField(null=True,blank=True)  #how to make month only?
 	seasonEnd=models.DateField(null=True,blank=True)
 	store=models.ForeignKey('Store',null=True,blank=True)
-	tescoid=models.CharField(max_length=256)
+	tescoid=models.CharField(max_length=256,null=True,blank=True)
+	tescoName=models.CharField(max_length=256,null=True,blank=True)
+	
 	seasonal=models.BooleanField(default=False)
 	EANBarcode=models.CharField(max_length=256,null=True,blank=True)
 	
