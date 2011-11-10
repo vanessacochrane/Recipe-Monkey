@@ -87,6 +87,9 @@ def schedule_meals(startDate,weekNum,people,maxMealRepeat=5):
 		print 'insufficient recipes left for scheduling'
 		return False
 		
+	else:
+		print 'Picking from %d recipes' % len(seasonalRecipes)
+		
 	picked={}
 	i=0
 	for dt in week:
