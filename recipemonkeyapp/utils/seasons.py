@@ -29,7 +29,7 @@ for item in rows:
 
 		print name
 		
-		g=GroceryItem.objects.filter(name__contains=name)
+		g=GroceryItem.objects.filter(name__icontains=name)
 
 		if len(g)>0:
 			g=g[0]
