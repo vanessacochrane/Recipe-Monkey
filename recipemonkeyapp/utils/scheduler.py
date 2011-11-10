@@ -38,9 +38,12 @@ def schedule_meals(startDate,weekNum,people,maxMealRepeat=5):
 	plan={}
 	
 	#get recipes that are in season
-	breakfastRecipes=[x for x in Recipe.objects.filter(course='breakfast') if True]
-	lunchRecipes=[x for x in Recipe.objects.filter(course='lunch') if True]
-	seasonalRecipes = [x for x in Recipe.objects.filter() if x.inSeason]
+	breakfastRecipes=[x for x in Recipe.objects.filter(course='Breakfast') if True]
+	
+	from django.db.models import Q
+	
+	lunchRecipes=[x for x in Recipe.objects.filter(Q(course='Lunch')|Q(course='Soup')) if True]
+	seasonalRecipes = [x for x in Recipe.objects.filter(course='Main') if x.inSeason]
 	#seasonalRecipes = [x for x in Recipe.objects.all() if True]
 	
 	for r in seasonalRecipes:
@@ -98,17 +101,17 @@ def schedule_meals(startDate,weekNum,people,maxMealRepeat=5):
 		dinner=random.choice(seasonalRecipes)
 	
 		
-		picked[dt]={'breakfast':breakfast,'lunch':lunch,'dinner':dinner}
+		picked[dt]={'breakfast':breakfast,'secondary':lunch,'main':dinner}
 		
 		plan.recipes.clear() #delete old recipes
 		
-		m1=PlannerMeal(recipe=dinner,course='dinner',planner=plan)
+		m1=PlannerMeal(recipe=dinner,course='main',planner=plan)
 		m1.save()
 		
 		m2=PlannerMeal(recipe=breakfast,course='breakfast',planner=plan)
 		m2.save()
 		
-		m3=PlannerMeal(recipe=lunch,course='lunch',planner=plan)
+		m3=PlannerMeal(recipe=lunch,course='secondary',planner=plan)
 		m3.save()
 	
 		seasonalRecipes.remove(dinner)
