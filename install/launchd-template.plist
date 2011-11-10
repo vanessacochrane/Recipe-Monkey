@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>org.openportfolio-<environment>.update</string>
+  <string>org.<project>-<environment>.update</string>
 
   <key>ProgramArguments</key>
   <array>
