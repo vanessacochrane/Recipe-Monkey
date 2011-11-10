@@ -31,10 +31,7 @@ for item in rows:
 		
 		g=GroceryItem.objects.filter(name__icontains=name)
 
-		if len(g)>0:
-			g=g[0]
-		else:
-			g=None
+		
 		
 		imgs=item.findAll('img')
 		
@@ -64,10 +61,10 @@ for item in rows:
 			start=datetime.strptime(imgs[startIdx].parent['headers'].split()[1],'%b')
 			end=datetime.strptime(imgs[endIdx].parent['headers'].split()[1],'%b')
 		
-			if g is not None:
-				g.seasonStart=start
-				g.seasonEnd=end
-				g.save()
+			for gi in g:
+				gi.seasonStart=start
+				gi.seasonEnd=end
+				gi.save()
 	
 		
 	
