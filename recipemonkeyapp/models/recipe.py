@@ -19,7 +19,7 @@ class Recipe(models.Model):
  	ingredients = models.ManyToManyField('GroceryItem', through='RecipeIngredient')
 	instructions = models.ManyToManyField('Instruction',related_name='steps')
 	
-	subrecipes = models.ManyToManyField('Recipe',related_name='subRecipes',null=True,blank=True)
+	subrecipes = models.ManyToManyField('Recipe',related_name='subRecipes',through='SubRecipe',null=True,blank=True)
 	
 	
 	def __unicode__(self):

@@ -15,3 +15,4 @@ from userfoodprefs import UserFoodPrefs
 from planner import Planner
 from plannerMeal import PlannerMeal
 from plannercalendar import PlannerCalendar
+from subRecipe import SubRecipe
