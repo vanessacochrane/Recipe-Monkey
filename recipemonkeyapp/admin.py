@@ -19,7 +19,7 @@ class RecipeAdmin(admin.ModelAdmin):
 	""" Object to control the behaviour of the linked object in the Admin interface
 	"""
 	list_display = ['name','source','serving','inSeason','cost','costPerServe']
-	list_filter = ['source','cuisine']
+	list_filter = ['source','cuisine','course']
 	ordering = []
 	search_fields = ['name']
 	inlines = [RecipeIngredientInline,RecipeInstructionInline]
