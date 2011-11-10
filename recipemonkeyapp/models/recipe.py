@@ -93,7 +93,7 @@ class Recipe(models.Model):
 	@property
 	def costPerServe(self):
 		
-		if self.serving == 0:
+		if self.serving == 0 or self.serving is None:
 			return 0
 			
 		
