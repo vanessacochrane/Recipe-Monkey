@@ -14,7 +14,7 @@ class StorageItem(models.Model):
 	content_type = models.ForeignKey(ContentType)
 	quantity=models.FloatField()
 	quantityMeasure=models.CharField(max_length=256)
-	date=models.DateField()
+	date=models.DateField(auto_now_add=True,null=True)
 	
 	
 	def loadold(self):

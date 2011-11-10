@@ -14,4 +14,4 @@ class StorageLog(models.Model):
 	content_type = models.ForeignKey(ContentType)
 	quantity=models.FloatField()
 	dateAdded=models.DateField(null=True,blank=True)
-	dateChanged=models.DateField(default=datetime.today)
+	dateChanged=models.DateField(auto_now_add=True)

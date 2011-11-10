@@ -1,5 +1,5 @@
 from django.db import models
-
+from recipemonkeyapp.utils.unitconversion import convertToGrams
 class RecipeIngredient(models.Model):
 	
 	class Meta: 
@@ -18,3 +18,30 @@ class RecipeIngredient(models.Model):
 		""" Returns the custom output string for this object
 		"""
 		return "%s-%s " % (self.item.name,self.recipe.name) 
+		
+
+	@property
+	def quantityInGrams(self):
+		
+		q=self.quantity
+		m=self.quantityMeasure
+		
+		if m == '':
+			return q*self.item.unitweight
+			
+		else:
+			return convertToGrams(q,m)
+			
+	@property
+	def cost(self):
+		
+		q=self.quantityInGrams
+		
+		price=self.item.latestUnitPriceGrams
+		
+		
+		
+		return q*price
+		
+		
+	

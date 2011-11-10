@@ -19,6 +19,9 @@ class Recipe(models.Model):
  	ingredients = models.ManyToManyField('GroceryItem', through='RecipeIngredient')
 	instructions = models.ManyToManyField('Instruction',related_name='steps')
 	
+	subrecipes = models.ManyToManyField('Recipe',related_name='subRecipes',null=True,blank=True)
+	
+	
 	def __unicode__(self):
 		""" Returns the custom output string for this object
 		"""
@@ -78,6 +81,23 @@ class Recipe(models.Model):
 		
 		return self.season()[0]
 		
-		 
+	@property
+	def cost(self):
+		
+		c=0
+		for r in self.recipeingredient_set.all():
+			c+=r.cost
+			
+		return round(c,2)
+		
+	@property
+	def costPerServe(self):
+		
+		if self.serving == 0:
+			return 0
+			
+		
+		
+		return round(self.cost / self.serving,2)	 
 		
 		
