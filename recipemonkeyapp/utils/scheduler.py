@@ -1,26 +1,24 @@
 
 from recipemonkeyapp.models import Recipe,Planner,PlannerMeal
-from django.contrib.auth.models import User
+from django.contrib.auth.models import Group
 
 import calendar
 from datetime import datetime
 import random
 
-def test_schedule():
-	
-	startDate=datetime(2011,11,1)
-	
-	p=User.objects.get(username='evandavey')
-	people=[(p,),
-			(p,),
-			(p,),
-			(p,),
-			(p,),
-			(p,),
-			(p,),
-		]
+def schedule_default(weekNum=1,startDate=datetime(2011,11,1)):
 		
-	weekNum=2
+	g=Group.objects.get(name='MenuPlanner-Default')
+	
+	default_p=tuple(x for x in g.user_set.all())
+
+	print "Default people [%s]" % ",".join(p.username for p in default_p)
+	
+	people=[]
+	for i in range(1,8):
+		people.append(default_p)
+	
+
 	
 
 	schedule_meals(startDate,weekNum,people)
@@ -55,7 +53,14 @@ def schedule_meals(startDate,weekNum,people,maxMealRepeat=5):
 			r.inXLastEaten=0
 			
 			for p in mealp:
-				prefs=p.userfoodprefs_set.all()[0]
+
+				prefs=p.userfoodprefs_set.all()
+				
+				if len(prefs)==0:
+					continue
+				else:
+					prefs=prefs[0]
+					
 				numpeople=len(mealp)
 				if prefs.checkRecipeDislikes(r):
 					#print "%s dislikes %s" % (p.username,r.name)
