@@ -154,6 +154,10 @@ def runserver():
 
 	print(green('Running development server.  Access at http://127.0.0.1:%s' % env.serverport))
 
+	if env.environment == 'development':
+		local('./manage.py runserver 0.0.0.0:%s --settings=%s.settings_%s' % (env.serverport,env.project,env.environment))
+		return
+
 	with virtualenv():
 		with cd(env.code_root):
 			run('./manage.py runserver 0.0.0.0:%s --settings=%s.settings_%s' % (env.serverport,env.project,env.environment))
