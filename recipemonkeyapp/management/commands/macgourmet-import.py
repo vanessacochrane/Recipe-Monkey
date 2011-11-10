@@ -55,9 +55,10 @@ class Command(BaseCommand):
 			r.name as rName,
 			r.source as rSource,
 			r.servings as servings,
-			r.course_id as rCourse
+			c.name as course
 		
-		from recipe as r
+		from recipe as r left join course as c
+		on r.course_id=c.course_id
 		
 		"""
 		
@@ -74,7 +75,7 @@ class Command(BaseCommand):
 			rec.id=r['rId']
 			rec.name=r['rName']
 			rec.serving=r['servings']
-			
+			rec.course=r['course']
 			
 			try:
 				src=Source.objects.get(name=r['rSource'])
@@ -116,6 +117,8 @@ class Command(BaseCommand):
 				ing.category_id=11 #default to 'other'
 			
 				ing.save()
+				
+			
 				
 				try:
 					ri=RecipeIngredient.objects.get(item=r2['iId'],recipe=r['rId'])
