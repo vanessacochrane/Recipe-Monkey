@@ -466,3 +466,39 @@ h2 {
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
   /* For landscape layouts only */
 }
+
+.filled { background-color:#ec3; } 
+.today { background-color:#EB6AC4; } 
+.month { border-collapse: collapse; margin-left: 2em; } 
+.month li {
+	text-align: left;
+	float: left;
+	display: inline;
+	font-size: 10px;
+	padding-bottom: 0px;
+	margin: 0 0px;
+	width: 80px;
+}
+
+
+/* page styles */
+body { }
+#calendar table {  
+	border-collapse: collapse; 
+	font-family: "Segoe UI", Frutiger,Tahoma,Helvetica,"Helvetica Neue", Arial, sans-serif; 
+}
+
+#calendar td, th { 
+   text-align: center; 
+   border: 1px solid #ddd; 
+   padding:2px 5px; 
+   }
+   
+#calendar caption {margin: 0 0 .5em; font-weight: bold; }
+
+.month th, .month td { border: 1px solid #000; } 
+ .month thead { background-color:#9c9; } 
+ .month td { width: 7em; height: 7em; padding: .2em; vertical-align: top; overflow: auto; } 
+ td .day { width: 7em; height: 6em; overflow:auto; margin-top: 0; } 
+ .month tbody .weekend { background-color:#ded; } 
+ .month tbody .next, .month tbody .previous { background-color:#ddd; } 
