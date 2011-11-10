@@ -4,3 +4,4 @@ mysql-python
 pyYAML
 PIL
 elaphe
+BeautifulSoup
