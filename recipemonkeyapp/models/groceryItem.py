@@ -97,6 +97,8 @@ class GroceryItem(models.Model):
 	@property
 	def inSeason(self):
 
+		if not self.seasonal:
+			return True
 	
 		today=datetime.today().date()
 		
