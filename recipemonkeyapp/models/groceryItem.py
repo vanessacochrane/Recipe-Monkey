@@ -7,7 +7,7 @@ class GroceryItem(models.Model):
 	
 	class Meta: 
 		app_label = 'recipemonkeyapp'
-
+		ordering = ['name']
 
 	name=models.CharField(max_length=256)
 	category=models.ForeignKey('GroceryCategory')
