@@ -11,6 +11,11 @@ class RecipeInline(admin.TabularInline):
 	model = Planner.recipes.through
 	extra=0
 
+class SubRecipeInline(admin.TabularInline):
+	model = SubRecipe
+	extra=0
+
+
 class RecipeIngredientInline(admin.TabularInline):
 	model = Recipe.ingredients.through
 
@@ -92,6 +97,7 @@ admin.site.register(StorageItem,StorageItemAdmin)
 admin.site.register(StorageLog,StorageLogAdmin)	
 admin.site.register(UserFoodPrefs,UserFoodPrefsAdmin)	
 admin.site.register(Planner,PlannerAdmin)	
+admin.site.register(SubRecipe)	
 
 
 
