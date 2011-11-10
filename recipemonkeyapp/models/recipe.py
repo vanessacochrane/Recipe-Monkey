@@ -18,7 +18,7 @@ class Recipe(models.Model):
 	photo=models.ImageField(upload_to='recipephotos',null=True,blank=True)
  	ingredients = models.ManyToManyField('GroceryItem', through='RecipeIngredient')
 	instructions = models.ManyToManyField('Instruction',related_name='steps')
-	
+	seasonal = models.BooleanField(default=False)
 	subrecipes = models.ManyToManyField('Recipe',related_name='subRecipes',through='SubRecipe',null=True,blank=True)
 	
 	
@@ -67,7 +67,8 @@ class Recipe(models.Model):
 	@property
 	def inSeason(self):
 		
-		
+		if not self.seasonal:
+			return True
 	
 		today=datetime.today().date()
 
