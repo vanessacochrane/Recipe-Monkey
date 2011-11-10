@@ -39,11 +39,11 @@ class Planner(models.Model):
 	@property
 	def dinner(self):
 
-		return self.plannermeal_set.get(course='dinner').recipe.name				
+		return self.plannermeal_set.get(course='main').recipe.name				
 	
 	
 	@property
 	def lunch(self):
 
-		return self.plannermeal_set.get(course='lunch').recipe.name				
+		return self.plannermeal_set.get(course='secondary').recipe.name				
 	
