@@ -73,9 +73,9 @@ def barcodeimg(request, id):
 
 	url="http://%s/recipemonkeyapp/scan/groceryitem/%s" % ('192.168.0.8:8082',i.id)
 	
-	img=barcode('qrcode',url,options=dict(version=9, eclevel='M'), margin=0, data_mode='8bits')   # Generates PIL.EpsImageFile instance
-
-	img=img.resize((90,90))
+	#img=barcode('qrcode',url,options=dict(eclevel='M'), margin=0, data_mode='8bits')   # Generates PIL.EpsImageFile instance
+    img=barcode('qrcode',url)
+	#img=img.resize((90,90))
 
 	img.save(response, 'PNG')
 	
