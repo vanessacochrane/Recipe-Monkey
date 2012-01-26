@@ -1,5 +1,6 @@
 from django.db import models
-from recipemonkeyapp.models.instruction import Instruction,StorageItem
+from recipemonkeyapp.models.instruction import Instruction
+from recipemonkeyapp.models.sotrageitem import StorageItem
 from datetime import datetime
 from django.contrib.contenttypes.models import ContentType
 
