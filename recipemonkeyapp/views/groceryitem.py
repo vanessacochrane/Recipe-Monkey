@@ -96,7 +96,7 @@ def barcodeimg(request, id):
 
 	response=HttpResponse(content_type='image/png')
 
-	url="https://%s/recipemonkeyapp/scan/groceryitem/%s/" % ('recipemonkey.getoutsideandlive.com',i.id)
+	url="https://%s/recipemonkeyapp/groceryitem/scan/%s/" % ('recipemonkey.getoutsideandlive.com',i.id)
 	
 	#img=barcode('qrcode',url,options=dict(eclevel='M'), margin=0, data_mode='8bits')   # Generates PIL.EpsImageFile instance
 	img=barcode('qrcode',url,data_mode='8bits')

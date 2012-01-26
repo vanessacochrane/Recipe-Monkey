@@ -12,7 +12,7 @@ urlpatterns += patterns('recipemonkeyapp.views.recipe',
 	(r'^recipe/(?P<recipe_id>\d+)/$', 'detail'),
 	(r'^recipe/$', 'index'),
 	(r'^recipe/(?P<id>\d+)/barcode.png/$', 'barcodeimg'),
-	(r'^scan/recipe/(?P<id>\d+)/$', 'scan'),
+	(r'^recipe/scan/(?P<id>\d+)/$', 'scan'),
 	
 )
 
@@ -27,7 +27,7 @@ urlpatterns += patterns('recipemonkeyapp.views.groceryitem',
 
 	(r'^groceryitem/(?P<id>\d+)/$', 'detail'),
 	(r'^groceryitem/(?P<id>\d+)/barcode.png/$', 'barcodeimg'),
-	(r'^scan/groceryitem/(?P<id>\d+)/$', 'scan'),
+	(r'^groceryitem/scan/(?P<id>\d+)/$', 'scan'),
 )
 
 

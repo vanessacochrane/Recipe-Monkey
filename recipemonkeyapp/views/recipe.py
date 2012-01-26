@@ -91,7 +91,7 @@ def barcodeimg(request, id):
 
     response=HttpResponse(content_type='image/png')
 
-    url="https://%s/recipemonkeyapp/scan/recipe/%s/" % ('recipemonkey.getoutsideandlive.com',i.id)
+    url="https://%s/recipemonkeyapp/recipe/scan/%s/" % ('recipemonkey.getoutsideandlive.com',i.id)
 
     img=barcode('qrcode',url,data_mode='8bits')
 
