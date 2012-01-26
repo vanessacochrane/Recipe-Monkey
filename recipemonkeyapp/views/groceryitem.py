@@ -27,7 +27,7 @@ def labels(request):
 
 class GroceryItemTable(tables.Table):
     class Meta:
-        model = Recipe
+        model = GroceryItem
         exclude = []
 
 def index(request):
