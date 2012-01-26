@@ -62,16 +62,16 @@ def scan(request, id):
 			for form in formset:
 				si=form.save(commit=False)
 				
-				if si.id:
-				    si.content_object=i
-				    si.object_id=i.id
-				    si.content_type=ContentType.objects.get_for_model(i)
+				
+				si.content_object=i
+				si.object_id=i.id
+				si.content_type=ContentType.objects.get_for_model(i)
 				    
-				    if si.quantity > 0:
-				        si.save()
+				if si.quantity > 0:
+				    si.save()
 				        
-				    if si.quantity <=0:
-				        
+				if si.quantity <=0:
+				    if si.id:     
 				        si.delete()
 
 			return redirect('recipemonkeyapp.views.recipe.scan',id=i.id)
