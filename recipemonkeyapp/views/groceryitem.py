@@ -11,6 +11,18 @@ from django.forms.models import modelformset_factory
 from django.contrib.contenttypes.models import ContentType
 
 
+def labels(request):
+	
+	item_list=GroceryItem.objects.all()
+	
+	
+		
+	ct={'item_list':item_list,
+	
+	}
+	
+	return render_to_response('groceryitem/labels.html',ct,context_instance=RequestContext(request))
+
 def index(request):
 	
 	item_list=GroceryItem.objects.all()

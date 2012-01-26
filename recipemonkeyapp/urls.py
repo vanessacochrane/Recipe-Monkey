@@ -20,6 +20,8 @@ urlpatterns += patterns('recipemonkeyapp.views.planner',
 
 urlpatterns += patterns('recipemonkeyapp.views.groceryitem',
     (r'^groceryitem/$', 'index'),
+    (r'^groceryitem/labels/$', 'labels'),
+
 	(r'^groceryitem/(?P<id>\d+)/$', 'detail'),
 	(r'^groceryitem/(?P<id>\d+)/barcode.png/$', 'barcodeimg'),
 	(r'^scan/groceryitem/(?P<id>\d+)/$', 'scan'),
