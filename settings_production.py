@@ -4,7 +4,7 @@ DEBUG = True
 
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_SITECONF = 'recipemonkey.search_sites'
-HAYSTACK_WHOOSH_PATH = './whoosh_index/'
+HAYSTACK_WHOOSH_PATH = '/usr/local/web/django/www/production/recipemonkey/whoosh_index/'
 
 
 INSTALLED_APPS = INSTALLED_APPS + ('haystack',)

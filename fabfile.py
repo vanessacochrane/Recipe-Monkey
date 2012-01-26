@@ -78,3 +78,9 @@ def sync_staging_database():
     env.db_backup = '/usr/local/backup/db_dumps/recipemonkey.txt'
     load_data()
     
+
+def extra_setup():
+    
+
+    print(green("Creating project directories"))
+    run('mkdir -p %s' % os.path.join(env.code_root, 'whoosh_index'))
