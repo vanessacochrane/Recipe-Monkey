@@ -25,7 +25,7 @@ from fabric import utils
 from fabric.decorators import hosts
 from contextlib import contextmanager as _contextmanager
 from fabric.colors import *
-from FabTools import *
+from fabtools import *
 
 env.project = 'recipemonkey'
 env.repo = 'git://github.com/vanessacochrane/Recipe-Monkey.git'
