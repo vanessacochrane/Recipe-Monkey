@@ -1,16 +1,16 @@
 {% extends "base.html" %}
-
-{% block title %}Recipes{% endblock %}
+{% block title %}Open Portfolio{% endblock %}
 {% block content %}
 
+<h3>Welcome</h3>
+<p>Recipe Monkey allows you to enter and manage recipes, ingredients and meal plans.</p>
 
-{% for r in recipe_list %}
+<ul>
+<li>View a list of <a href="/recipemonkeyapp/recipe">recipes</a><br/></li>
+<li>View a list of <a href="/recipemonkeyapp/groceryitem">groceries</a><br/></li>
+<li>View a list of <a href="/recipemonkeyapp/storage">storage buckets</a><br/></li>
+<li><a href="/recipemonkeyapp/planner">Plan Meals</a><br/></li>
+<li>Access the <a href="/admin/recipemonkeyapp">administration panel</a></li>
 
-	<a href="/recipemonkeyapp/recipe/{{ r.id }}">{{r.name}}</a></br>
-
-
-{% endfor %}
-
-
+</ul>
 {% endblock %}
-

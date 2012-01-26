@@ -4,6 +4,18 @@ from django.template import RequestContext
 from recipemonkeyapp.models import Recipe,Instruction,RecipeIngredient
 
 
+def index(request):
+    	
+	recipe_list=Recipe.objects.all()
+	
+	
+		
+	ct={'recipe_list':recipe_list,
+	
+	}
+	
+	return render_to_response('recipe/index.html',ct,context_instance=RequestContext(request))
+
 def detail(request, recipe_id):
     
 	try:

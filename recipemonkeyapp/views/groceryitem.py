@@ -10,6 +10,19 @@ from recipemonkeyapp.forms import StorageItemForm
 from django.forms.models import modelformset_factory
 from django.contrib.contenttypes.models import ContentType
 
+
+def index(request):
+	
+	item_list=GroceryItem.objects.all()
+	
+	
+		
+	ct={'item_list':item_list,
+	
+	}
+	
+	return render_to_response('grocery/index.html',ct,context_instance=RequestContext(request))
+
 def scan(request, id):
     
 	try:

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Groceries{% endblock %}
+{% block content %}
+
+
+{% for i in item_list %}
+
+	<a href="/recipemonkeyapp/groceryitem/{{ i.id }}">{{i.name}}</a></br>
+
+
+{% endfor %}
+
+
+{% endblock %}
