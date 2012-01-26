@@ -21,7 +21,7 @@ def index(request):
 	
 	}
 	
-	return render_to_response('grocery/index.html',ct,context_instance=RequestContext(request))
+	return render_to_response('groceryitem/index.html',ct,context_instance=RequestContext(request))
 
 def scan(request, id):
     
