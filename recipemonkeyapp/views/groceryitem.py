@@ -9,7 +9,7 @@ from django.http import Http404
 from recipemonkeyapp.forms import StorageItemForm
 from django.forms.models import modelformset_factory
 from django.contrib.contenttypes.models import ContentType
-
+import django_tables2 as tables
 
 def labels(request):
 	
@@ -23,17 +23,23 @@ def labels(request):
 	
 	return render_to_response('groceryitem/labels.html',ct,context_instance=RequestContext(request))
 
+   
+
+class GroceryItemTable(tables.Table):
+    class Meta:
+        model = Recipe
+        exclude = []
+
 def index(request):
-	
-	item_list=GroceryItem.objects.all()
-	
-	
-		
-	ct={'item_list':item_list,
-	
-	}
-	
-	return render_to_response('groceryitem/index.html',ct,context_instance=RequestContext(request))
+
+    table = GroceryItemTable(Recipe.objects.all())
+    table.paginate(page=request.GET.get("page", 1))
+    table.order_by = request.GET.get("sort")
+
+    ct={'table':table,
+    }
+
+    return render_to_response('groceryitem/index.html',ct,context_instance=RequestContext(request))
 
 def scan(request, id):
     
