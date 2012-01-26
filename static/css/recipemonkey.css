@@ -135,15 +135,17 @@ h2 {
     margin: 40px 10px 0 20px;
 }
 
+#breadcrumbs {
+    margin: 0 20px 2em 20px;
+}
+
 #content {
-    border-top: 1px solid #ccc;
     margin: 0 20px 2em 20px;
 }
 
 #content #main {
     width: 100%;
     float: left;
-    border-right: 1px solid #ccc;
     padding-bottom: 4em;
 }
 
