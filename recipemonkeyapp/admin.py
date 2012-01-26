@@ -51,7 +51,7 @@ class InstructionAdmin(admin.ModelAdmin):
 class StorageItemAdmin(admin.ModelAdmin):
 	""" Object to control the behaviour of the linked object in the Admin interface
 	"""
-	list_display = ['storage','content_object','quantity','date']
+	list_display = ['storage','content_object','quantity','date_added']
 	ordering = ['date']
 	
 class StorageLogAdmin(admin.ModelAdmin):
