@@ -64,13 +64,12 @@ class Recipe(models.Model):
 	def seasonEnd(self):
 
 		return self.season()[1]
-
-    @property
-    def storeditems(self):
-		mytype=ContentType.objects.get_for_model(self)
-		stored=StorageItem.objects.filter(content_type=mytype,object_id=self.id).order_by('date_added')
-
-		return stored
+		
+	@property
+	def storeditems(self):
+	    mytype=ContentType.objects.get_for_model(self)
+	    stored=StorageItem.objects.filter(content_type=mytype,object_id=self.id).order_by('date_added')
+	    return stored
 		
 	@property
 	def inSeason(self):
