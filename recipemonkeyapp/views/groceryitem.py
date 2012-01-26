@@ -42,8 +42,8 @@ def scan(request, id):
 	except GroceryItem.DoesNotExist:
 		raise Http404
 	
-	StorageItemFormSet = modelformset_factory(StorageItem,fields=('storage','date_added','quantity'),max_num=2)	
-	#StorageItemFormSet = modelformset_factory(StorageItem)
+	#StorageItemFormSet = modelformset_factory(StorageItem,fields=('storage','date_added','quantity'),max_num=2)	
+	StorageItemFormSet = modelformset_factory(StorageItem)
 	
 
 	if request.method == 'POST': # If the form has been submitted...
