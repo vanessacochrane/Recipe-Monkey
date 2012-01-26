@@ -25,6 +25,10 @@ class Recipe(models.Model):
 	subrecipes = models.ManyToManyField('Recipe',related_name='subRecipes',through='SubRecipe',null=True,blank=True)
 	
 	
+	@models.permalink
+	def get_absolute_url(self):
+	    return ('recipemonkeyapp.views.recipe.detail', [str(self.id)])
+	
 	def __unicode__(self):
 		""" Returns the custom output string for this object
 		"""

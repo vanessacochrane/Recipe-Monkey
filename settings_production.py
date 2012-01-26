@@ -2,7 +2,12 @@ from recipemonkey.settings import *
 
 DEBUG = True
 
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+HAYSTACK_SITECONF = 'recipemonkey.search_sites'
+HAYSTACK_WHOOSH_PATH = './whoosh_index/'
 
+
+INSTALLED_APPS = INSTALLED_APPS + ('haystack',)
 STATIC_ROOT = '/usr/local/web/django/www/production/recipemonkey/static'
 TEMPLATE_DIRS = ('/usr/local/web/django/www/production/recipemonkey/recipemonkeyapp/templates')
 
