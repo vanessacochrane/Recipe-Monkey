@@ -67,6 +67,9 @@ def scan(request, id):
 
 				if si.quantity > 0:
 					si.save()
+					
+				if si.quantity <=0:
+				    si.delete()
 
 			return redirect('recipemonkeyapp.views.recipe.scan',id=i.id)
 
