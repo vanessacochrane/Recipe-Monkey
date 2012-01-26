@@ -34,7 +34,7 @@ class GroceryItemTable(tables.Table):
         
     def render_seasonStart(self, value):
         if value:
-            return '%s' % value.strftime('%M')
+            return '%s' % value.strftime('%b')
         else:
             return ''
 
