@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.contenttypes import generic
+from recipemonkeyapp.models.storageitem import StorageItem
 
 class Storage(models.Model):
 	
@@ -15,5 +16,11 @@ class Storage(models.Model):
 		""" Returns the custom output string for this object
 		"""
 		return "%s" % (self.name) 
+		
+	@property
+	def storeditems(self):
+	    mytype=ContentType.objects.get_for_model(self)
+	    stored=StorageItem.objects.filter(content_type=mytype,object_id=self.id).order_by('date_added')
+        return stored
 
 
