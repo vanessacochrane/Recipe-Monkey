@@ -30,4 +30,9 @@ urlpatterns += patterns('recipemonkeyapp.views.groceryitem',
 	(r'^groceryitem/scan/(?P<id>\d+)/$', 'scan'),
 )
 
+urlpatterns += patterns('recipemonkeyapp.views.storage',
+	(r'^storage/$', 'index'),
+	
+)
+
 
