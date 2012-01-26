@@ -42,7 +42,7 @@ def scan(request, id):
 	except GroceryItem.DoesNotExist:
 		raise Http404
 	
-	StorageItemFormSet = modelformset_factory(StorageItem,fields=('storage','date','quantity'),max_num=2)	
+	StorageItemFormSet = modelformset_factory(StorageItem,fields=('storage','date_added','quantity'),max_num=2)	
 	#StorageItemFormSet = modelformset_factory(StorageItem)
 	
 
