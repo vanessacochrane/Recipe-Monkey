@@ -38,7 +38,7 @@ class StorageItem(models.Model):
 				#sl.content_type=ContentType.objects.get_for_model(self.content_object)
 				sl.content_object=self.content_object
 				sl.quantity=self.quantity-old.quantity
-				sl.dateAdded=old.date
+				sl.dateAdded=old.date_added
 				sl.save()
 				
 				
