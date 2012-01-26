@@ -12,6 +12,8 @@ urlpatterns += patterns('recipemonkeyapp.views.recipe',
 	(r'^recipe/(?P<recipe_id>\d+)/$', 'detail'),
 	(r'^recipe/$', 'index'),
 	(r'^recipe/(?P<id>\d+)/barcode.png/$', 'barcodeimg'),
+	(r'^scan/recipe/(?P<id>\d+)/$', 'scan'),
+	
 )
 
 urlpatterns += patterns('recipemonkeyapp.views.planner',

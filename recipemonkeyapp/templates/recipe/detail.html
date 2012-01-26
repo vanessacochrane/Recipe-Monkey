@@ -51,5 +51,47 @@
 {%endif %}
 <img src="/recipemonkeyapp/recipe/{{recipe.id}}/barcode.png" class="align-right frame"/>
 
+<h3>Stored Amount</h3>
+{%if formset %}
+<form method="post" action="">
+    {{ formset.management_form }}
+{{ formset.non_form_errors.as_ul }}
+<table id="formset" class="form">
+{% for form in formset.forms %}
+{{formset.media}}
+  {% if forloop.first %}
+  <thead><tr>
+    {% for field in form.visible_fields %}
+    <th>{{ field.label|capfirst }}</th>
+    {% endfor %}
+  </tr></thead>
+  {% endif %}
+  <tr class="{% cycle row1,row2 %}">
+  {% for field in form.visible_fields %}
+    <td>
+    {# Include the hidden fields in the form #}
+    {% if forloop.first %}
+      {% for hidden in form.hidden_fields %}
+      {{ hidden }}
+      {% endfor %}
+    {% endif %}
+      {{ field.errors.as_ul }}
+      {{ field }}
+    </td>
+  {% endfor %}
+  </tr>
+{% endfor %}
+</table>
+<p align="center"><input type="submit" value="Update Storage" align="center"/></p>
+</form>
+
+
+{%else%}
+<ul>
+{%for s in recipe.storeditems %}
+<li>{{s.storage}}-{{s.quantity}}</li>
+{%endfor%}
+</ul>
+{%endif%}
 
 {% endblock %}
