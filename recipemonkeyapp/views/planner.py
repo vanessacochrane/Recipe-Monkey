@@ -21,18 +21,19 @@ def schedule(request,weeknum,startdate):
     startdate=datetime.strptime(startdate,'%Y%m%d')
     
     g=Group.objects.get(name='MenuPlanner-Default')
-	
-	default_p=tuple(x for x in g.user_set.all())
-
-	print "Default people [%s]" % ",".join(p.username for p in default_p)
-	
-	people=[]
-	for i in range(1,8):
-		people.append(default_p)
-	
-
-	plan=schedule_meals(startdate,weeknum,people)
-	messages.add_message(request, messages.SUCCESS, 'Scheduled new meals')
+    
+    default_p=tuple(x for x in g.user_set.all())
+    
+    print "Default people [%s]" % ",".join(p.username for p in default_p)
+    
+    people=[]
+    
+    for i in range(1,8):
+        
+        people.append(default_p)
+        
+    plan=schedule_meals(startdate,weeknum,people)
+    messages.add_message(request, messages.SUCCESS, 'Scheduled new meals')
     
     return redirect('/recipemonkeyapp/planner/%d/' % plan.id)
     
