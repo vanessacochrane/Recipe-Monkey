@@ -52,12 +52,12 @@ def planner_calendar(request, planner_id):
 	month=11
 	
 	try:
-		r = Planner.objects.filter(pk=planner_id)
+		p = Planner.objects.filter(pk=planner_id)
 	except Planner.DoesNotExist:
 		raise Http404
 	
 	
-	cal = PlannerCalendar(planner).formatmonth(year, month)
+	cal = PlannerCalendar(p).formatmonth(year, month)
 	
 	ct={'calendar': mark_safe(cal),}
 	return render_to_response('planner/calendar.html',ct,context_instance=RequestContext(request))
