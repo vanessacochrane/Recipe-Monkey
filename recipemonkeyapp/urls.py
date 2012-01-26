@@ -18,6 +18,7 @@ urlpatterns += patterns('recipemonkeyapp.views.recipe',
 
 urlpatterns += patterns('recipemonkeyapp.views.planner',
 	(r'^planner/(?P<planner_id>\d+)/$', 'calendar'),
+	(r'^planner/schedule/(?P<weeknum>\d+)/(?P<startdate>\d+)/$', 'calendar'),
 )
 
 

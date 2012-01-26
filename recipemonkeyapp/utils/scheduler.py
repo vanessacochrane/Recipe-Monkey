@@ -129,7 +129,8 @@ def schedule_meals(startDate,weekNum,people,maxMealRepeat=5):
 		
 		i+=1
 		
-	print picked
+	return plan
+	
 	
 	
 	
