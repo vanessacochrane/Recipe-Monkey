@@ -19,6 +19,7 @@ from datetime import *
 def schedule(request,weeknum,startdate):
     
     startdate=datetime.strptime(startdate,'%Y%m%d')
+    weeknum=int(weeknum)
     
     g=Group.objects.get(name='MenuPlanner-Default')
     
