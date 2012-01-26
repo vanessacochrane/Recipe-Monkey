@@ -10,6 +10,7 @@ from recipemonkeyapp.forms import StorageItemForm
 from django.forms.models import modelformset_factory
 from django.contrib.contenttypes.models import ContentType
 import django_tables2 as tables
+from datetime import *
 
 def labels(request):
 	
@@ -26,9 +27,11 @@ def labels(request):
    
 
 class GroceryItemTable(tables.Table):
+    seasonStart=table.Columns(data='seasonStart').strftime('%M')
+    
     class Meta:
         model = GroceryItem
-        exclude = ['store','tescoName','EANBarcode']
+        exclude = ['store','tescoName','EANBarcode','seasonStart','seasonEnd']
 
 def index(request):
 
