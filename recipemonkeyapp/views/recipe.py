@@ -24,12 +24,11 @@ def index(request):
     table = RecipeTable(Recipe.objects.all())
     table.paginate(page=request.GET.get("page", 1))
     table.order_by = request.GET.get("sort")
-			
-	ct={'table':table,
-	
-	}
-	
-	return render_to_response('recipe/index.html',ct,context_instance=RequestContext(request))
+    
+    ct={'table':table,
+    }
+    
+    return render_to_response('recipe/index.html',ct,context_instance=RequestContext(request))
 
 def detail(request, recipe_id):
     
