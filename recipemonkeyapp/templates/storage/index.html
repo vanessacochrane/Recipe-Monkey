@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Storage{% endblock %}
+{% block content %}
+
+
+{% for i in item_list %}
+
+	<h3>i.name</h3>
+	<ul>
+		{% for s in i.items %}
+		<li>{{s.storage}}-{{s.quantity}}</li>
+		{% endfor %}
+		
+	</ul>
+
+
+
+{% endfor %}
+
+
+{% endblock %}
