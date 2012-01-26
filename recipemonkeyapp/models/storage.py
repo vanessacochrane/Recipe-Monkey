@@ -23,7 +23,7 @@ class Storage(models.Model):
 	def storeditems(self):
 	    
 	    mytype=ContentType.objects.get_for_model(self)
-	    stored=StorageItem.objects.filter(content_type=mytype,object_id=self.id).order_by('date_added')
+	    stored=StorageItem.objects.filter(storage=self).order_by('date_added')
 	    return stored
 
 
