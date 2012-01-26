@@ -32,3 +32,22 @@ def detail(request, recipe_id):
 	}
 	
 	return render_to_response('recipe/detail.html',ct,context_instance=RequestContext(request))
+	
+
+
+def barcodeimg(request, id):
+
+    try:
+    	i = Recipe.objects.get(pk=id)
+    except Recipe.DoesNotExist:
+    	raise Http404
+
+    response=HttpResponse(content_type='image/png')
+
+    url="https://%s/recipemonkeyapp/scan/recipe/%s/" % ('recipemonkey.getoutsideandlive.com',i.id)
+
+    img=barcode('qrcode',url,data_mode='8bits')
+
+    img.save(response, 'PNG')
+
+    return response

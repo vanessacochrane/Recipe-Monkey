@@ -49,5 +49,7 @@
 {%if recipe.seasonStart %}
 <b>Season: </b>{{recipe.seasonStart|date:"M"}} to {{recipe.seasonEnd|date:"M"}}
 {%endif %}
+<img src="/recipemonkeyapp/recipe/{{recipe.id}}/barcode.png" class="align-right frame"/>
+
 
 {% endblock %}
