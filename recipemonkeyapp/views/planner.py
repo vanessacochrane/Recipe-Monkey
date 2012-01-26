@@ -36,28 +36,23 @@ def schedule(request,weeknum,startdate):
     plan=schedule_meals(startdate,weeknum,people)
     messages.add_message(request, messages.SUCCESS, 'Scheduled new meals')
     
-    return redirect('/recipemonkeyapp/planner/%d/' % plan.id)
+    return redirect('/recipemonkeyapp/planner/%d/%d/' % (startdate.year,startdate.month))
     
     
     
 
-def planner_calendar(request, planner_id):
+def calendar(request,year,month):
     
 	# try:
 	# 		i = GroceryItem.objects.get(pk=id)
 	# 	except GroceryItem.DoesNotExist:
 	# 		raise Http404
 	
-	year=2011
-	month=11
-	
-	try:
-		p = Planner.objects.filter(pk=planner_id)
-	except Planner.DoesNotExist:
-		raise Http404
-	
-	
-	cal = PlannerCalendar(p).formatmonth(year, month)
+
+	planners = Planner.objects.order_by('date').filter(
+	date__year=year, date__month=month
+	)
+	cal = PlannerCalendar(planners).formatmonth(year, month)
 	
 	ct={'calendar': mark_safe(cal),}
 	return render_to_response('planner/calendar.html',ct,context_instance=RequestContext(request))
