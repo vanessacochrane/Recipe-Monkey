@@ -48,6 +48,8 @@ def calendar(request,year,month):
 	# 	except GroceryItem.DoesNotExist:
 	# 		raise Http404
 	
+	year=int(year)
+	month=int(month)
 
 	planners = Planner.objects.order_by('date').filter(
 	date__year=year, date__month=month
