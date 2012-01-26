@@ -287,60 +287,137 @@ table tfoot
 	border-bottom: 2px solid #6678b1;
 }
 
-.frame { padding: 5px; border: 1px solid #aaa; }
-
-.align-right { float:right; margin: 30px 100px 15px 15px; }
-
-.note {
-  background: rgba(0,0,0,0.3);
-  color: #fff;
-  padding: 8px 10px;
-  border-radius: 0.4em;
-  -moz-border-radius: 0.4em;
-  -webkit-border-radius: 0.4em;
-  overflow-x: auto;
+table thead tr th
+{
+  	font-size: 12px;
+	font-weight: normal;
+	color: #FFF;
+	padding: 5px 8px;
+	border-bottom: 2px solid #000;
+	text-align: center;
+	background: #000;
+    
 }
 
-.keyingredient {
-	
-	font-weight: bold;
-	
-}
+###########
+Price Table
+###########
 
+div.price-table {
+   width:98%; 
+   margin:1%;
+ }
 
-
-.filled { background-color:#ec3; } 
-.today { background-color:#EB6AC4; } 
-.month { border-collapse: collapse; margin-left: 2em; } 
-.month li {
+#price-table
+{
+	#font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	background: #fff;
+	margin: 45px;
+	width: 480px;
+	border-collapse: collapse;
 	text-align: left;
-	float: left;
-	display: inline;
-	font-size: 10px;
-	padding-bottom: 0px;
-	margin: 0 0px;
-	width: 80px;
+}
+
+#price-table caption
+{
+	font-size: 18px;
+	font-weight: bold;
+	#color: #039;
+}
+
+#price-table th
+{
+	font-size: 12px;
+	font-weight: normal;
+	color: #FFF;
+	padding: 10px 8px;
+	border-bottom: 2px solid #000;
+	text-align: center;
+}
+#price-table td
+{
+	border-bottom: 1px solid #ccc;
+	color: #666;
+	white-space:nowrap;
+	padding: 6px 8px;
+	text-align: center;
+}
+#price-table tbody tr:hover td
+{
+	color: #FA5858;
+}
+
+#price-table tfoot
+{
+	font-weight: bold;
+	color: #039;
+	padding: 10px 8px;
+	border-top: 2px solid #000;
+	border-bottom: 2px solid #000;
+}
+
+###########
+Holdings Table
+###########
+
+div.holdings-table {
+   width:98%; 
+   margin:1%;
+ }
+
+#holdings-table
+{
+	#font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	background: #fff;
+	margin: 45px;
+	width: 480px;
+	border-collapse: collapse;
+	text-align: left;
+}
+
+#holdings-table caption
+{
+	font-size: 18px;
+	font-weight: bold;
+	#color: #039;
+}
+
+#holdings-table th
+{
+	font-size: 12px;
+	font-weight: normal;
+	color: #FFF;
+	padding: 6px 8px;
+	border-bottom: 2px solid #000;
+	text-align: center;
+	background-color: #000;
+}
+#holdings-table td
+{
+	border-bottom: 1px solid #ccc;
+	color: #666;
+	white-space:nowrap;
+	padding: 6px 8px;
+	text-align: center;
+}
+#holdings-table tbody tr:hover td
+{
+	color: #FA5858;
+}
+
+#holdings-table tfoot
+{
+	font-weight: bold;
+	color: #039;
+	padding: 10px 8px;
+	border-top: 2px solid #000;
+	border-bottom: 2px solid #000;
 }
 
 
-/* page styles */
-body { }
-#calendar table {  
-	border-collapse: collapse; 
-	font-family: "Segoe UI", Frutiger,Tahoma,Helvetica,"Helvetica Neue", Arial, sans-serif; 
-}
 
-#calendar td, th { 
-   text-align: center; 
-   border: 1px solid #ddd; 
-   padding:2px 5px; 
-   }
-   
-#calendar caption {margin: 0 0 .5em; font-weight: bold; }
 
-.month th, .month td { border: 1px solid #000; } 
- .month thead { background-color:#9c9; } 
- .month td { width: 7em; height: 7em; padding: .2em; vertical-align: top; overflow: auto; } 
- td .day { width: 7em; height: 6em; overflow:auto; margin-top: 0; } 
- .month tbody .weekend { background-color:#ded; } 
- .month tbody .next, .month tbody .previous { background-color:#ddd; } 
