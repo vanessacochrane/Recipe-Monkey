@@ -1,6 +1,8 @@
 from django.db import models
-from recipemonkeyapp.models.instruction import Instruction
+from recipemonkeyapp.models.instruction import Instruction,StorageItem
 from datetime import datetime
+from django.contrib.contenttypes.models import ContentType
+
 
 class Recipe(models.Model):
 	
@@ -63,7 +65,13 @@ class Recipe(models.Model):
 
 		return self.season()[1]
 
+    @property
+    def storeditems(self):
+		mytype=ContentType.objects.get_for_model(self)
+		stored=StorageItem.objects.filter(content_type=mytype,object_id=self.id).order_by('date_added')
 
+		return stored
+		
 	@property
 	def inSeason(self):
 		
