@@ -5,7 +5,7 @@ from django.template import RequestContext
 from django.http import Http404
 from recipemonkeyapp.models import Planner,PlannerCalendar
 from django.utils.safestring import mark_safe
-from recipemonkeyapp.scheduler import *
+from recipemonkeyapp.utils.scheduler import *
 from django.contrib import messages
 
 from django.contrib.auth.models import Group
