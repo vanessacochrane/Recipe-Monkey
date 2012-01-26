@@ -9,7 +9,7 @@
 	<h3>{{i.name}}</h3>
 	<ul>
 		{% for s in i.storeditems %}
-		<li>{{s.storage}}-{{s.quantity}}</li>
+		<li>{{s.content_object.name}}-{{s.quantity}}</li>
 		{% endfor %}
 		
 	</ul>
