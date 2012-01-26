@@ -27,11 +27,13 @@ def labels(request):
    
 
 class GroceryItemTable(tables.Table):
-    seasonStart=datetime.strptime(tables.Column(accessor='seasonStart'),'%M %d, %Y')
     
     class Meta:
         model = GroceryItem
         exclude = ['store','tescoName','EANBarcode','seasonEnd']
+        
+    def render_seasonStart(self, value):
+        return '%s' % value.strftime('%M')
 
 def index(request):
 
