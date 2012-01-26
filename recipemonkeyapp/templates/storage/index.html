@@ -6,7 +6,7 @@
 
 {% for i in item_list %}
 
-	<h3>i.name</h3>
+	<h3>{{i.name}}</h3>
 	<ul>
 		{% for s in i.storeditems %}
 		<li>{{s.storage}}-{{s.quantity}}</li>
