@@ -14,3 +14,4 @@ install/production.*
 install/development.*
 install/org*
 192.*
+.DS_Store
