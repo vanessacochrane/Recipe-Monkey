@@ -41,7 +41,7 @@ def schedule(request,weeknum,startdate):
     
     
 
-def calendar(request, planner_id):
+def planner_calendar(request, planner_id):
     
 	# try:
 	# 		i = GroceryItem.objects.get(pk=id)
@@ -51,10 +51,13 @@ def calendar(request, planner_id):
 	year=2011
 	month=11
 	
-	planners = Planner.objects.order_by('date').filter(
-	date__year=year, date__month=month
-	)
-	cal = PlannerCalendar(planners).formatmonth(year, month)
+	try:
+		r = Planner.objects.filter(pk=planner_id)
+	except Planner.DoesNotExist:
+		raise Http404
+	
+	
+	cal = PlannerCalendar(planner).formatmonth(year, month)
 	
 	ct={'calendar': mark_safe(cal),}
 	return render_to_response('planner/calendar.html',ct,context_instance=RequestContext(request))
