@@ -27,7 +27,7 @@ def labels(request):
    
 
 class GroceryItemTable(tables.Table):
-    seasonStart=tables.Column(accessor='seasonStart')
+    seasonStart=datetime.stptime(tables.Column(accessor='seasonStart'),'%M %d, %Y'
     
     class Meta:
         model = GroceryItem
