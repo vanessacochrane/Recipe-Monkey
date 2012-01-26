@@ -32,7 +32,7 @@ class GroceryItemTable(tables.Table):
 
 def index(request):
 
-    table = GroceryItemTable(Recipe.objects.all())
+    table = GroceryItemTable(GroceryItem.objects.all())
     table.paginate(page=request.GET.get("page", 1))
     table.order_by = request.GET.get("sort")
 
