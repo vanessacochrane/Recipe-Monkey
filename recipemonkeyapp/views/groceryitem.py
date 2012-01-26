@@ -30,9 +30,15 @@ class GroceryItemTable(tables.Table):
     
     class Meta:
         model = GroceryItem
-        exclude = ['store','tescoName','EANBarcode','seasonEnd']
+        exclude = ['store','tescoName','EANBarcode']
         
     def render_seasonStart(self, value):
+        if value:
+            return '%s' % value.strftime('%b')
+        else:
+            return ''
+            
+    def render_seasonEnd(self, value):
         if value:
             return '%s' % value.strftime('%b')
         else:
