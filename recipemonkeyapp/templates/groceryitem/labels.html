@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block title %}Groceries{% endblock %}
+{% block breadcrumb %}{{ block.super }} &raquo; Grocery Labels {% endblock %}
+
 {% block extra_scripts %}
 <style>
     .labels {

@@ -4,6 +4,7 @@
 {%endblock%}
 
 {% block title %}Recipes{% endblock %}
+{% block breadcrumb %}{{ block.super }} &raquo; {{recipe.name}} {% endblock %}
 {% block content %}
 
 <h2>{{recipe.name}}</h2>

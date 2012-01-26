@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
-{% block title %}Recipes{% endblock %}
+{% block title %}Grocery Items{% endblock %}
+{% block breadcrumb %}{{ block.super }} &raquo; {{item.name}} {% endblock %}
+
 {% block content %}
 
 <h2>{{item.name}}</h2>
