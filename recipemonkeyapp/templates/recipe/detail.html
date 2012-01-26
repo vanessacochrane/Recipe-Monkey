@@ -51,8 +51,9 @@
 {%endif %}
 <img src="/recipemonkeyapp/recipe/{{recipe.id}}/barcode.png" class="align-right frame"/>
 
-<h3>Stored Amount</h3>
+
 {%if formset %}
+<h3>Stored Amount</h3>
 <form method="post" action="">
     {{ formset.management_form }}
 {{ formset.non_form_errors.as_ul }}
@@ -87,11 +88,17 @@
 
 
 {%else%}
-<ul>
 {%for s in recipe.storeditems %}
+{% if forloop.first %}
+<h3>Stored Amount</h3>
+<ul>
+{% endif %}
+
 <li>{{s.storage}}-{{s.quantity}}</li>
 {%endfor%}
+{% if forloop.last %}
 </ul>
+{% endif %}
 {%endif%}
 
 {% endblock %}
