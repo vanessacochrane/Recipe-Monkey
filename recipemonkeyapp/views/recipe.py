@@ -74,7 +74,7 @@ def scan(request, id):
 
 		formset =StorageItemFormSet(queryset=i.storeditems)
 
-	ct={'item':i,
+	ct={'recipe':i,
 		'formset':formset,
 	}
 
