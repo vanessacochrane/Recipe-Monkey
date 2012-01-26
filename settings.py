@@ -90,6 +90,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'django.contrib.auth.context_processors.auth',
     'django.contrib.messages.context_processors.messages',
+    'django.core.context_processors.request',
 )
 
 
@@ -118,4 +119,5 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'recipemonkey.recipemonkeyapp',
     'south',
+    'django_tables2'
 )

@@ -12,14 +12,20 @@ from recipemonkeyapp.forms import StorageItemForm
 from django.forms.models import modelformset_factory
 from django.contrib.contenttypes.models import ContentType
 
+import django_tables2 as tables
+
+class RecipeTable(tables.Table):
+    class Meta:
+        model = Recipe
+        exclude = ['id','photo','note']
 
 def index(request):
-    	
-	recipe_list=Recipe.objects.all()
-	
-	
-		
-	ct={'recipe_list':recipe_list,
+    
+    table = RecipeTable(Recipe.objects.all())
+    table.paginate(page=request.GET.get("page", 1))
+    table.order_by = request.GET.get("sort")
+			
+	ct={'table':table,
 	
 	}
 	

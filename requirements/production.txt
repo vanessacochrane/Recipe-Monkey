@@ -7,3 +7,4 @@ elaphe
 BeautifulSoup
 whoosh
 django-haystack
+django-tables2

@@ -1,16 +1,12 @@
 {% extends "base.html" %}
+{% load django_tables2 %}
+
 {% block breadcrumb %}{{ block.super }} &raquo; Recipes {% endblock %}
 
 {% block title %}Recipes{% endblock %}
 {% block content %}
 
-
-{% for r in recipe_list %}
-
-	<a href="/recipemonkeyapp/recipe/{{ r.id }}">{{r.name}}</a></br>
-
-
-{% endfor %}
+{% render_table table %}
 
 
 {% endblock %}
