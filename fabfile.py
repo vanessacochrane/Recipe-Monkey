@@ -28,7 +28,7 @@ from fabric.colors import *
 from FabTools import *
 
 env.project = 'recipemonkey'
-env.repo = 'git://github.com/vanessacochrane/RecipeMonkey.git'
+env.repo = 'git://github.com/vanessacochrane/Recipe-Monkey.git'
 env.apacheconfig = '/usr/local/web/config'
 env.home = '/usr/local/web/django'
 
