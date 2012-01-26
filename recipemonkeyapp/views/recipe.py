@@ -4,6 +4,11 @@ from django.template import RequestContext
 from recipemonkeyapp.models import Recipe,Instruction,RecipeIngredient
 
 
+from django.http import HttpResponse
+from elaphe import barcode 
+from django.http import Http404
+
+
 def index(request):
     	
 	recipe_list=Recipe.objects.all()
