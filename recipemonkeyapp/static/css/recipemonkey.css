@@ -418,6 +418,7 @@ div.holdings-table {
 	border-bottom: 2px solid #000;
 }
 
-
-
+#breadcrumbs {
+    margin: 0 10px 2em 10px;
+}
 
