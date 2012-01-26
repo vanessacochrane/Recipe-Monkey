@@ -72,7 +72,7 @@ def scan(request, id):
 
 	else:
 
-		formset =StorageItemFormSet(queryset=i.storeditems())
+		formset =StorageItemFormSet(queryset=i.storeditems)
 
 	ct={'item':i,
 		'formset':formset,
