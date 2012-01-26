@@ -33,7 +33,10 @@ class GroceryItemTable(tables.Table):
         exclude = ['store','tescoName','EANBarcode','seasonEnd']
         
     def render_seasonStart(self, value):
-        return '%s' % value.strftime('%M')
+        if value:
+            return '%s' % value.strftime('%M')
+        else:
+            return ''
 
 def index(request):
 
