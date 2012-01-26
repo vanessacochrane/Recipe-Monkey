@@ -9,7 +9,7 @@ from recipemonkeyapp.utils.scheduler import *
 from django.contrib import messages
 
 from django.contrib.auth.models import Group
-import datetime
+from datetime import *
 
 #management.call_command('flush', verbosity=0, interactive=False)
 #management.call_command('loaddata', 'test_data', verbosity=0)
