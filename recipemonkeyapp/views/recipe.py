@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from recipemonkeyapp.models import Recipe,Instruction,RecipeIngredient
+from recipemonkeyapp.models import Recipe,Instruction,RecipeIngredient,StorageItem
 
 
 from django.http import HttpResponse
