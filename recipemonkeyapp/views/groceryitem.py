@@ -28,7 +28,7 @@ def labels(request):
 class GroceryItemTable(tables.Table):
     class Meta:
         model = GroceryItem
-        exclude = []
+        exclude = ['store','tescoName','EANBarcode']
 
 def index(request):
 
