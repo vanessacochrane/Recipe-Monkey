@@ -1,3 +1,4 @@
 {{ object.name }}
 {{ object.cuisine }}
 {{ object.course }}
+{{ object.tags.all }}
