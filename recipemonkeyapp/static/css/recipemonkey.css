@@ -320,7 +320,12 @@ table thead tr th
 #object-menu { 
     float:right; 
     margin: 0 0 15px 15px; 
+   
 }
+
+#object-menu li { display: inline; }
+#object-menu li:after { content: " |"; } 
+#object-menu li:last-child:after { content: ""; }
 
 #recipe-photo { 
     float:right; 

@@ -6,7 +6,10 @@
 
 {% block content %}
 <div id="object-menu">
-	<a href="{% url admin:recipemonkeyapp_groceryitem_change item.id %}">Edit</a>
+	<ul>
+	<li><a href="{% url admin:recipemonkeyapp_groceryitem_change item.id %}">Edit</a></li>
+	<li><a href="http://www.mysupermarket.co.uk/#/shopping/findproducts.aspx?query={{item.name}}">Shop</a></li>
+	</ul>
 </div>
 <div id="barcode">
 <img src="/recipemonkeyapp/groceryitem/{{item.id}}/barcode.png" class="align-right frame"/>
