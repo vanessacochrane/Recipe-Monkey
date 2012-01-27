@@ -13,8 +13,15 @@ from django.forms.models import modelformset_factory
 from django.contrib.contenttypes.models import ContentType
 
 import django_tables2 as tables
+from django_tables2.utils import A  # alias for Accessor
+
 
 class RecipeTable(tables.Table):
+    
+    
+    name = tables.LinkColumn('recipe_detail', args=[A('pk')])
+    
+    
     class Meta:
         model = Recipe
         exclude = ['id','photo','note']

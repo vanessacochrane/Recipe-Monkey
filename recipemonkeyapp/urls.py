@@ -9,7 +9,7 @@ urlpatterns = patterns('recipemonkeyapp.views.views',
 )
 
 urlpatterns += patterns('recipemonkeyapp.views.recipe',
-	(r'^recipe/(?P<recipe_id>\d+)/$', 'detail'),
+	url(r'^recipe/(?P<recipe_id>\d+)/$', 'detail',name='recipe_detail'),
 	(r'^recipe/$', 'index'),
 	(r'^recipe/(?P<id>\d+)/barcode.png/$', 'barcodeimg'),
 	(r'^recipe/scan/(?P<id>\d+)/$', 'scan'),
