@@ -2,11 +2,9 @@
 {% block extra_scripts %}
 <link rel="stylesheet" href="{{ STATIC_URL }}css/recipeprint.css" type="text/css" media="print"/>
 {%endblock%}
-
 {% block title %}Recipes{% endblock %}
 {% block breadcrumb %}{{ block.super }} &raquo; {{recipe.name}} {% endblock %}
 {% block content %}
-
 <h2>{{recipe.name}}</h2>
 {% if recipe.photo %}
 	<div id="recipe-photo">
@@ -50,8 +48,10 @@
 {%if recipe.seasonStart %}
 <b>Season: </b>{{recipe.seasonStart|date:"M"}} to {{recipe.seasonEnd|date:"M"}}<br/>
 {%endif %}
-<img src="/recipemonkeyapp/recipe/{{recipe.id}}/barcode.png" class="align-right frame"/>
 
+<div id="barcode">
+<img src="/recipemonkeyapp/recipe/{{recipe.id}}/barcode.png"/>
+</div>
 
 {%if formset %}
 <h3>Stored Amount</h3>
