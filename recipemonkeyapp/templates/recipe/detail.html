@@ -51,7 +51,7 @@
 {%if recipe.seasonStart %}
 <b>Season: </b>{{recipe.seasonStart|date:"M"}} to {{recipe.seasonEnd|date:"M"}}<br/>
 {%endif %}
-<b>Tags:</b>{%for t in recipe.tags.all %}{{t}} {% endfor %}
+<b>Tags:</b>{%for t in recipe.tags.all %}{%if forloop.first%} {%else%}, {%endif%}{{t}}{% endfor %}
 
 
 <div id="barcode">
