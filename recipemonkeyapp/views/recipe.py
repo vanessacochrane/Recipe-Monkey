@@ -31,7 +31,7 @@ class RecipeTable(tables.Table):
 
 def add_to_shopping(request,recipe_id):
     
-    messages.add_message(request, messages.ERROR, 'Not Implemented: would add missing ingredients to shopping list') 
+    messages.error(request, 'Not Implemented: would add missing ingredients to shopping list') 
     
     return redirect(request.META.get('HTTP_REFERER','/'))
     
