@@ -11,11 +11,11 @@
 <div id="barcode">
 <img src="/recipemonkeyapp/groceryitem/{{item.id}}/barcode.png" class="align-right frame"/>
 </div>
-<b>Category:</b>{{item.category}}<br/>
+<b>Category: </b>{{item.category}}<br/>
 {%if item.seasonStart %}
 <b>Season: </b>{{item.seasonStart|date:"M"}} to {{item.seasonEnd|date:"M"}}<br/>
 {%endif %}
-<b>Tags:</b>{%for t in item.tags.all %}{%if forloop.first%} {%else%}, {%endif%}{{t}}{% endfor %}<br/>
+<b>Tags: </b>{%for t in item.tags.all %}{%if forloop.first%}{%else%}, {%endif%}{{t}}{% endfor %}<br/>
 
 
 {%if formset %}
