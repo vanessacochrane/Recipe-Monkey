@@ -9,6 +9,7 @@ HAYSTACK_WHOOSH_PATH = '/usr/local/web/django/www/production/recipemonkey/whoosh
 
 INSTALLED_APPS = INSTALLED_APPS + ('haystack',)
 STATIC_ROOT = '/usr/local/web/django/www/production/recipemonkey/static'
+MEDIA_ROOT = '/usr/local/web/django/www/production/recipemonkey/media'
 TEMPLATE_DIRS = ('/usr/local/web/django/www/production/recipemonkey/recipemonkeyapp/templates')
 
 DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
