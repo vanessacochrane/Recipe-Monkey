@@ -9,7 +9,7 @@ class RecipeIndex(RealTimeSearchIndex):
     tags = CharField()
     tag_list = MultiValueField()
     url = CharField(indexed=False)
-    season_start=DateField(data=seasonStart)
+    season_start=DateField(model_attr='seasonStart')
     
     def prepare_tags(self, obj):
         return ' '.join([tag.name for tag in obj.tags.all()])
