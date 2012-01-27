@@ -19,7 +19,7 @@ class RecipeIndex(RealTimeSearchIndex):
         if obj.seasonStart is None:
             return 'no season'
         else:
-            return obj.seasonStart.strftime('%b')
+            return obj.seasonStart.strftime('%B')
             
         
      
