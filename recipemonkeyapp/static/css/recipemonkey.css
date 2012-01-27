@@ -56,7 +56,7 @@ input[type='submit'].small_button { padding: 2px; font-size: 10.5px; }
 
 #header {
     background: #000000;
-    height: 50px;
+    height: 70px;
     overflow: auto;
     font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
 }

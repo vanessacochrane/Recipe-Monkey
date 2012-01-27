@@ -29,7 +29,10 @@
           <li id="nav-account"><a href="/users/{{ user.username }}/">You</a></li>
         {% endif %}
       </ul>
-	    <form method="get" action="/search/">
+	    
+    </div>
+	<div id="search">
+		<form method="get" action="/search/">
           <table>
             <tr>
               <td><label for="id_q">Search:</label></td>
@@ -38,7 +41,7 @@
             </tr>
           </table>
         </form>
-    </div>
+	</div>
   </div>
   <div id="breadcrumbs">
             {% block breadcrumb %}<a href="/">Home</a>{% endblock %}
