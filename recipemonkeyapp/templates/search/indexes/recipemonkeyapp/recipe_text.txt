@@ -2,3 +2,4 @@
 {{ object.cuisine }}
 {{ object.course }}
 {{ object.tags.all }}
+{{ object.seasonStart }}
