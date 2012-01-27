@@ -46,7 +46,7 @@ def detail(request, recipe_id):
 
 	instructions=Instruction.objects.filter(recipe=r).order_by('order')
 	ingredients=RecipeIngredient.objects.filter(recipe=r)
-	subrecipes=SubRecipe.objects.filter(mainrecipe=r)
+	subrecipes=SubRecipe.objects.filter(mainRecipe=r)
 	
 	ct={'recipe':r,
 		'ingredients':ingredients,
