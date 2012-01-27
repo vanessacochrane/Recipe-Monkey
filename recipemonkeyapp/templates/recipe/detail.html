@@ -5,6 +5,9 @@
 {% block title %}Recipes{% endblock %}
 {% block breadcrumb %}{{ block.super }} &raquo; {{recipe.name}} {% endblock %}
 {% block content %}
+<div id="object-menu">
+	{% url admin:recipe_add %}
+</div>
 <h2>{{recipe.name}}</h2>
 {% if recipe.photo %}
 	<div id="recipe-photo">
