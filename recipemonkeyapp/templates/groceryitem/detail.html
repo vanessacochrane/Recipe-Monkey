@@ -2,13 +2,16 @@
 
 {% block title %}Grocery Items{% endblock %}
 {% block breadcrumb %}{{ block.super }} &raquo; {{item.name}} {% endblock %}
+{% block content_header %}{{item.name}}{% endblock %}
 
 {% block content %}
-
-<h2>{{item.name}}</h2>
+<div id="object-menu">
+	<a href="{% url admin:recipemonkeyapp_groceryitem_change item.id %}">Edit</a>
+</div>
+<div id="barcode">
 <img src="/recipemonkeyapp/groceryitem/{{item.id}}/barcode.png" class="align-right frame"/>
+</div>
 <b>Tags:</b>{%for t in item.tags.all %}{%if forloop.first%} {%else%}, {%endif%}{{t}}{% endfor %}
-
 
 
 <h3>Stored Amount</h3>
