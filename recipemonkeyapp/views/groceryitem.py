@@ -28,9 +28,13 @@ def labels(request):
 
 class GroceryItemTable(tables.Table):
     
+    name = tables.LinkColumn('goceryitem_detail', args=[A('pk')])
+    
     class Meta:
         model = GroceryItem
         exclude = ['id','store','tescoName','tescoid','EANBarcode']
+        
+
         
     def render_seasonStart(self, value):
         if value:
