@@ -7,6 +7,7 @@
 
 <h2>{{item.name}}</h2>
 <img src="/recipemonkeyapp/groceryitem/{{item.id}}/barcode.png" class="align-right frame"/>
+<b>Tags:</b>{%for t in item.tags.all %}{%if forloop.first%} {%else%}, {%endif%}{{t}}{% endfor %}
 
 
 

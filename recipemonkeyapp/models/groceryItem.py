@@ -2,6 +2,8 @@ from django.db import models
 from recipemonkeyapp.models.storageitem import StorageItem
 from django.contrib.contenttypes.models import ContentType
 from datetime import datetime
+from taggit.managers import TaggableManager
+
 
 class GroceryItem(models.Model):
 	
@@ -19,6 +21,7 @@ class GroceryItem(models.Model):
 	
 	seasonal=models.BooleanField(default=False)
 	EANBarcode=models.CharField(max_length=256,null=True,blank=True)
+	tags = TaggableManager()
 
 	@models.permalink
 	def get_absolute_url(self):
