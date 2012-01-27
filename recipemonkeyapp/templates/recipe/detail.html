@@ -4,11 +4,11 @@
 {%endblock%}
 {% block title %}Recipes{% endblock %}
 {% block breadcrumb %}{{ block.super }} &raquo; {{recipe.name}} {% endblock %}
+{% block content_header %}{{recipe.name}}{% endblock %}
 {% block content %}
 <div id="object-menu">
 	<a href="{% url admin:recipemonkeyapp_recipe_change recipe.id %}">Edit</a>
 </div>
-<h2>{{recipe.name}}</h2>
 {% if recipe.photo %}
 	<div id="recipe-photo">
     <img src="{{ recipe.photo.url }}" width="200px" height="200px" class="align-right frame"/>
