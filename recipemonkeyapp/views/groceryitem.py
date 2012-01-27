@@ -29,7 +29,7 @@ def labels(request):
 
 class GroceryItemTable(tables.Table):
     
-    name = tables.LinkColumn('goceryitem_detail', args=[A('pk')])
+    name = tables.LinkColumn('groceryitem_detail', args=[A('pk')])
     
     class Meta:
         model = GroceryItem
