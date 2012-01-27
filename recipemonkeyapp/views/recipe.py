@@ -29,13 +29,13 @@ class RecipeTable(tables.Table):
         
 
 
-def add_to_shopping(request):
+def add_to_shopping(request,id):
     
     messages.add_message(request, messages.ERROR, 'Not Implemented: would add missing ingredients to shopping list') 
     
     return redirect(request.META.get('HTTP_REFERER','/'))
     
-def cook(request):
+def cook(request,id):
     
     messages.add_message(request, messages.ERROR, 'Not Implemented: Yum yum, would use ingredients from storage and log') 
 
