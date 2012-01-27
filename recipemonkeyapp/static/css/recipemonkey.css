@@ -77,6 +77,18 @@ input[type='submit'].small_button { padding: 2px; font-size: 10.5px; }
    
 }
 
+#header #search {
+    
+    float: right;
+    text-align: right;
+}
+
+#header #search table tr td {
+    
+    border: 0px;
+}
+
+
 #header #nav-main {
     float: right;
     text-align: right;
