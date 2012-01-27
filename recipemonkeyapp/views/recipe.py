@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response,redirect
 from django.template import RequestContext
-from recipemonkeyapp.models import Recipe,Instruction,RecipeIngredient,StorageItem
+from recipemonkeyapp.models import Recipe,Instruction,RecipeIngredient,StorageItem,SubRecipe
 
 
 from django.http import HttpResponse
@@ -46,10 +46,12 @@ def detail(request, recipe_id):
 
 	instructions=Instruction.objects.filter(recipe=r).order_by('order')
 	ingredients=RecipeIngredient.objects.filter(recipe=r)
+	subrecipes=SubRecipe.objects.filter(mainrecipe=r)
 	
 	ct={'recipe':r,
 		'ingredients':ingredients,
 		'instructions':instructions,
+		'subrecipes':subrecipes,
 	}
 	
 	return render_to_response('recipe/detail.html',ct,context_instance=RequestContext(request))

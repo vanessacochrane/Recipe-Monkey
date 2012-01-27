@@ -35,12 +35,12 @@
 </ul>
 
 
-{% for i in recipe.subrecipes.all%}
+{% for i in subrecipes%}
 {%if forloop.first%}
 <h3>Sub Recipes</h3>
 <ul>
 {%endif%}
-	<li><a href="{{i.get_absolute_url}}">{{i.name}}</a> : {{i.subrecipe.quantity}} {%if i.optional%}(optional){%endif%}</li> 
+	<li><a href="{{i.get_absolute_url}}">{{i.recipe.name}}</a> : {{i.subrecipe.quantity}} {%if i.optional%}(optional){%endif%}</li> 
 {%if forloop.last%}
 </ul>
 {%endif%}
