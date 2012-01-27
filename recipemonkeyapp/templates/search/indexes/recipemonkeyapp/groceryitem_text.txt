@@ -1,3 +1,4 @@
 {{ object.name }}
 {{ object.category }}
 {{ object.tags.all }}
+{{ object.seasonStart }}
