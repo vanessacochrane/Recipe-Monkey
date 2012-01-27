@@ -9,12 +9,19 @@ class RecipeIndex(RealTimeSearchIndex):
     tags = CharField()
     tag_list = MultiValueField()
     url = CharField(indexed=False)
-    season_start=DateField(model_attr='seasonStart')
+    season_start=CharField()
     
     def prepare_tags(self, obj):
         return ' '.join([tag.name for tag in obj.tags.all()])
-       
-   
+        
+    def prepare_season_start(self,obj):
+        
+        if obj.seasonStart is None:
+            return 'no season'
+        else:
+            return obj.seasonStart.strftime('%b')
+            
+        
      
         
     def prepare_tag_list(self, obj):
