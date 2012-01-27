@@ -51,7 +51,7 @@
   {% if messages %}
 <ul class="messages">
     {% for message in messages %}
-    <h4{% if message.tags %} class="{{ message.tags }}"{%else%} class="message"{% endif %}>{{ message }}</h4>
+    <h4{% if message.tags %} class="message_{{ message.tags }}"{%else%} class="message"{% endif %}>{{ message }}</h4>
     {% endfor %}
 </ul>
 	{% endif %}
