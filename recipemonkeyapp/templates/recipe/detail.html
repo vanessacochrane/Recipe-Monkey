@@ -9,8 +9,8 @@
 <div id="object-menu">
 	<ul>
 	<li><a href="{% url admin:recipemonkeyapp_recipe_change recipe.id %}">Edit</a></li>
-	<li><a href="{% url recipemonkeyapp_recipe.cook recipe.id %}">Cook</a></li>
-	<li><a href="{% url recipemonkeyapp_recipe.add_to_shopping recipe.id %}">Add To Shopping</a></li>
+	<li><a href="{% url recipemonkeyapp.views.recipe.cook recipe.id %}">Cook</a></li>
+	<li><a href="{% url recipemonkeyapp.views.recipe.add_to_shopping recipe.id %}">Add To Shopping</a></li>
 	</ul>
 </div>
 {% if recipe.photo %}
