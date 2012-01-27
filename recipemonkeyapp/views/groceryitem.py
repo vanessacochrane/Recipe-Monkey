@@ -10,6 +10,7 @@ from recipemonkeyapp.forms import StorageItemForm
 from django.forms.models import modelformset_factory
 from django.contrib.contenttypes.models import ContentType
 import django_tables2 as tables
+from django_tables2.utils import A  # alias for Accessor
 from datetime import *
 
 def labels(request):
