@@ -53,12 +53,15 @@
 </form>
 
 {%else%}
-<h3>Stored Amount</h3>
-<ul>
 {%for s in item.storeditems %}
+{%if forloop.first%}
+<h3>Stored Amount</h3>
+<ul>{%endif%}
 <li>{{s.storage}}-{{s.quantity}}</li>
+{%if forloop.last%}
+</ul>{%endif%}
 {%endfor%}
-</ul>
+
 {%endif%}
 
 {%for r in item.recipe_set.all%}
