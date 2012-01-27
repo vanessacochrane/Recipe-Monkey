@@ -6,7 +6,7 @@
 {% block breadcrumb %}{{ block.super }} &raquo; {{recipe.name}} {% endblock %}
 {% block content %}
 <div id="object-menu">
-	<a href="{% url admin:recipemonkeyapp_recipe_change %}">Edit</a>
+	<a href="{% url admin:recipemonkeyapp_recipe_edit %}">Edit</a>
 </div>
 <h2>{{recipe.name}}</h2>
 {% if recipe.photo %}
