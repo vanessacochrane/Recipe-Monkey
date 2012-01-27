@@ -120,5 +120,5 @@ INSTALLED_APPS = (
     'recipemonkey.recipemonkeyapp',
     'south',
     'django_tables2',
-    'django-taggit',
+    'taggit',
 )
