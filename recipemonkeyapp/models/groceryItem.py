@@ -19,6 +19,10 @@ class GroceryItem(models.Model):
 	
 	seasonal=models.BooleanField(default=False)
 	EANBarcode=models.CharField(max_length=256,null=True,blank=True)
+
+	@models.permalink
+	def get_absolute_url(self):
+	    return ('recipemonkeyapp.views.groceryitem.detail', [str(self.id)])
 	
 	def __unicode__(self):
 		""" Returns the custom output string for this object
