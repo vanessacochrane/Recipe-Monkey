@@ -3,7 +3,7 @@ from recipemonkeyapp.models.instruction import Instruction
 from recipemonkeyapp.models.storageitem import StorageItem
 from datetime import datetime
 from django.contrib.contenttypes.models import ContentType
-
+from taggit.managers import TaggableManager
 
 class Recipe(models.Model):
 	
@@ -23,7 +23,8 @@ class Recipe(models.Model):
 	instructions = models.ManyToManyField('Instruction',related_name='steps')
 	seasonal = models.BooleanField(default=False)
 	subrecipes = models.ManyToManyField('Recipe',related_name='subRecipes',through='SubRecipe',null=True,blank=True)
-	
+	tags = TaggableManager()
+    
 	
 	@models.permalink
 	def get_absolute_url(self):

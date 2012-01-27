@@ -8,3 +8,4 @@ BeautifulSoup
 whoosh
 django-haystack
 django-tables2
+django-taggit

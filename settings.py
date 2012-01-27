@@ -119,5 +119,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'recipemonkey.recipemonkeyapp',
     'south',
-    'django_tables2'
+    'django_tables2',
+    'django-taggit',
 )
