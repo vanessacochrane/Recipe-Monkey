@@ -322,6 +322,11 @@ table thead tr th
     margin: 0 0 15px 15px; 
 }
 
+#recipe-photo { 
+    float:right; 
+    margin: 0 0 15px 15px; 
+}
+
 
 #breadcrumbs {
     margin: 0 10px 2em 10px;
