@@ -18,8 +18,8 @@
 <b>Tags:</b>{%for t in item.tags.all %}{%if forloop.first%} {%else%}, {%endif%}{{t}}{% endfor %}<br/>
 
 
-<h3>Stored Amount</h3>
 {%if formset %}
+<h3>Stored Amount</h3>
 <form method="post" action="">
     {{ formset.management_form }}
 {{ formset.non_form_errors.as_ul }}
@@ -52,14 +52,25 @@
 <p align="center"><input type="submit" value="Update Storage" align="center"/></p>
 </form>
 
-
 {%else%}
+<h3>Stored Amount</h3>
 <ul>
 {%for s in item.storeditems %}
 <li>{{s.storage}}-{{s.quantity}}</li>
 {%endfor%}
 </ul>
 {%endif%}
+
+{%for r in item.recipe_set.all%}
+{%if forloop.first%}
+<h3>Used In</h3>
+<ul>
+{%endif%}
+<li><a href="{{r.get_absolute_url}}">{{r.name}}</a></li>
+{%if forloop.last%}
+</ul>
+{%endif%}
+{%endfor%}
 
 <br/>
 <br/>
