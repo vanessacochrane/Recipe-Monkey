@@ -15,6 +15,7 @@ from django.contrib.contenttypes.models import ContentType
 import django_tables2 as tables
 from django_tables2.utils import A  # alias for Accessor
 
+from django.contrib import messages
 
 class RecipeTable(tables.Table):
     
@@ -25,6 +26,21 @@ class RecipeTable(tables.Table):
     class Meta:
         model = Recipe
         exclude = ['id','photo','note']
+        
+
+
+def add_to_shopping(request):
+    
+    messages.add_message(request, messages.ERROR, 'Not Implemented: would add missing ingredients to shopping list') 
+    
+    return redirect(request.META.get('HTTP_REFERER','/'))
+    
+def cook(request):
+    
+    messages.add_message(request, messages.ERROR, 'Not Implemented: Yum yum, would use ingredients from storage and log') 
+
+    return redirect(request.META.get('HTTP_REFERER','/'))
+
 
 def index(request):
     
