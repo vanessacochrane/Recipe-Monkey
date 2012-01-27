@@ -3,7 +3,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>RecipeMonkey: {% block title %}Home{% endblock %}</title>
+  <title>Recipe Monkey: {% block title %}Home{% endblock %}</title>
   
 
   <link rel="stylesheet" href="{{ STATIC_URL }}css/recipemonkey.css" type="text/css" />
@@ -15,7 +15,7 @@
 </head>
 <body class="{% block bodyclass %}{% endblock %}">
   <div id="header">
-    <h1>RecipeMonkey</h1>
+    <h1><a href="/">Recipe Monkey</a></h1>
     <div id="nav-main">
       <span>
         {% if user.is_authenticated %}
