@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% block breadcrumb %}{{ block.super }} &raquo; Search {% endblock %}
+{% block content_header %}Search{% endblock %}
 {% block content %}
-    <h2>Search</h2>
 
     <form method="get" action=".">
-        <table>
-            {{ form.as_table }}
+       	<form method="get" action="/search/">
+          <table>
             <tr>
-                <td>&nbsp;</td>
-                <td>
-                    <input type="submit" value="Search">
-                </td>
+              <td><label for="id_q">Search:</label></td>
+              <td><input type="text" name="q" id="id_q" style="width: 110px;" value="{{ request.GET.q }}" /></td>
+              <td><input type="submit" value="Go" /></td>
             </tr>
-        </table>
+          </table>
+        </form>
 
         {% if query %}
             <h3>Results</h3>
