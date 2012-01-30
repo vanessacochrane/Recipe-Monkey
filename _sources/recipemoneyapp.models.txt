@@ -1,0 +1,147 @@
+models Package
+==============
+
+:mod:`models` Package
+---------------------
+
+.. automodule:: recipemonkey.recipemonkeyapp.models
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`cuisine` Module
+---------------------
+
+.. automodule:: recipemonkey.recipemonkeyapp.models.cuisine
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`groceryCategory` Module
+-----------------------------
+
+.. automodule:: recipemonkey.recipemonkeyapp.models.groceryCategory
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`groceryItem` Module
+-------------------------
+
+.. automodule:: recipemonkey.recipemonkeyapp.models.groceryItem
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`groceryItemInfo` Module
+-----------------------------
+
+.. automodule:: recipemonkey.recipemonkeyapp.models.groceryItemInfo
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`instruction` Module
+-------------------------
+
+.. automodule:: recipemonkey.recipemonkeyapp.models.instruction
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`planner` Module
+---------------------
+
+.. automodule:: recipemonkey.recipemonkeyapp.models.planner
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`plannerMeal` Module
+-------------------------
+
+.. automodule:: recipemonkey.recipemonkeyapp.models.plannerMeal
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`plannercalendar` Module
+-----------------------------
+
+.. automodule:: recipemonkey.recipemonkeyapp.models.plannercalendar
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`recipe` Module
+--------------------
+
+.. automodule:: recipemonkey.recipemonkeyapp.models.recipe
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`recipeIngredient` Module
+------------------------------
+
+.. automodule:: recipemonkey.recipemonkeyapp.models.recipeIngredient
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`source` Module
+--------------------
+
+.. automodule:: recipemonkey.recipemonkeyapp.models.source
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`storage` Module
+---------------------
+
+.. automodule:: recipemonkey.recipemonkeyapp.models.storage
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`storageitem` Module
+-------------------------
+
+.. automodule:: recipemonkey.recipemonkeyapp.models.storageitem
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`storagelog` Module
+------------------------
+
+.. automodule:: recipemonkey.recipemonkeyapp.models.storagelog
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`store` Module
+-------------------
+
+.. automodule:: recipemonkey.recipemonkeyapp.models.store
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`subRecipe` Module
+-----------------------
+
+.. automodule:: recipemonkey.recipemonkeyapp.models.subRecipe
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`userfoodprefs` Module
+---------------------------
+
+.. automodule:: recipemonkey.recipemonkeyapp.models.userfoodprefs
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
