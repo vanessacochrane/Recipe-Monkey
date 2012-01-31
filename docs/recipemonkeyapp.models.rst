@@ -6,4 +6,5 @@ Recipe Monkey Models
 	:show-inheritance:
 
 	.. autoclass:: Recipe
+		:members:
 
