@@ -1,6 +1,11 @@
-Models
-==============
+"""
+:mod:`models` -- Recipe Monkey models
+==========================================
 
-.. autoclass:: recipemonkey.recipemonkeyapp.models.recipe.Recipe
-   :members: 
+.. automodule:: recipemonkeyapp.models
+:members:
+:show-inheritance:
+
+.. autoclass:: Recipe
+"""
 
