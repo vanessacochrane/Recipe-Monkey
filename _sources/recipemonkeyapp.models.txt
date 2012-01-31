@@ -1,6 +1,10 @@
-Models
-==============
+Recipe Monkey Models
+====================
 
-.. autoclass:: recipemonkey.recipemonkeyapp.models.recipe.Recipe
-   :members: season
+.. automodule:: recipemonkeyapp.models
+:members:
+:show-inheritance:
+
+.. autoclass:: Recipe
+"""
 
