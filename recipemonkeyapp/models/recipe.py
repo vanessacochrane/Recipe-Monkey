@@ -13,7 +13,7 @@ class Recipe(models.Model):
     class Meta:
         app_label = 'recipemonkeyapp'
 
-
+    #: the name of the recipe
     name=models.CharField(max_length=256)
     cuisine=models.ForeignKey('Cuisine',null=True,blank=True)
     course=models.CharField(max_length=256,null=True,blank=True)
