@@ -21,13 +21,11 @@ Procedure
 2. Clone the latest version::
 
 	$ git clone git://github.com/vanessacochrane/Recipe-Monkey.git recipemonkey
-	
 	$ cd recipemonkey
 	
 3. Update the sub repository, fabtools::
 
 	$ git submodule init
-	
 	$ git submodule update
 	
 4. Edit fabfile.py, settings_development.py, settings_staging.py and settings_production.py to meet your system requirements.
