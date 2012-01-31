@@ -18,13 +18,13 @@ Procedure
 
 1. Ensure the machine has met the installation requirements (outside the scope of this document)
 
-2. Clone the latest version:
+2. Clone the latest version::
 
 	$ git clone git://github.com/vanessacochrane/Recipe-Monkey.git recipemonkey
 	
 	$ cd recipemonkey
 	
-3. Update the sub repository, fabtools:
+3. Update the sub repository, fabtools::
 
 	$ git submodule init
 	
@@ -32,7 +32,7 @@ Procedure
 	
 4. Edit fabfile.py, settings_development.py, settings_staging.py and settings_production.py to meet your system requirements.
 
-5. Setup the server (create directories, create virtualenv, install requirements, syncdb, collectstatic)
+5. Setup the server (create directories, create virtualenv, install requirements, syncdb, collectstatic)::
 
 	$ fab production setup
 
