@@ -176,6 +176,8 @@ html_static_path = ['_static']
 htmlhelp_basename = 'RecipeMonkeydoc'
 
 
+html_style = 'recipemonkey.css'
+
 # -- Options for LaTeX output --------------------------------------------------
 
 latex_elements = {
