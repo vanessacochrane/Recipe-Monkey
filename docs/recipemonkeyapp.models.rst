@@ -1,7 +1,3 @@
-"""
-:mod:`models` -- Recipe Monkey models
-==========================================
-
 Recipe Monkey Models
 ====================
 
