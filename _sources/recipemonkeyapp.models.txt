@@ -2,9 +2,9 @@ Recipe Monkey Models
 ====================
 
 .. automodule:: recipemonkeyapp.models
-:members:
-:show-inheritance:
+	:members:
+	:show-inheritance:
 
-.. autoclass:: Recipe
-"""
+	.. autoclass:: Recipe
+		:members:
 

@@ -10,7 +10,7 @@
     
     <title>Recipe Monkey Models &mdash; Recipe Monkey 0.1 documentation</title>
     
-    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="_static/recipemonkey.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -55,24 +55,132 @@
             
   <div class="section" id="module-recipemonkeyapp.models">
 <span id="recipe-monkey-models"></span><h1>Recipe Monkey Models<a class="headerlink" href="#module-recipemonkeyapp.models" title="Permalink to this headline">¶</a></h1>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">members:</th><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">show-inheritance:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
 <dl class="class">
 <dt id="recipemonkeyapp.models.Recipe">
 <em class="property">class </em><tt class="descclassname">recipemonkeyapp.models.</tt><tt class="descname">Recipe</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#recipemonkeyapp.models.Recipe" title="Permalink to this definition">¶</a></dt>
 <dd><p>An object to represent a Recipe.</p>
+<dl class="attribute">
+<dt id="recipemonkeyapp.models.Recipe.cost">
+<tt class="descname">cost</tt><a class="headerlink" href="#recipemonkeyapp.models.Recipe.cost" title="Permalink to this definition">¶</a></dt>
+<dd><p>The cost of this recipe (derived from ingredient costs)</p>
 </dd></dl>
 
-<p>&#8220;&#8221;&#8220;</p>
+<dl class="attribute">
+<dt id="recipemonkeyapp.models.Recipe.costPerServe">
+<tt class="descname">costPerServe</tt><a class="headerlink" href="#recipemonkeyapp.models.Recipe.costPerServe" title="Permalink to this definition">¶</a></dt>
+<dd><p>The cost per serve found as total cost / number of servings</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="recipemonkeyapp.models.Recipe.course">
+<tt class="descname">course</tt><em class="property"> = None</em><a class="headerlink" href="#recipemonkeyapp.models.Recipe.course" title="Permalink to this definition">¶</a></dt>
+<dd><p>the course of the recipe eg: Main, Dessert</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="recipemonkeyapp.models.Recipe.cuisine">
+<tt class="descname">cuisine</tt><a class="headerlink" href="#recipemonkeyapp.models.Recipe.cuisine" title="Permalink to this definition">¶</a></dt>
+<dd><p>fk for the cuisine of the recipe eg: Indian</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="recipemonkeyapp.models.Recipe.get_absolute_url">
+<tt class="descname">get_absolute_url</tt><big>(</big><em>*moreargs</em>, <em>**morekwargs</em><big>)</big><a class="headerlink" href="#recipemonkeyapp.models.Recipe.get_absolute_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the django detailed view url for this object</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="recipemonkeyapp.models.Recipe.inSeason">
+<tt class="descname">inSeason</tt><a class="headerlink" href="#recipemonkeyapp.models.Recipe.inSeason" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag to indicate whether this recipe is currently in season</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="recipemonkeyapp.models.Recipe.ingredients">
+<tt class="descname">ingredients</tt><a class="headerlink" href="#recipemonkeyapp.models.Recipe.ingredients" title="Permalink to this definition">¶</a></dt>
+<dd><p>many to many fk for the recipe ingredients (through the RecipeIngredient object)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="recipemonkeyapp.models.Recipe.instructions">
+<tt class="descname">instructions</tt><a class="headerlink" href="#recipemonkeyapp.models.Recipe.instructions" title="Permalink to this definition">¶</a></dt>
+<dd><p>many to many fk for the recipe instructions</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="recipemonkeyapp.models.Recipe.name">
+<tt class="descname">name</tt><em class="property"> = None</em><a class="headerlink" href="#recipemonkeyapp.models.Recipe.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>the name of the recipe</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="recipemonkeyapp.models.Recipe.note">
+<tt class="descname">note</tt><em class="property"> = None</em><a class="headerlink" href="#recipemonkeyapp.models.Recipe.note" title="Permalink to this definition">¶</a></dt>
+<dd><p>note for the recipe eg: substitute x for y</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="recipemonkeyapp.models.Recipe.season">
+<tt class="descname">season</tt><big>(</big><big>)</big><a class="headerlink" href="#recipemonkeyapp.models.Recipe.season" title="Permalink to this definition">¶</a></dt>
+<dd><p>Searches key ingredients to determine the seasonality of this recipe</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="recipemonkeyapp.models.Recipe.seasonEnd">
+<tt class="descname">seasonEnd</tt><a class="headerlink" href="#recipemonkeyapp.models.Recipe.seasonEnd" title="Permalink to this definition">¶</a></dt>
+<dd><p>The end month of the recipe&#8217;s season</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="recipemonkeyapp.models.Recipe.seasonStart">
+<tt class="descname">seasonStart</tt><a class="headerlink" href="#recipemonkeyapp.models.Recipe.seasonStart" title="Permalink to this definition">¶</a></dt>
+<dd><p>The start month of this recipe&#8217;s season</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="recipemonkeyapp.models.Recipe.seasonal">
+<tt class="descname">seasonal</tt><em class="property"> = None</em><a class="headerlink" href="#recipemonkeyapp.models.Recipe.seasonal" title="Permalink to this definition">¶</a></dt>
+<dd><p>flag to indicate whether the recipe is seasonal (determined by key ingredients)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="recipemonkeyapp.models.Recipe.serving">
+<tt class="descname">serving</tt><em class="property"> = None</em><a class="headerlink" href="#recipemonkeyapp.models.Recipe.serving" title="Permalink to this definition">¶</a></dt>
+<dd><p>the number of servings produced by the recipe</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="recipemonkeyapp.models.Recipe.servingMeasure">
+<tt class="descname">servingMeasure</tt><em class="property"> = None</em><a class="headerlink" href="#recipemonkeyapp.models.Recipe.servingMeasure" title="Permalink to this definition">¶</a></dt>
+<dd><p>the measure used for servings eg: people</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="recipemonkeyapp.models.Recipe.source">
+<tt class="descname">source</tt><a class="headerlink" href="#recipemonkeyapp.models.Recipe.source" title="Permalink to this definition">¶</a></dt>
+<dd><p>fk for the source of the recipe eg: Jamie&#8217;s Italian</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="recipemonkeyapp.models.Recipe.storeditems">
+<tt class="descname">storeditems</tt><a class="headerlink" href="#recipemonkeyapp.models.Recipe.storeditems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of StorageItems in which this recipe is stored</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="recipemonkeyapp.models.Recipe.subrecipes">
+<tt class="descname">subrecipes</tt><a class="headerlink" href="#recipemonkeyapp.models.Recipe.subrecipes" title="Permalink to this definition">¶</a></dt>
+<dd><p>many to many fk for subrecipes linked to this recipe (through the SubRecipe object)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="recipemonkeyapp.models.Recipe.tags">
+<tt class="descname">tags</tt><em class="property"> = &lt;taggit.managers._TaggableManager object at 0x10b52e7d0&gt;</em><a class="headerlink" href="#recipemonkeyapp.models.Recipe.tags" title="Permalink to this definition">¶</a></dt>
+<dd><p>taggit object for the assignment of tags</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
