@@ -12,7 +12,7 @@ except ImportError:
     from setuptools import setup, Command  # noqa
 from distutils.command.install import INSTALL_SCHEMES
 
-import bankdownloads as distmeta
+import recipemonkeyapp as distmeta
 
 packages, data_files = [], []
 root_dir = os.path.dirname(__file__)
