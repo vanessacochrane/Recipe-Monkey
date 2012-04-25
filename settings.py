@@ -123,4 +123,7 @@ INSTALLED_APPS = (
     'south',
     'django_tables2',
     'taggit',
+#    'piston',
+#    'django.contrib.markup',
+     'tastypie',
 )

@@ -38,4 +38,8 @@ urlpatterns += patterns('recipemonkeyapp.views.storage',
 	
 )
 
+urlpatterns += patterns('',
+   (r'^api/', include('recipemonkeyapp.api.urls')),
+)
+
 
