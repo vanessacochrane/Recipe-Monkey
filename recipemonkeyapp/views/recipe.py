@@ -51,7 +51,7 @@ def index(request):
     ct={'table':table,
     }
     
-    return render_to_response('recipe/index.html',ct,context_instance=RequestContext(request))
+    return render_to_response('recipemonkey/recipe/index.html',ct,context_instance=RequestContext(request))
 
 def detail(request, recipe_id):
     
@@ -70,7 +70,7 @@ def detail(request, recipe_id):
 		'subrecipes':subrecipes,
 	}
 	
-	return render_to_response('recipe/detail.html',ct,context_instance=RequestContext(request))
+	return render_to_response('recipemonkey/recipe/detail.html',ct,context_instance=RequestContext(request))
 	
 
 def scan(request, id):
@@ -115,7 +115,7 @@ def scan(request, id):
 	}
 
 
-	return render_to_response('recipe/detail.html',ct,context_instance=RequestContext(request))
+	return render_to_response('recipemonkey/recipe/detail.html',ct,context_instance=RequestContext(request))
 
 
 def barcodeimg(request, id):

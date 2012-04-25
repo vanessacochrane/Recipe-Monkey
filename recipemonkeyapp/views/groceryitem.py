@@ -23,7 +23,7 @@ def labels(request):
 	
 	}
 	
-	return render_to_response('groceryitem/labels.html',ct,context_instance=RequestContext(request))
+	return render_to_response('recipemonkey/groceryitem/labels.html',ct,context_instance=RequestContext(request))
 
    
 
@@ -58,7 +58,7 @@ def index(request):
     ct={'table':table,
     }
 
-    return render_to_response('groceryitem/index.html',ct,context_instance=RequestContext(request))
+    return render_to_response('recipemonkey/groceryitem/index.html',ct,context_instance=RequestContext(request))
 
 def scan(request, id):
     
@@ -96,7 +96,7 @@ def scan(request, id):
 	}
 		
 	
-	return render_to_response('groceryitem/detail.html',ct,context_instance=RequestContext(request))	
+	return render_to_response('recipemonkey/groceryitem/detail.html',ct,context_instance=RequestContext(request))	
 
 def detail(request, id):
     
@@ -110,7 +110,7 @@ def detail(request, id):
 	ct={'item':i,
 	}
 	
-	return render_to_response('groceryitem/detail.html',ct,context_instance=RequestContext(request))
+	return render_to_response('recipemonkey/groceryitem/detail.html',ct,context_instance=RequestContext(request))
 
 def barcodeimg(request, id):
     

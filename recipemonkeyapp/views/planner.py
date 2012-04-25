@@ -57,7 +57,7 @@ def calendar(request,year,month):
 	cal = PlannerCalendar(planners).formatmonth(year, month)
 	
 	ct={'calendar': mark_safe(cal),}
-	return render_to_response('planner/calendar.html',ct,context_instance=RequestContext(request))
+	return render_to_response('recipemonkey/planner/calendar.html',ct,context_instance=RequestContext(request))
 	
 	
 
