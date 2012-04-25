@@ -15,4 +15,4 @@ def index(request):
 	
 	}
 	
-	return render_to_response('storage/index.html',ct,context_instance=RequestContext(request))
+	return render_to_response('recipemonkey/storage/index.html',ct,context_instance=RequestContext(request))

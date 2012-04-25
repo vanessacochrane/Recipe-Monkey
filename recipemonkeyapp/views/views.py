@@ -17,6 +17,6 @@ def index(request):
 	ct={'recipe_list':recipe_list,
 	
 	}
-	return render_to_response('index.html',ct,context_instance=RequestContext(request))
+	return render_to_response('recipemonkey/index.html',ct,context_instance=RequestContext(request))
 	
 	
