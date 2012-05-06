@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}Groceries{% endblock %}
-{% block breadcrumb %}{{ block.super }} &raquo; Grocery Labels {% endblock %}
+{% block breadcrumb %}{{ block.super }} &raquo; Labels {% endblock %}
 
 {% block extra_scripts %}
 <style>
@@ -34,9 +34,12 @@
 
 <div id="labels">
 	
-{% for i in item_list %}
+{% for code in barcodes %}
 
-	<div class="label"><img src="/recipemonkeyapp/groceryitem/{{ i.id }}/barcode.png" /><br>{{i.name}}</div>
+	<div class="label"><img src="/barcode/{{code}}" /></div>
+	{% if forloop.counter == labels_per_page %}
+	<div class="page-break"></div>
+	{% endif %}
 
 {% endfor %}
 

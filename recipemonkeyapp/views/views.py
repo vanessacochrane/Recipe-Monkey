@@ -19,4 +19,32 @@ def index(request):
 	}
 	return render_to_response('recipemonkey/index.html',ct,context_instance=RequestContext(request))
 	
-	
+
+def barcodes(request):
+
+    barcodes=[]
+    
+    i=1
+    for i in range(30)
+        barcodes.append(i)
+
+
+    ct={'barcodes':barcodes,
+        'labels_per_page': 30,
+
+    }
+
+    return render_to_response('recipemonkey/labels.html',ct,context_instance=RequestContext(request))
+
+
+def barcodeimg(request, code):
+
+
+	response=HttpResponse(content_type='image/png')
+
+	url="https://%s/recipemonkeyapp/groceryitem/scan/%s/" % ('recipemonkey.getoutsideandlive.com',code)
+
+	img=barcode('qrcode',url,data_mode='8bits')
+	img.save(response, 'PNG')
+
+	return response

@@ -5,6 +5,8 @@ from django.conf import settings
 urlpatterns = patterns('recipemonkeyapp.views.views',
 
 (r'^$','index'),
+(r'^/barcode/(?P<code>\d+)/$', 'barcodeimg'),
+(r'^/barcodes/$', 'barcodes'),
 
 )
 
