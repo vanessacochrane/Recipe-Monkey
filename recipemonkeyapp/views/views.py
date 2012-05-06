@@ -47,7 +47,16 @@ def barcodeimg(request, code):
 	url="https://%s/recipemonkeyapp/groceryitem/scan/%s/" % ('recipemonkey.getoutsideandlive.com',code)
 
 	img=barcode('qrcode',url,data_mode='8bits',margin=0)
-	img=img.crop((20, 20, 200, 200))
-	img.save(response, 'PNG')
+    from PIL import Image
+    import numpy as np
+
+    pix = np.asarray(img)
+
+    pix = pix[:,:,0:3] # Drop the alpha channel
+    idx = np.where(pix-255)[0:2] # Drop the color when finding edges
+    box = map(min,idx)[::-1] + map(max,idx)[::-1]
+
+    region = img.crop(box)
+	region.save(response, 'PNG')
 
 	return response
