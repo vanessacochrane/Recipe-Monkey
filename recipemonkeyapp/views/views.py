@@ -42,9 +42,9 @@ def barcodes(request):
 def barcodeimg(request, code):
 
 
-	response=HttpResponse(content_type='image/png')
+    response=HttpResponse(content_type='image/png')
 
-	url="https://%s/recipemonkeyapp/groceryitem/scan/%s/" % ('recipemonkey.getoutsideandlive.com',code)
+    url="https://%s/recipemonkeyapp/groceryitem/scan/%s/" % ('recipemonkey.getoutsideandlive.com',code)
 
     img=barcode('qrcode',url,data_mode='8bits',margin=0)
     from PIL import Image
@@ -59,4 +59,4 @@ def barcodeimg(request, code):
     region = img.crop(box)
     region.save(response, 'PNG')
 
-	return response
+    return response
