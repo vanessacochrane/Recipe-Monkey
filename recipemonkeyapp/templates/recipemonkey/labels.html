@@ -28,9 +28,11 @@
         page-break-after:always;
         }
 
-	img {
-		vertical-align: top;     /* Add this */
-		display: block;
+		.label img
+		{
+		    vertical-align: middle;
+		    max-height: 20mm;
+		    max-width: 34mm;
 		}
 </style>
 {% endblock %}
@@ -40,7 +42,7 @@
 	
 {% for code in barcodes %}
 
-	<div class="label"><img align="center" src="https://mothership.getoutsideandlive.com/recipemonkeyapp/barcode/{{code}}"/></div>
+	<div class="label"><img src="https://mothership.getoutsideandlive.com/recipemonkeyapp/barcode/{{code}}"/></div>
 	{% if forloop.counter == labels_per_page %}
 	<div class="page-break"></div>
 	{% endif %}
