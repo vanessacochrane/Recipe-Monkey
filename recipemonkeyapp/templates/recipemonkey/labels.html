@@ -36,7 +36,7 @@
 	
 {% for code in barcodes %}
 
-	<div class="label"><img src="/barcode/{{code}}" /></div>
+	<div class="label"><img src="/recipemonkeyapp/barcode/{{code}}" /></div>
 	{% if forloop.counter == labels_per_page %}
 	<div class="page-break"></div>
 	{% endif %}
