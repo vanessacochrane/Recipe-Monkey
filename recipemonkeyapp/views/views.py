@@ -47,7 +47,7 @@ def barcodeimg(request, code):
 	url="https://%s/recipemonkeyapp/groceryitem/scan/%s/" % ('recipemonkey.getoutsideandlive.com',code)
 
 	img=barcode('qrcode',url,data_mode='8bits',margin=0)
-	img.crop((20,20,20,20))
+	img=img.crop((20,20,20,20))
 	img.save(response, 'PNG')
 
 	return response
