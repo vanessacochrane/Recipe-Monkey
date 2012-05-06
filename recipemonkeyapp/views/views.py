@@ -25,7 +25,7 @@ def barcodes(request):
     barcodes=[]
     
     i=1
-    for i in range(30)
+    for i in range(30):
         barcodes.append(i)
 
 
