@@ -46,7 +46,7 @@ def barcodeimg(request, code):
 
 	url="https://%s/recipemonkeyapp/groceryitem/scan/%s/" % ('recipemonkey.getoutsideandlive.com',code)
 
-	img=barcode('qrcode',url,data_mode='8bits',margin=0)
+    img=barcode('qrcode',url,data_mode='8bits',margin=0)
     from PIL import Image
     import numpy as np
 
@@ -57,6 +57,6 @@ def barcodeimg(request, code):
     box = map(min,idx)[::-1] + map(max,idx)[::-1]
 
     region = img.crop(box)
-	region.save(response, 'PNG')
+    region.save(response, 'PNG')
 
 	return response
