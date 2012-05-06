@@ -22,14 +22,14 @@ def index(request):
 
 def barcodes(request):
 
-    barcodes=[]
+    barcodes_list=[]
     
     i=1
     for i in range(30):
-        barcodes.append(i)
+        barcodes_list.append(i)
 
 
-    ct={'barcodes':barcodes,
+    ct={'barcodes':barcodes_list,
         'labels_per_page': 30,
 
     }
