@@ -20,7 +20,6 @@
 
         text-align: center;
         overflow: hidden;
-
         outline: 1px dotted; /* outline doesn't occupy space like border does */
         }
     .page-break  {
@@ -32,7 +31,6 @@
 	img {
 		vertical-align: top;     /* Add this */
 		display: block;
-		margin-right: 100mm;
 		}
 </style>
 {% endblock %}
@@ -42,7 +40,7 @@
 	
 {% for code in barcodes %}
 
-	<div class="label"><img src="https://mothership.getoutsideandlive.com/recipemonkeyapp/barcode/{{code}}"/></div>
+	<div class="label"><img align="center" src="https://mothership.getoutsideandlive.com/recipemonkeyapp/barcode/{{code}}"/></div>
 	{% if forloop.counter == labels_per_page %}
 	<div class="page-break"></div>
 	{% endif %}
