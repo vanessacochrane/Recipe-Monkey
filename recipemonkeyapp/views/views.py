@@ -49,7 +49,7 @@ def barcodes(request):
     })
 
     r = t.render(c)
-    print r
+    print "Rendered tex: "+ r
     tex = NamedTemporaryFile()
     tex.write(r)
     tex.flush()
