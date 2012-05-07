@@ -57,8 +57,15 @@ def barcodes(request):
     
 
     path="/Volumes/ExtDisk2-2tb/Data/dropbox-cochranedavey/Dropbox/CochraneDavey/Development/Django/cochranedavey/"
-    retcode = subprocess.check_call(["/usr/texbin/latex",base+'.tex'])
-    retcode = subprocess.check_call(["/usr/local/bin/dvipdf",base+".dvi"])
+    
+    try:
+        retcode = subprocess.check_call(["/usr/texbin/latex",base+'.tex'])
+        retcode = subprocess.check_call(["/usr/local/bin/dvipdf",base+".dvi"])
+    
+    except:
+        from traceback import print_exc
+        print_exc()
+    
     remove(names['log'])
     remove(names['aux'])
 
