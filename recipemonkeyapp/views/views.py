@@ -22,7 +22,56 @@ def index(request):
 	return render_to_response('recipemonkey/index.html',ct,context_instance=RequestContext(request))
 	
 
+
 def barcodes(request):
+
+    from os import remove, rename
+    from os.path import dirname
+    from tempfile import NamedTemporaryFile
+    
+	response = HttpResponse(mimetype='application/pdf')
+	response['Content-Disposition'] = 'attachment; filename=barcodes.pdf'
+
+    barcodes_list=[]
+    
+    i=1
+    for i in range(65):
+        barcodes_list.append(i)
+        
+
+	t = loader.get_template('recipemonkey/barcodes.tex')
+        
+	c = Context({
+	        'barcodes': barcodes_list,
+	    })
+
+    r = t.render(c)
+    tex = NamedTemporaryFile()
+    tex.write(r)
+    tex.flush()
+    base = tex.name
+
+
+	path="/Volumes/ExtDisk2-2tb/Data/dropbox-cochranedavey/Dropbox/CochraneDavey/Development/Django/cochranedavey/"
+	retcode = subprocess.check_call(["/usr/texbin/latex",base+'.tex'])
+	retcode = subprocess.check_call(["/usr/local/bin/dvipdf",base+".dvi"])
+    remove(names['log'])
+	remove(names['aux'])
+	
+	f2 = open(base+'.pdf','r')
+	response.write(f2.read())
+	f2.close
+
+
+    items = "log aux pdf dvi png".split()
+    names = dict((x, '%s.%s' % (base, x)) for x in items)
+
+
+	return response
+
+
+
+def barcodes_old(request):
 
     barcodes_list=[]
     
