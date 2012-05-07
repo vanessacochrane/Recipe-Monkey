@@ -51,7 +51,7 @@
 {% for code in barcodes %}
 
 	<div class="label"><img src="https://mothership.getoutsideandlive.com/recipemonkeyapp/barcode/{{code}}"/></div>
-	{% if forloop.counter == labels_per_page %}
+	{% if forloop.counter|divisibleby:labels_per_page %}
 	<div class="page-break"></div>
 	{% endif %}
 

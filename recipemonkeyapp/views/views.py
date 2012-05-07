@@ -27,7 +27,7 @@ def barcodes(request):
     barcodes_list=[]
     
     i=1
-    for i in range(30):
+    for i in range(65):
         barcodes_list.append(i)
 
 
@@ -44,7 +44,7 @@ def barcodeimg(request, code):
 
     response=HttpResponse(content_type='image/png')
 
-    url="https://%s/recipemonkeyapp/groceryitem/scan/%s/" % ('recipemonkey.getoutsideandlive.com',code)
+    url="https://%s/recipemonkeyapp/scan/%s/" % ('mothership.getoutsideandlive.com',code)
 
     img=barcode('qrcode',url,data_mode='8bits',margin=0)
     from PIL import Image
