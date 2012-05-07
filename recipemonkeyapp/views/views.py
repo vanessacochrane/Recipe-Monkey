@@ -54,7 +54,7 @@ def barcodes(request):
     tex.write(r)
     tex.flush()
     base = tex.name
-
+    
 
     path="/Volumes/ExtDisk2-2tb/Data/dropbox-cochranedavey/Dropbox/CochraneDavey/Development/Django/cochranedavey/"
     retcode = subprocess.check_call(["/usr/texbin/latex",base+'.tex'])
