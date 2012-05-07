@@ -42,13 +42,14 @@ def barcodes(request):
         barcodes_list.append(i)
 
 
-    t = loader.get_template('recipemonkey/barcodes.tex')
+    t = loader.get_template('recipemonkey/tex/barcodes.tex')
 
     c = Context({
         'barcodes': barcodes_list,
     })
 
     r = t.render(c)
+    print r
     tex = NamedTemporaryFile()
     tex.write(r)
     tex.flush()
