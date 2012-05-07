@@ -1,18 +1,25 @@
 {% extends "base.html" %}
 
-{% block title %}Groceries{% endblock %}
+{% block title %}Barcodes{% endblock %}
 {% block breadcrumb %}{{ block.super }} &raquo; Labels {% endblock %}
 
 {% block extra_scripts %}
 <style>
+
+	body {
+		margin: 0mm 0mm;
+		padding: 0mm 0mm;
+		
+	}
+
     .labels {
         width: 0mm;
         margin: 0mm 0mm;
         }
 
     .label{
-        width: 34mm; 
-        height: 20mm; 
+        width: 30mm; 
+        height: 16mm; 
         padding: 2mm 2mm 0;
         margin-right: 2mm; 
  		margin-bottom: 2mm; 
