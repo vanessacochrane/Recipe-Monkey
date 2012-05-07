@@ -29,6 +29,7 @@ def barcodes(request):
     from os.path import dirname
     from tempfile import NamedTemporaryFile
     import subprocess
+    from django.template import Context, loader
     
 
     response = HttpResponse(mimetype='application/pdf')
