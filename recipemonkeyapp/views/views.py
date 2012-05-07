@@ -32,7 +32,7 @@ def barcodes(request):
 
 
     ct={'barcodes':barcodes_list,
-        'labels_per_page': 30,
+        'labels_per_page': 65,
 
     }
 
