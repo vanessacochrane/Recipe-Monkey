@@ -19,7 +19,7 @@
 
     .label{
         width: 31mm; 
-        height: 18mm; 
+        height: 16mm; 
         padding: 2mm 2mm 0;
         margin-right: 2mm; 
  		margin-bottom: 2mm; 
@@ -50,10 +50,11 @@
 	
 {% for code in barcodes %}
 
+{% if forloop.counter|divisibleby:labels_per_page %}
+<div class="page-break"></div>
+{% endif %}
 	<div class="label"><img src="https://mothership.getoutsideandlive.com/recipemonkeyapp/barcode/{{code}}"/></div>
-	{% if forloop.counter|divisibleby:labels_per_page %}
-	<div class="page-break"></div>
-	{% endif %}
+
 
 {% endfor %}
 
