@@ -126,39 +126,39 @@ def scan(request, id):
             model = StorageItem
             exclude = ('object_id','content_object','content_type')
             
-        try:
-            i = StorageItem.objects.get(barcode=id)
-            form=StorageItemForm(instance=i)
-        except StorageItem.DoesNotExist:
-            form=StorageItemForm({'barcode':id})
-            i = None
+    try:
+        i = StorageItem.objects.get(barcode=id)
+        form=StorageItemForm(instance=i)
+    except StorageItem.DoesNotExist:
+        form=StorageItemForm({'barcode':id})
+        i = None
 
-        if request.method == 'POST': # If the form has been submitted...
+    if request.method == 'POST': # If the form has been submitted...
 
-        
-            if form.is_valid():
-                si=form.save(commit=False)
+    
+        if form.is_valid():
+            si=form.save(commit=False)
 
-                if form['recipes']:
-                    i=Recipe.objects.get(pk=form['recipes'])
-                else: 
-                    i=GroceryItem.objects.get(pk=form['ingredients'])
+            if form['recipes']:
+                i=Recipe.objects.get(pk=form['recipes'])
+            else: 
+                i=GroceryItem.objects.get(pk=form['ingredients'])
 
-                si.content_object=i
-                si.object_id=i.id
-                si.content_type=ContentType.objects.get_for_model(i)
+            si.content_object=i
+            si.object_id=i.id
+            si.content_type=ContentType.objects.get_for_model(i)
 
-                if si.quantity > 0:
-                    si.save()
+            if si.quantity > 0:
+                si.save()
 
-                return redirect('recipemonkeyapp.views.scan',id=i.id)
+            return redirect('recipemonkeyapp.views.scan',id=i.id)
 
-        
-        ct={
-            'item': i,
-            'form':form.as_table(),
-        }
+    
+    ct={
+        'item': i,
+        'form':form.as_table(),
+    }
 
 
-        return render_to_response('recipemonkey/storage/item_detail.html',ct,context_instance=RequestContext(request))	
+    return render_to_response('recipemonkey/storage/item_detail.html',ct,context_instance=RequestContext(request))	
 
