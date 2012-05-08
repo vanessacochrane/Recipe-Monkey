@@ -114,6 +114,7 @@ def scan(request, id):
     from recipemonkeyapp.models import StorageItem
     from django.forms import ModelForm
     from django import forms
+    from django.db import models
 
     class StorageItemForm(ModelForm):
         
