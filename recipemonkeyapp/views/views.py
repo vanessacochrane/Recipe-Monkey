@@ -70,8 +70,8 @@ def barcodes(request):
     # Compile the TeX file with PDFLaTeX
     process=subprocess.Popen(['/usr/texbin/latex', texfilename],env={"PATH": "/usr/texbin"})
 
-    #if process.wait() != 0:
-    #    raise Exception("There were some errors running latex")
+    if process.wait() != 0:
+        raise Exception("There were some errors running latex")
 
     process=subprocess.Popen(['/usr/local/bin/dvipdf',texfilename+".dvi"],env={"PATH": "/usr/texbin:/usr/local/bin"})
 
