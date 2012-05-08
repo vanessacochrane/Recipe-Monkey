@@ -41,7 +41,7 @@ def barcodes(request):
     for i in range(65):
         barcodes_list.append(i)
 
-
+    c = Context({})
   
     
     t = loader.get_template('recipemonkey/tex/label.tdf')
