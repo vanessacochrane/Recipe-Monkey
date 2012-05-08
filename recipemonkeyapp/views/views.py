@@ -137,18 +137,19 @@ def scan(request, id):
 
     
         if form.is_valid():
-            si=form.save(commit=False)
-
+           
             if form['recipes']:
                 i=Recipe.objects.get(pk=form.cleaned_data['recipe'])
             else: 
                 i=GroceryItem.objects.get(pk=form.cleaned_data['ingredient'])
 
+            si=form.save(commit=False)
             si.content_object=i
             si.object_id=i.id
             si.content_type=ContentType.objects.get_for_model(i)
 
             if si.quantity > 0:
+                print 'trying to save storage item...'
                 si.save()
 
             return redirect('recipemonkeyapp.views.scan',id=i.id)
