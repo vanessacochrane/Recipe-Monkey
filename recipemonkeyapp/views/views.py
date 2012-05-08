@@ -113,6 +113,7 @@ def scan(request, id):
 
     from recipemonkeyapp.models import StorageItem
     from django.forms import ModelForm
+    from django import forms
 
     class StorageItemForm(ModelForm):
         
@@ -125,7 +126,7 @@ def scan(request, id):
         i = StorageItem.objects.get(barcode=id)
         form=StorageItemForm(instance=i)
     except StorageItem.DoesNotExist:
-        form=StorageItemForm()
+        form=StorageItemForm(barcode=id)
 
    
 
