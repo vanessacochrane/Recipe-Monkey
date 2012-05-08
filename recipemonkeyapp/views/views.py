@@ -115,8 +115,11 @@ def scan(request, id):
     from django.forms import ModelForm
 
     class StorageItemForm(ModelForm):
+        
+        content = forms.ModelMultipleChoiceField(queryset=Recipe.objects.all())
         class Meta:
             model = StorageItem
+            
 
     try:
         i = StorageItem.objects.get(barcode=id)
@@ -124,8 +127,10 @@ def scan(request, id):
     except StorageItem.DoesNotExist:
         form=StorageItemForm()
 
-    ct={'item':i,
-    'form':form,
+   
+
+    ct={
+        'form':form,
     }
 
 
