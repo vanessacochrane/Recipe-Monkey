@@ -58,7 +58,6 @@ def barcodes(request):
         
         region.save(fname, 'EPS')
         barcodes_list.append(i)
-        f.close()
         f=None
 
     t = loader.get_template('recipemonkey/tex/barcodes.tex')
