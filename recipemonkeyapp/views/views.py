@@ -56,13 +56,13 @@ def barcodes(request):
     t = loader.get_template('recipemonkey/tex/labels.tdf')
     r = t.render(c)
     print "Rendered tex: "+ r
-    tmp1 = NamedTemporaryFile(delete=False)
+    tmp1 = NamedTemporaryFile(suffix='.tdf',prefix='label',delete=False)
     tmp1.write(r)
 
     t = loader.get_template('recipemonkey/tex/tickets.sty')
     r = t.render(c)
     print "Rendered tex: "+ r
-    tmp2 = NamedTemporaryFile(delete=False)
+    tmp2 = NamedTemporaryFile(suffix='.sty',prefix='ticket',delete=False)
     tmp2.write(r)
     
     #tex.flush()
