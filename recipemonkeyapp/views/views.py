@@ -68,7 +68,16 @@ def barcodes(request):
     os.write(texfile, render_to_string('recipemonkey/tex/barcodes.tex', {'barcodes': barcodes_list}))
     os.close(texfile)
     # Compile the TeX file with PDFLaTeX
-    subprocess.check_call(['pdflatex', texfilename],env={"PATH": "/usr/texbin"}, shell=True)
+    process=subprocess.Popen(['latex', texfilename],env={"PATH": "/usr/texbin"}, shell=True)
+
+    if process.wait() != 0:
+        raise Exception("There were some errors")
+
+    process=subprocess.Popen(['dvipdfm', ,"-sPAPERSIZE=a4",texfilename+".dvi"],env={"PATH": "/usr/texbin"}, shell=True)
+
+    if process.wait() != 0:
+        raise Exception("There were some errors")
+
     # Move resulting PDF to a more permanent location
     
     
