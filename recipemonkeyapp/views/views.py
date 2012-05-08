@@ -75,8 +75,8 @@ def barcodes(request):
 
     process=subprocess.Popen(['/usr/local/bin/dvipdf',texfilename+".dvi",texfilename+".pdf"],env={"PATH": "/usr/texbin:/usr/local/bin"})
 
-    #if process.wait() != 0:
-    #    raise Exception("There were some errors generating pdf")
+    if process.wait() != 0:
+        raise Exception("There were some errors generating pdf")
 
     # Move resulting PDF to a more permanent location
     
