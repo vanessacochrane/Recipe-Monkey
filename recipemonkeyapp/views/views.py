@@ -73,7 +73,7 @@ def barcodes(request):
     if process.wait() != 0:
         raise Exception("There were some errors")
 
-    process=subprocess.Popen(['dvipdfm', ,"-sPAPERSIZE=a4",texfilename+".dvi"],env={"PATH": "/usr/texbin"}, shell=True)
+    process=subprocess.Popen(['dvipdfm',"-sPAPERSIZE=a4",texfilename+".dvi"],env={"PATH": "/usr/texbin"}, shell=True)
 
     if process.wait() != 0:
         raise Exception("There were some errors")
