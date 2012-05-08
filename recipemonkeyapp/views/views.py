@@ -120,6 +120,8 @@ def scan(request, id):
         recipes = forms.ModelChoiceField(queryset=Recipe.objects.all())
         ingredients = forms.ModelChoiceField(queryset=GroceryItem.objects.all())
 
+        barcode = models.CharField(max_length=266,editable=False)
+
         class Meta:
             model = StorageItem
             exclude = ('object_id','content_object','content_type')
