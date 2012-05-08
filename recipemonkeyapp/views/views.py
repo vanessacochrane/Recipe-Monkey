@@ -52,7 +52,8 @@ def barcodes(request):
     print "Rendered tex: "+ r
     tex = NamedTemporaryFile()
     tex.write(r)
-    tex.flush()
+    tex.close()
+    #tex.flush()
     base = tex.name
     items = "log aux pdf dvi png".split()
     names = dict((x, '%s.%s' % (base, x)) for x in items)
