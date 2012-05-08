@@ -112,14 +112,20 @@ def barcodes(request):
 def scan(request, id):
 
     from recipemonkeyapp.models import StorageItem
+    from django.forms import ModelForm
+
+    class StorageItemForm(ModelForm):
+        class Meta:
+            model = StorageItem
 
     try:
         i = StorageItem.objects.get(barcode=id)
+        form=StorageItemForm(instance=i)
     except StorageItem.DoesNotExist:
-        raise Http404
+        form=StorageItemForm()
 
     ct={'item':i,
-    #'formset':formset,
+    'form':form,
     }
 
 
