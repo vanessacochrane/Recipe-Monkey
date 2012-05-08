@@ -117,21 +117,22 @@ def scan(request, id):
 
     class StorageItemForm(ModelForm):
         
-        content = forms.ModelMultipleChoiceField(queryset=Recipe.objects.all())
+        content = forms.ModelChoiceField(queryset=Recipe.objects.all())
         class Meta:
             model = StorageItem
+            exclude = ('object_id')
             
 
     try:
         i = StorageItem.objects.get(barcode=id)
         form=StorageItemForm(instance=i)
     except StorageItem.DoesNotExist:
-        form=StorageItemForm(barcode=id)
+        form=StorageItemForm({'barcode':id})
 
    
 
     ct={
-        'form':form,
+        'form':form.as_table(),
     }
 
 
