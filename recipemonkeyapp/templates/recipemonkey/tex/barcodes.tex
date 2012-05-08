@@ -6,10 +6,21 @@
 % use the corresponding paper size for your ticket definition
 \documentclass[a4paper,10pt]{letter}
 
-\usepackage[label]{%templatetag openbrace%}{{ticket}}{%templatetag closebrace%}
+\usepackage{%templatetag openbrace%}{{ticket}}{%templatetag closebrace%}
 \usepackage{graphicx}  % load misc stuff
 \usepackage{syntonly}  %to test without output
 \usepackage{fancybox}
+
+
+\unitlength=1mm
+\hoffset=-20.0mm
+\voffset=-20.0mm
+
+\ticketNumbers{5}{13}
+
+\ticketSize{38}{21.5} % in unitlength
+\ticketDistance{2.5}{0} % in unitlength
+
 
 % make your default ticket. \ticketdefault is somewhat like a background
 \renewcommand{\ticketdefault}{%no background
