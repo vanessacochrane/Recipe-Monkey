@@ -58,7 +58,15 @@ def barcodes(request):
     items = "log aux pdf dvi png".split()
     names = dict((x, '%s.%s' % (base, x)) for x in items)
 
-    retcode = subprocess.check_call(["/usr/texbin/latex",tex.name])
+
+    try:
+        ret = subprocess.check_output(["/usr/texbin/latex",tex.name])
+        
+    except:
+        print ret
+        raise Exception('Error running latex')
+        
+        
     retcode = subprocess.check_call(["/usr/local/bin/dvipdf",base+".dvi"])
     
     
