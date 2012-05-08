@@ -52,12 +52,24 @@ def barcodes(request):
     print "Rendered tex: "+ r
     tex = NamedTemporaryFile(delete=False)
     tex.write(r)
+    
+    t = loader.get_template('recipemonkey/tex/labels.tdf')
+    r = t.render(c)
+    print "Rendered tex: "+ r
+    tmp1 = NamedTemporaryFile(delete=False)
+    tmp1.write(r)
+
+    t = loader.get_template('recipemonkey/tex/tickets.sty')
+    r = t.render(c)
+    print "Rendered tex: "+ r
+    tmp2 = NamedTemporaryFile(delete=False)
+    tmp2.write(r)
+    
     #tex.flush()
     base = tex.name
     items = "log aux pdf dvi png".split()
     names = dict((x, '%s.%s' % (base, x)) for x in items)
 
-    path="/Volumes/ExtDisk2-2tb/Data/dropbox-cochranedavey/Dropbox/CochraneDavey/Development/Django/cochranedavey/"
     
    
     retcode = subprocess.check_call(["/usr/texbin/latex",tex.name])
