@@ -15,6 +15,7 @@ class StorageItem(models.Model):
 	quantity=models.FloatField()
 	quantityMeasure=models.CharField(max_length=256)
 	date_added=models.DateField(auto_now_add=True,null=True)
+	barcode=models.CharField(max_length=256,blank=True,null=True)
 	
 	
 	def loadold(self):

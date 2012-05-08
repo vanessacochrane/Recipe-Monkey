@@ -1,0 +1,20 @@
+{% extends "recipemonkey/groceryitem/index.html" %}
+
+{% block title %}Storage Items{% endblock %}
+{% block breadcrumb %}{{ block.super }} &raquo; {{item.name}} {% endblock %}
+{% block content_header %}{{item.name}}{% endblock %}
+
+{% block content %}
+
+<ul>
+<li>item.storage.name</li>
+<li>item.barcode</li>
+<li>item.content_object.name</li>
+<li>item.quantity</li>
+</ul>
+
+
+
+
+
+{% endblock  %}

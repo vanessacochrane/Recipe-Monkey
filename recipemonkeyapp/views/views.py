@@ -4,6 +4,8 @@ from django.template import RequestContext
 from recipemonkeyapp.models import Recipe
 from django.http import HttpResponse,HttpResponseRedirect
 from elaphe import barcode 
+from django.http import Http404
+
 
 #@login_required(login_url='/accounts/login/')
 #def limited_object_detail(*args, **kwargs):
@@ -107,43 +109,19 @@ def barcodes(request):
 
     return response
 
+def scan(request, id):
 
-
-def barcodes_old(request):
-
-    barcodes_list=[]
+    from recipemonkeyapp.models import StorageItem
     
-    i=1
-    for i in range(65):
-        barcodes_list.append(i)
+	try:
+		i = StorageItem.objects.get(barcode=id)
+	except StorageItem.DoesNotExist:
+		raise Http404
+
+	ct={'item':i,
+		#'formset':formset,
+	}
 
 
-    ct={'barcodes':barcodes_list,
-        'labels_per_page': 65+1,
-
-    }
-
-    return render_to_response('recipemonkey/labels.html',ct,context_instance=RequestContext(request))
-
-
-def barcodeimg(request, code):
-
-
-    response=HttpResponse(content_type='image/png')
-
-    url="https://%s/recipemonkeyapp/scan/%s/" % ('mothership.getoutsideandlive.com',code)
-
-    img=barcode('qrcode',url,data_mode='8bits',margin=0)
-    from PIL import Image
-    import numpy as np
-
-    pix = np.asarray(img)
-
-    pix = pix[:,:,0:3] # Drop the alpha channel
-    idx = np.where(pix-255)[0:2] # Drop the color when finding edges
-    box = map(min,idx)[::-1] + map(max,idx)[::-1]
-
-    region = img.crop(box)
-    region.save(response, 'PNG')
-
-    return response
+    return render_to_response('recipemonkey/storage/item_detail.html',ct,context_instance=RequestContext(request))	
+    
