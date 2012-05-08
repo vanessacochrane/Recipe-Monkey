@@ -57,7 +57,7 @@ def barcodes(request):
         
         
         region.save(fname, 'EPS')
-        barcodes_list.append(i)
+        barcodes_list.append({'code':i,'name':fname})
         f=None
 
     t = loader.get_template('recipemonkey/tex/barcodes.tex')

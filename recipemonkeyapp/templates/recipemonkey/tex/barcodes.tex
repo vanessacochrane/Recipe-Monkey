@@ -29,16 +29,16 @@
 % now what do you like to put in your ticket
 \newcommand{\card}[2]{\ticket{%
     \put(11,2){\centering{\includegraphics[width=16mm,height=16mm,origin=bl]{/tmp/#1.eps}}}
-    \put(15,0){\centering{#1}}
+    \put(15,0){\centering{#2}}
  }}
 
 
 
 \begin{document}
 
-{% for code in barcodes %}
+{% for code in barcodes.items %}
 
-\card{%templatetag openbrace%}{{code}}{%templatetag closebrace%}
+\card{%templatetag openbrace%}{{code.name}},{{code.code}}{%templatetag closebrace%}
 
 {%endfor%}
 
