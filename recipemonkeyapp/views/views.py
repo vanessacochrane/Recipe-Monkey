@@ -43,30 +43,28 @@ def barcodes(request):
 
     t = loader.get_template('recipemonkey/tex/barcodes.tex')
 
-    c = Context({
-          'barcodes': barcodes_list,
-    })
+    import os
+    from subprocess import call
+    from tempfile import mkdtemp, mkstemp
+    from django.template.loader import render_to_string
+    # In a temporary folder, make a temporary file
+    tmp_folder = mkdtemp()
+    os.chdir(tmp_folder)        
+    texfile, texfilename = mkstemp(dir=tmp_folder)
+    # Pass the TeX template through Django templating engine and into the temp file
+    os.write(texfile, render_to_string('recipemonkey/tex/barcodes.tex', {'barcodes': barcodes_list}))
+    os.close(texfile)
+    # Compile the TeX file with PDFLaTeX
+    call(['pdflatex', texfilename])
+    # Move resulting PDF to a more permanent location
+    #os.rename(texfilename + '.pdf', dest_folder)
+    # Remove intermediate files
+    os.remove(texfilename)
+    os.remove(texfilename + '.aux')
+    os.remove(texfilename + '.log')
+    os.rmdir(tmp_folder)
 
-    r = t.render(c)
-    tex = NamedTemporaryFile(delete=False)
-    tex.write(r)
-   
-   
-    #tex.flush()
-    base = tex.name
-    items = "log aux pdf dvi png".split()
-    names = dict((x, '%s.%s' % (base, x)) for x in items)
-
-
-    
-    ret = subprocess.Popen(["cd /tmp;/usr/texbin/latex",base])
-    retcode = subprocess.check_call(["cd /tmp;/usr/texbin/dvipdfm -pA4",base+".dvi"])
-    
-    
-    remove(names['log'])
-    remove(names['aux'])
-
-    f2 = open(base+'.pdf','r')
+    f2 = open(texfilename  + '.pdf', 'r')
     response.write(f2.read())
     f2.close
 
