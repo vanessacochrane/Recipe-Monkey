@@ -112,16 +112,16 @@ def barcodes(request):
 def scan(request, id):
 
     from recipemonkeyapp.models import StorageItem
-    
-	try:
-		i = StorageItem.objects.get(barcode=id)
-	except StorageItem.DoesNotExist:
-		raise Http404
 
-	ct={'item':i,
-		#'formset':formset,
-	}
+    try:
+        i = StorageItem.objects.get(barcode=id)
+    except StorageItem.DoesNotExist:
+        raise Http404
+
+    ct={'item':i,
+    #'formset':formset,
+    }
 
 
     return render_to_response('recipemonkey/storage/item_detail.html',ct,context_instance=RequestContext(request))	
-    
+
