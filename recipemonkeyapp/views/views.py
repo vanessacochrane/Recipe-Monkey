@@ -59,16 +59,18 @@ def barcodes(request):
     # Move resulting PDF to a more permanent location
     #os.rename(texfilename + '.pdf', dest_folder)
     # Remove intermediate files
-    os.remove(texfilename)
-    os.remove(texfilename + '.aux')
-    os.remove(texfilename + '.log')
-    os.rmdir(tmp_folder)
+   
 
     f2 = open(texfilename  + '.pdf', 'r')
     response.write(f2.read())
     f2.close
 
-
+    os.remove(texfilename)
+    os.remove(texfilename + '.aux')
+    os.remove(texfilename + '.log')
+    os.remove(texfilename + '.pdf')
+    
+    os.rmdir(tmp_folder)
   
 
 
