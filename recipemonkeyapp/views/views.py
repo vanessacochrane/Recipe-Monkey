@@ -57,11 +57,15 @@ def barcodes(request):
     # Compile the TeX file with PDFLaTeX
     call(['pdflatex', texfilename], shell=True)
     # Move resulting PDF to a more permanent location
-    #os.rename(texfilename + '.pdf', dest_folder)
+    
+    
+    
+    dest=os.path.join('/usr/local/web/django/www/production/mothership',texfilename + '.pdf')
+    os.rename(texfilename + '.pdf', dest)
     # Remove intermediate files
    
 
-    f2 = open(texfilename  + '.pdf', 'r')
+    f2 = open(dest, 'r')
     response.write(f2.read())
     f2.close
 
