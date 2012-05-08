@@ -56,10 +56,7 @@ def barcodes(request):
     tmp2 = NamedTemporaryFile(suffix='.sty',prefix='ticket',delete=False)
     tmp2.write(r)
     
-    #tex.flush()
-    base = tex.name
-    items = "log aux pdf dvi png".split()
-    names = dict((x, '%s.%s' % (base, x)) for x in items)
+   
 
     t = loader.get_template('recipemonkey/tex/barcodes.tex')
 
@@ -73,6 +70,12 @@ def barcodes(request):
     tex = NamedTemporaryFile(delete=False)
     tex.write(r)
    
+   
+    #tex.flush()
+    base = tex.name
+    items = "log aux pdf dvi png".split()
+    names = dict((x, '%s.%s' % (base, x)) for x in items)
+
     retcode = subprocess.check_call(["/usr/texbin/latex",tex.name])
     retcode = subprocess.check_call(["/usr/local/bin/dvipdf",base+".dvi"])
     
