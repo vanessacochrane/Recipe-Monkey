@@ -53,7 +53,7 @@ def barcodes(request):
         box = map(min,idx)[::-1] + map(max,idx)[::-1]
 
         region = img.crop(box)
-        f, fname = mkstemp(dir=tmp_folder)
+        f, fname = mkstemp(dir=tmp_folder,suffix=".eps")
         
         
         region.save(fname, 'EPS')
