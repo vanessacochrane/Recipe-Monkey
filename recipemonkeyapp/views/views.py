@@ -71,12 +71,12 @@ def barcodes(request):
     process=subprocess.Popen(['latex', texfilename],env={"PATH": "/usr/texbin"}, shell=True)
 
     if process.wait() != 0:
-        raise Exception("There were some errors")
+        raise Exception("There were some errors running latex")
 
-    process=subprocess.Popen(['dvipdfm',"-sPAPERSIZE=a4",texfilename+".dvi"],env={"PATH": "/usr/texbin"}, shell=True)
+    process=subprocess.Popen(['dvipdf',"-sPAPERSIZE=a4",texfilename+".dvi"],env={"PATH": "/usr/texbin"}, shell=True)
 
     if process.wait() != 0:
-        raise Exception("There were some errors")
+        raise Exception("There were some errors generating pdf")
 
     # Move resulting PDF to a more permanent location
     
