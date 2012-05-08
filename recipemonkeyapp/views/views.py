@@ -26,7 +26,7 @@ def index(request):
 def barcodes(request):
 
     import os
-    from subprocess import call
+    import subprocess
     from tempfile import mkdtemp, mkstemp
     from django.template.loader import render_to_string
     
