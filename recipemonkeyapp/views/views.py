@@ -25,11 +25,10 @@ def index(request):
 
 def barcodes(request):
 
-    from os import remove, rename
-    from os.path import dirname
-    from tempfile import NamedTemporaryFile
-    import subprocess
-    from django.template import Context, loader
+    import os
+    from subprocess import call
+    from tempfile import mkdtemp, mkstemp
+    from django.template.loader import render_to_string
     
 
     response = HttpResponse(mimetype='application/pdf')
@@ -61,10 +60,7 @@ def barcodes(request):
 
     t = loader.get_template('recipemonkey/tex/barcodes.tex')
 
-    import os
-    from subprocess import call
-    from tempfile import mkdtemp, mkstemp
-    from django.template.loader import render_to_string
+   
     # In a temporary folder, make a temporary file
     
     # Pass the TeX template through Django templating engine and into the temp file
