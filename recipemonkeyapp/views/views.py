@@ -55,7 +55,7 @@ def barcodes(request):
     os.write(texfile, render_to_string('recipemonkey/tex/barcodes.tex', {'barcodes': barcodes_list}))
     os.close(texfile)
     # Compile the TeX file with PDFLaTeX
-    call(['/usr/texbin/pdflatex', texfilename])
+    call(['export PATH="/usr/texbin;$PATH";pdflatex', texfilename])
     # Move resulting PDF to a more permanent location
     #os.rename(texfilename + '.pdf', dest_folder)
     # Remove intermediate files
