@@ -59,8 +59,8 @@ def barcodes(request):
 
 
     
-    ret = subprocess.call(["/usr/texbin/latex",tex.name])
-    retcode = subprocess.check_call(["/usr/texbin/dvipdfm -pA4",base+".dvi"])
+    ret = subprocess.call(["cd /tmp;/usr/texbin/latex",base])
+    retcode = subprocess.check_call(["cd /tmp;/usr/texbin/dvipdfm -pA4",base+".dvi"])
     
     
     remove(names['log'])
