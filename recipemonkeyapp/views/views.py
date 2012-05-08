@@ -38,8 +38,8 @@ def barcodes(request):
     tmp_folder = mkdtemp()
     os.chdir(tmp_folder)        
     texfile, texfilename = mkstemp(dir=tmp_folder)
-    i=1
-    for i in range(65):
+   
+    for i in range(1,66):
         url="https://%s/recipemonkeyapp/scan/%s/" % ('mothership.getoutsideandlive.com',i)
 
         img=barcode('qrcode',url,data_mode='8bits',margin=0)
