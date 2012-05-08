@@ -117,7 +117,7 @@ def scan(request, id):
 
     class StorageItemForm(ModelForm):
         
-        content = forms.ModelChoiceField(queryset=Recipe.objects.all())
+        content_object = forms.ModelChoiceField(queryset=Recipe.objects.all())
         class Meta:
             model = StorageItem
             exclude = ('object_id')
@@ -125,7 +125,7 @@ def scan(request, id):
 
     try:
         i = StorageItem.objects.get(barcode=id)
-        form=StorageItemForm({'content':i.object_id},instance=i)
+        form=StorageItemForm(instance=i)
     except StorageItem.DoesNotExist:
         form=StorageItemForm({'barcode':id})
 
