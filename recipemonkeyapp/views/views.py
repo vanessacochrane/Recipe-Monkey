@@ -48,7 +48,6 @@ def barcodes(request):
     })
 
     r = t.render(c)
-    print "Rendered tex: "+ r
     tex = NamedTemporaryFile(delete=False)
     tex.write(r)
    
@@ -61,7 +60,7 @@ def barcodes(request):
 
     
     ret = subprocess.call(["/usr/texbin/latex",tex.name])
-    retcode = subprocess.check_call(["/usr/local/bin/dvipdf",base+".dvi"])
+    retcode = subprocess.check_call(["/usr/texbin/dvipdfm -pA4",base+".dvi"])
     
     
     remove(names['log'])
