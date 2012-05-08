@@ -91,17 +91,17 @@ def barcodes(request):
     response.write(f2.read())
     f2.close
 
-    #os.remove(texfilename)
-    #os.remove(texfilename + '.dvi')
+    os.remove(texfilename)
+    os.remove(texfilename + '.dvi')
     
-    #os.remove(texfilename + '.aux')
-    #os.remove(texfilename + '.log')
-    #os.remove(texfilename + '.pdf')
+    os.remove(texfilename + '.aux')
+    os.remove(texfilename + '.log')
+    os.remove(texfilename + '.pdf')
     
-    #for filename in glob.glob('*.eps') :
-    #    os.remove( filename )
+    for filename in glob.glob('*.eps') :
+       os.remove( filename )
 
-    #os.rmdir(tmp_folder)
+    os.rmdir(tmp_folder)
   
 
 
