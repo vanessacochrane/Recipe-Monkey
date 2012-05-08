@@ -60,8 +60,7 @@ def barcodes(request):
         barcodes_list.append({'code':i,'name':fname})
         f=None
 
-    t = loader.get_template('recipemonkey/tex/barcodes.tex')
-
+    
    
     # In a temporary folder, make a temporary file
     
