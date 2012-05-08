@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from recipemonkeyapp.models import Recipe
+from recipemonkeyapp.models import Recipe,GroceryItem
 from django.http import HttpResponse,HttpResponseRedirect
 from elaphe import barcode 
 from django.http import Http404
@@ -117,10 +117,12 @@ def scan(request, id):
 
     class StorageItemForm(ModelForm):
         
-        content_object = forms.ModelChoiceField(queryset=Recipe.objects.all())
+        recipes = forms.ModelChoiceField(queryset=Recipe.objects.all())
+        ingredients = forms.ModelChoiceField(queryset=GroceryItem.objects.all())
+
         class Meta:
             model = StorageItem
-            exclude = ('object_id')
+            exclude = ('object_id','content_object','content_type')
             
 
     try:
