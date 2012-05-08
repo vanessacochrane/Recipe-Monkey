@@ -130,10 +130,12 @@ def scan(request, id):
         form=StorageItemForm(instance=i)
     except StorageItem.DoesNotExist:
         form=StorageItemForm({'barcode':id})
+        i = None
 
    
 
     ct={
+        'item': i,
         'form':form.as_table(),
     }
 

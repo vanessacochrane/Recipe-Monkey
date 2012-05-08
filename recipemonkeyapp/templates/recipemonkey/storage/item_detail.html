@@ -6,7 +6,20 @@
 
 {% block content %}
 
+<h3>Current Item</h3>
+{%if item %}
+<ul>
+	<li>{{item.name}}, {{item.quantity}} Added: {{item.date_added|date:"d M Y"}}</li>
+</ul>
+	
+{%else%}
+<ul>
+<li><strong>NONE</strong></li>
+</ul>
+{%endif%}
 
+
+<h3>Edit Content</h3>
 <form method="post" action="">
     {{ form }}
 </form>
