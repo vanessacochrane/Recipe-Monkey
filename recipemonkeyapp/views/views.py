@@ -39,30 +39,12 @@ def barcodes(request):
 
     i=1
     for i in range(65):
-        barcodes_list.append(i)
-
-    c = Context({})
-  
-    
-    t = loader.get_template('recipemonkey/tex/label.tdf')
-    r = t.render(c)
-    print "Rendered tex: "+ r
-    tmp1 = NamedTemporaryFile(suffix='.tdf',prefix='label',delete=False)
-    tmp1.write(r)
-
-    t = loader.get_template('recipemonkey/tex/ticket.sty')
-    r = t.render(c)
-    print "Rendered tex: "+ r
-    tmp2 = NamedTemporaryFile(suffix='.sty',prefix='ticket',delete=False)
-    tmp2.write(r)
-    
-   
+        barcodes_list.append(26)
 
     t = loader.get_template('recipemonkey/tex/barcodes.tex')
 
     c = Context({
           'barcodes': barcodes_list,
-          'ticket': tmp2.name,
     })
 
     r = t.render(c)
