@@ -42,16 +42,7 @@ def barcodes(request):
         barcodes_list.append(i)
 
 
-    t = loader.get_template('recipemonkey/tex/barcodes.tex')
-
-    c = Context({
-        'barcodes': barcodes_list,
-    })
-
-    r = t.render(c)
-    print "Rendered tex: "+ r
-    tex = NamedTemporaryFile(delete=False)
-    tex.write(r)
+  
     
     t = loader.get_template('recipemonkey/tex/label.tdf')
     r = t.render(c)
@@ -70,7 +61,17 @@ def barcodes(request):
     items = "log aux pdf dvi png".split()
     names = dict((x, '%s.%s' % (base, x)) for x in items)
 
-    
+    t = loader.get_template('recipemonkey/tex/barcodes.tex')
+
+    c = Context({
+          'barcodes': barcodes_list,
+          'ticket': tmp2.name,
+    })
+
+    r = t.render(c)
+    print "Rendered tex: "+ r
+    tex = NamedTemporaryFile(delete=False)
+    tex.write(r)
    
     retcode = subprocess.check_call(["/usr/texbin/latex",tex.name])
     retcode = subprocess.check_call(["/usr/local/bin/dvipdf",base+".dvi"])
