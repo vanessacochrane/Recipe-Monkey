@@ -52,7 +52,6 @@ def barcodes(request):
     print "Rendered tex: "+ r
     tex = NamedTemporaryFile()
     tex.write(r)
-    tex.close()
     #tex.flush()
     base = tex.name
     items = "log aux pdf dvi png".split()
@@ -60,13 +59,10 @@ def barcodes(request):
 
     path="/Volumes/ExtDisk2-2tb/Data/dropbox-cochranedavey/Dropbox/CochraneDavey/Development/Django/cochranedavey/"
     
-    try:
-        retcode = subprocess.check_call(["/usr/texbin/latex",base+'.tex'])
-        retcode = subprocess.check_call(["/usr/local/bin/dvipdf",base+".dvi"])
+   
+    retcode = subprocess.check_call(["/usr/texbin/latex",tex])
+    retcode = subprocess.check_call(["/usr/local/bin/dvipdf",base+".dvi"])
     
-    except:
-        from traceback import print_exc
-        print_exc()
     
     remove(names['log'])
     remove(names['aux'])
