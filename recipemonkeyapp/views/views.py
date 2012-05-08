@@ -29,7 +29,7 @@ def barcodes(request):
     import subprocess
     from tempfile import mkdtemp, mkstemp
     from django.template.loader import render_to_string
-    
+    import glob
 
     response = HttpResponse(mimetype='application/pdf')
     response['Content-Disposition'] = 'attachment; filename=barcodes.pdf'
@@ -92,10 +92,12 @@ def barcodes(request):
     f2.close
 
     os.remove(texfilename)
+    os.remove(texfilename + '.dvi')
+    
     os.remove(texfilename + '.aux')
     os.remove(texfilename + '.log')
     os.remove(texfilename + '.pdf')
-    
+    os.remove(glob.glob('*.eps'))
     os.rmdir(tmp_folder)
   
 
