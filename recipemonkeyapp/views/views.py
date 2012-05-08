@@ -73,7 +73,7 @@ def barcodes(request):
     #if process.wait() != 0:
     #    raise Exception("There were some errors running latex")
 
-    process=subprocess.Popen(['/usr/local/bin/dvipdf',"-sPAPERSIZE=a4",texfilename+".dvi"],env={"PATH": "/usr/texbin"})
+    process=subprocess.Popen(['/usr/local/bin/dvipdf',texfilename+".dvi"],env={"PATH": "/usr/texbin:/usr/local/bin"})
 
     #if process.wait() != 0:
     #    raise Exception("There were some errors generating pdf")
@@ -83,11 +83,11 @@ def barcodes(request):
     
     
     dest=os.path.join('/usr/local/web/django/www/production/mothership',texfilename + '.pdf')
-    os.rename(texfilename + '.pdf', dest)
+    #os.rename(texfilename + '.pdf', dest)
     # Remove intermediate files
    
 
-    f2 = open(dest, 'r')
+    f2 = open(texfilename + '.pdf', 'r')
     response.write(f2.read())
     f2.close
 
