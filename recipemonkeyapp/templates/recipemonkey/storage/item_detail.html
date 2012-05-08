@@ -9,7 +9,7 @@
 <h3>Current Item</h3>
 {%if item %}
 <ul>
-	<li>{{item.name}}, {{item.quantity}} Added: {{item.date_added|date:"d M Y"}}</li>
+	<li>{{item.content_object.name}}, {{item.quantity}} Added: {{item.date_added|date:"d M Y"}}</li>
 </ul>
 	
 {%else%}
