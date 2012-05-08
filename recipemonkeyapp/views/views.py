@@ -118,8 +118,8 @@ def scan(request, id):
 
     class StorageItemForm(ModelForm):
         
-        recipes = forms.ModelChoiceField(queryset=Recipe.objects.all(),required=True)
-        ingredients = forms.ModelChoiceField(queryset=GroceryItem.objects.all())
+        recipe = forms.ModelChoiceField(queryset=Recipe.objects.all(),required=True)
+        ingredient = forms.ModelChoiceField(queryset=GroceryItem.objects.all(),required=False)
 
 
         class Meta:
@@ -140,9 +140,9 @@ def scan(request, id):
             si=form.save(commit=False)
 
             if form['recipes']:
-                i=Recipe.objects.get(pk=form['recipes'])
+                i=Recipe.objects.get(pk=form.cleaned_data['recipe'])
             else: 
-                i=GroceryItem.objects.get(pk=form['ingredients'])
+                i=GroceryItem.objects.get(pk=form.cleaned_data['ingredient'])
 
             si.content_object=i
             si.object_id=i.id
