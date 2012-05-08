@@ -1,32 +1,104 @@
-\documentclass[a4paper]{article}
-\usepackage{times}
-\usepackage[newdimens]{labels}
-\usepackage{graphicx}
+%%%
+%
+% ticket.sty example file for flashcards for word learning
+%
+%%%%
+% use the corresponding paper size for your ticket definition
+\documentclass[a4paper,10pt]{letter}
+
+\usepackage[label]{ticket}
+\usepackage{graphicx}  % load misc stuff
+\usepackage{syntonly}  %to test without output
+\usepackage{fancybox}
+
+% make your default ticket. \ticketdefault is somewhat like a background
+\renewcommand{\ticketdefault}{%no background
+}
+
+% now what do you like to put in your ticket
+\newcommand{\card}[2]{\ticket{%
+    \put(11,2){\centering{\includegraphics[width=16mm,height=16mm,origin=bl]{26.eps}}}
+    \put(15,0){\centering{#1}}
+ }}
 
 
-\LabelCols=2 % Number of columns of labels per page
-\LabelRows=6 % Number of rows of labels per page
-\LeftPageMargin=7mm % These four parameters give the
-\RightPageMargin=7mm % page gutter sizes. The outer edges of
-\TopPageMargin=15mm% the outer labels are the specified
-\BottomPageMargin=20mm% distances from the edge of the paper.
-\InterLabelColumn=2mm% Gap between columns of labels
-\InterLabelRow=2mm% Gap between rows of labels
-\LeftLabelBorder=2mm% These four parameters give the extra
-\RightLabelBorder=2mm% space used around the text on each
-\TopLabelBorder=2mm% actual label.
-\BottomLabelBorder=2mm%
-\LabelInfotrue
-\LabelGridtrue
-\def\imagetop#1{\vtop{\null\hbox{#1}}}
-\begin{document}{% if barcodes %}{% for code in barcodes %}
-\genericlabel{
-	\imagetop{\includegraphics[scale=1.0]{%templatetag openbrace%}barcodes/{{code}}.eps}} \\
-	\begin{tabular*}{0.7\textwidth}[t]{@{\extracolsep{\fill}} p{4.5cm}}	{% autoescape off %}
-	\\
-	\\
-	\Large{%templatetag openbrace%}{{ code }}{%templatetag closebrace%} \\
-	{% endautoescape %}
-	\end{tabular*}
-	}{% endfor %}{% else %}No items are available.{% endif %}
+
+
+%% you can generate this part from a database!
+\begin{document}
+
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+\card{abate}{to lessen to subside}
+
 \end{document}
+
+
+
+
+
+
+
+

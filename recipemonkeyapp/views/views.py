@@ -54,7 +54,8 @@ def barcodes(request):
     tex.write(r)
     tex.flush()
     base = tex.name
-    
+    items = "log aux pdf dvi png".split()
+    names = dict((x, '%s.%s' % (base, x)) for x in items)
 
     path="/Volumes/ExtDisk2-2tb/Data/dropbox-cochranedavey/Dropbox/CochraneDavey/Development/Django/cochranedavey/"
     
@@ -74,8 +75,7 @@ def barcodes(request):
     f2.close
 
 
-    items = "log aux pdf dvi png".split()
-    names = dict((x, '%s.%s' % (base, x)) for x in items)
+  
 
 
     return response

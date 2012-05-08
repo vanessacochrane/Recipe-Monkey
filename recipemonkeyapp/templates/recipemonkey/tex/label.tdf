@@ -1,0 +1,11 @@
+%%
+%% free ticket for flashcards (GRE). 
+%%
+\unitlength=1mm
+\hoffset=-20.0mm
+\voffset=-20.0mm
+
+\ticketNumbers{5}{13}
+
+\ticketSize{38}{21.5} % in unitlength
+\ticketDistance{2.5}{0} % in unitlength
