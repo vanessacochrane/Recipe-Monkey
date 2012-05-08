@@ -55,7 +55,8 @@ def barcodes(request):
         region = img.crop(box)
         f, fname = mkstemp(dir=tmp_folder)
         
-        region.save(f, 'EPS')
+        
+        region.save(fname, 'EPS')
         barcodes_list.append(i)
         f.close()
         f=None
