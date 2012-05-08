@@ -20,9 +20,9 @@
 
 
 <h3>Edit Content</h3>
-<form method="post" action="">
+<form method="post" action="">{% csrf_token %}
 	<table>
-    {{ form }}
+    {{ form.as_table }}
 	</table>
 	<p align="center"><input type="submit" value="Update Storage" align="center"/></p>
 

@@ -156,7 +156,7 @@ def scan(request, id):
     
     ct={
         'item': i,
-        'form':form.as_table(),
+        'form':form,
     }
 
 
