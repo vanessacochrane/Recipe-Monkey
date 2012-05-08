@@ -55,7 +55,7 @@ def barcodes(request):
     os.write(texfile, render_to_string('recipemonkey/tex/barcodes.tex', {'barcodes': barcodes_list}))
     os.close(texfile)
     # Compile the TeX file with PDFLaTeX
-    Popen(['pdflatex', texfilename],env={"PATH": "/usr/texbin"}, shell=True)
+    subprocess.Popen(['pdflatex', texfilename],env={"PATH": "/usr/texbin"}, shell=True)
     # Move resulting PDF to a more permanent location
     
     
