@@ -38,7 +38,7 @@
 
 {% for code in barcodes %}
 
-\card{%templatetag openbrace%}{{code.name}},{{code.code}}{%templatetag closebrace%}
+\card{%templatetag openbrace%}{{code.name}}{%templatetag closebrace%}{%templatetag openbrace%}{{code.code}}{%templatetag closebrace%}
 
 {%endfor%}
 
