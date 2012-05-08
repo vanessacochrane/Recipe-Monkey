@@ -34,14 +34,8 @@
 
 
 
-\begin{document}
-
-{% for code in barcodes %}
-
-\card{%templatetag openbrace%}{{code.name}}{%templatetag closebrace%}{%templatetag openbrace%}{{code.code}}{%templatetag closebrace%}
-
-{%endfor%}
-
+\begin{document}{% for code in barcodes %}
+\card{%templatetag openbrace%}{{code.name}}{%templatetag closebrace%}{%templatetag openbrace%}{{code.code}}{%templatetag closebrace%}{%endfor%}
 \end{document}
 
 
