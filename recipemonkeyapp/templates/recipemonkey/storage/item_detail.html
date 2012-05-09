@@ -15,9 +15,9 @@ function get_objects(){
 	url: '/recipemonkeyapp/ajax_object_request/', 
     data: "{type:'"+ $('#id_obj_type').val() + "'}",
     success: function(data) {
-        var e = $('#id_obj')
-        
-         e.update(data)
+        var e = $('#id_obj');
+        alert(data);
+         e.update(data);
     }
     });
 }
