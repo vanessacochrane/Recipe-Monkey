@@ -120,8 +120,11 @@ def scan(request, id):
 
     class StorageItemForm(ModelForm):
         
-        recipe = forms.ModelChoiceField(queryset=Recipe.objects.all(),required=False,widget=forms.Select(attrs={'onchange':'get_objects();'}))
-        ingredient = forms.ModelChoiceField(queryset=GroceryItem.objects.all(),required=False)
+        CHOICES=(('R','Recipe'),('I','Ingredient'))
+        object_type=forms.ChoiceField(widget=forms.RadioSelect(attrs={'onchange':'get_objects();'}), choices=CHOICES)
+        
+        #recipe = forms.ModelChoiceField(queryset=Recipe.objects.all(),required=False,widget=forms.Select(attrs={'onchange':'get_objects();'}))
+        #ingredient = forms.ModelChoiceField(queryset=GroceryItem.objects.all(),required=False)
 
 
         class Meta:
