@@ -3,6 +3,12 @@
 {% block title %}Storage Items{% endblock %}
 {% block breadcrumb %}{{ block.super }} &raquo; {{item.name}} {% endblock %}
 {% block content_header %}{{item.name}}{% endblock %}
+{% block extra_scripts %}
+<script>
+function get_objects(){
+   alert('what up');
+}
+</script>
 
 {% block content %}
 
