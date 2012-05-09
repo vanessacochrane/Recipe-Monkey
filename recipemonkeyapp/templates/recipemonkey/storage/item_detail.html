@@ -16,8 +16,8 @@ function get_objects(){
     data: "{type:'"+ $('#id_obj_type').val() + "'}",
     success: function(data) {
         var e = $('#id_obj');
-        alert(data);
-         e.update(data);
+        //alert(data);
+        e.html(data);
     }
     });
 }
