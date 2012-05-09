@@ -154,7 +154,7 @@ def scan(request, id):
                 print 'trying to save storage item...'
                 si.save()
 
-            return redirect('recipemonkeyapp.views.scan',id=i.id)
+            return redirect('recipemonkeyapp.views.views.scan',id=i.id)
 
         else:
             print 'form not valid...'
