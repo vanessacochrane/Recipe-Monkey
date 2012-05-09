@@ -110,7 +110,7 @@ def barcodes(request):
     return response
 
 
-def ajax_color_request(request):
+def ajax_object_request(request):
     # Expect an auto 'type' to be passed in via Ajax and POST
     if request.is_ajax() and request.method == 'POST':
         if request.POST.get('type', '') == 'R':
