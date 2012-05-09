@@ -6,10 +6,12 @@
 {% block extra_scripts %}
 <script>
 function get_objects(){
+	
+	alert($('#id_obj_type').val());
     $.ajax({ 
 	url: '/recipemonkeyapp/ajax_object_request/', 
     type: 'post',
-    data: "{type:'"+ $('#id_obj_type').getValue() +"'}",
+    data: "{type:'"+ $('#id_obj_type').val() +"'}",
     success: function(data) {
         var e = $('#id_obj')
         
