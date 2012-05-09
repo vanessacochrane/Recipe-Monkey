@@ -113,6 +113,8 @@ def barcodes(request):
 def ajax_object_request(request):
     # Expect an auto 'type' to be passed in via Ajax and POST
     #if request.is_ajax() and request.method == 'POST':
+    
+    print request.GET
     if request.GET.get('obj_type', '') == 'R':
         objects = Recipe.objects.all() 
     else:
