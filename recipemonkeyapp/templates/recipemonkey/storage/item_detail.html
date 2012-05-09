@@ -13,7 +13,7 @@ function get_objects(){
 	
     $.ajax({ 
 	url: '/recipemonkeyapp/ajax_object_request/', 
-    data: {obj_type:"'"+ $('#id_obj_type').val() + "'"},
+    data: {obj_type:$('#id_obj_type').val()},
     success: function(data) {
         var e = $('#id_obj');
         //alert(data);
