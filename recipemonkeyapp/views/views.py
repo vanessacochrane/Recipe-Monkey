@@ -109,6 +109,17 @@ def barcodes(request):
 
     return response
 
+
+def ajax_color_request(request):
+    # Expect an auto 'type' to be passed in via Ajax and POST
+    if request.is_ajax() and request.method == 'POST':
+        if request.POST.get('type', '') == 'R':
+            objects = Recipe.objects.all() 
+        else:
+            objects = GroceryItem.objects.all() 
+
+    return render_to_response('recipemonkey/storage/ajax_object_request.html', locals())
+
 def scan(request, id):
 
     from recipemonkeyapp.models import StorageItem
@@ -122,6 +133,9 @@ def scan(request, id):
         
         CHOICES=(('R','Recipe'),('I','Ingredient'))
         object_type=forms.ChoiceField(widget=forms.RadioSelect(attrs={'onchange':'get_objects();'}), choices=CHOICES)
+        OBJ_CHOICES = [(r.id, r.name) for r in Recipe.objects.all()]
+        
+        obj = forms.ChoiceField(choices=OBJ_CHOICES)
         
         #recipe = forms.ModelChoiceField(queryset=Recipe.objects.all(),required=False,widget=forms.Select(attrs={'onchange':'get_objects();'}))
         #ingredient = forms.ModelChoiceField(queryset=GroceryItem.objects.all(),required=False)

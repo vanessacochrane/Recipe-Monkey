@@ -8,6 +8,7 @@ urlpatterns = patterns('recipemonkeyapp.views.views',
  #   (r'^barcode/(?P<code>\d+)/$', 'barcodeimg'),
     (r'^barcodes/$', 'barcodes'),
     (r'^scan/(?P<id>\d+)/$', 'scan'),
+    (r'^ajax_object_request/$', 'ajax_object_request'),
 	
 
 )
