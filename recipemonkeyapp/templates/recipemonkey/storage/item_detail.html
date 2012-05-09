@@ -6,8 +6,9 @@
 {% block extra_scripts %}
 <script>
 function get_objects(){
-    new Ajax.Request('/recipemonkeyapp/ajax_object_request/', { 
-    method: 'post',
+    $.ajax({ 
+	url: '/recipemonkeyapp/ajax_object_request/', 
+    type: HTTP_POST,
     parameters: $H({'type':$('id_obj_type').getValue()}),
     onSuccess: function(transport) {
         var e = $('id_obj')
