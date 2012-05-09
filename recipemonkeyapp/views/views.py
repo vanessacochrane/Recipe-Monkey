@@ -5,6 +5,7 @@ from recipemonkeyapp.models import Recipe,GroceryItem
 from django.http import HttpResponse,HttpResponseRedirect
 from elaphe import barcode 
 from django.http import Http404
+import logging
 
 
 #@login_required(login_url='/accounts/login/')
@@ -118,7 +119,6 @@ def ajax_object_request(request):
     #print request.GET.get('obj_type','')
     
     if request.GET.get('obj_type','') == 'R':
-        #print "r found"
         objects = Recipe.objects.all() 
     else:
         objects = GroceryItem.objects.all() 
@@ -132,6 +132,9 @@ def scan(request, id):
     from django import forms
     from django.db import models
     from django.contrib.contenttypes.models import ContentType
+    
+    
+    logging.debug('Scanned barcode %s' % id)
     
 
     class StorageItemForm(ModelForm):
