@@ -115,6 +115,8 @@ def scan(request, id):
     from django.forms import ModelForm
     from django import forms
     from django.db import models
+    from django.contrib.contenttypes.models import ContentType
+    
 
     class StorageItemForm(ModelForm):
         
