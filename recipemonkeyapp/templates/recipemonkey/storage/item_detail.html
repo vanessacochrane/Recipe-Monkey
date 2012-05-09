@@ -9,11 +9,11 @@ function get_objects(){
     $.ajax({ 
 	url: '/recipemonkeyapp/ajax_object_request/', 
     type: 'post',
-    data: "{type:'"+ $('id_obj_type').getValue() +"'}",
-    onSuccess: function(transport) {
-        var e = $('id_obj')
-        if(transport.responseText)
-            e.update(transport.responseText)
+    data: "{type:'"+ $('#id_obj_type').getValue() +"'}",
+    success: function(data) {
+        var e = $('#id_obj')
+        
+         e.update(data)
     }
     });
 }
