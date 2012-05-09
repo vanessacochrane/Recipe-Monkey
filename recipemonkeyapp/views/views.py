@@ -154,7 +154,8 @@ def scan(request, id):
 
             return redirect('recipemonkeyapp.views.scan',id=i.id)
 
-    
+        else:
+            print 'form not valid...'
     ct={
         'item': i,
         'form':form,
