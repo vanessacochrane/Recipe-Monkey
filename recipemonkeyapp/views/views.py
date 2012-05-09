@@ -135,7 +135,7 @@ def scan(request, id):
 
     if request.method == 'POST': # If the form has been submitted...
 
-    
+        form=StorageItemForm(request.POST)
         if form.is_valid():
            
             if form['recipes']:
