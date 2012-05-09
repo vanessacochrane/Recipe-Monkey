@@ -138,6 +138,7 @@ def scan(request, id):
         form=StorageItemForm(request.POST)
         if form.is_valid():
            
+            print form.cleaned_data['recipe']
             if form.cleaned_data['recipe']:
                 i=Recipe.objects.get(pk=form.cleaned_data['recipe'])
             else: 
