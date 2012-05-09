@@ -7,12 +7,11 @@
 <script>
 function get_objects(){
 	
-	alert($('input:hidden[name=csrfmiddlewaretoken]').val());
 	
     $.ajax({ 
 	url: '/recipemonkeyapp/ajax_object_request/', 
     type: 'post',
-    data: "{type:'"+ $('#id_obj_type').val() +"'}",
+    data: "{type:'"+ $('#id_obj_type').val() +"',csrfmiddlewaretoken:'" + $('input:hidden[name=csrfmiddlewaretoken]').val() + "'}",
     success: function(data) {
         var e = $('#id_obj')
         
