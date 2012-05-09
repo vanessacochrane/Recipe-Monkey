@@ -113,7 +113,7 @@ def barcodes(request):
 def ajax_object_request(request):
     # Expect an auto 'type' to be passed in via Ajax and POST
     if request.is_ajax() and request.method == 'POST':
-        if request.POST.get('type', '') == 'R':
+        if request.POST.get('obj_type', '') == 'R':
             objects = Recipe.objects.all() 
         else:
             objects = GroceryItem.objects.all() 
@@ -132,7 +132,7 @@ def scan(request, id):
     class StorageItemForm(ModelForm):
         
         CHOICES=(('R','Recipe'),('I','Ingredient'))
-        object_type=forms.ChoiceField(widget=forms.RadioSelect(attrs={'onchange':'get_objects();'}), choices=CHOICES)
+        obj_type=forms.ChoiceField(widget=forms.RadioSelect(attrs={'onchange':'get_objects();'}), choices=CHOICES)
         OBJ_CHOICES = [(r.id, r.name) for r in Recipe.objects.all()]
         
         obj = forms.ChoiceField(choices=OBJ_CHOICES)

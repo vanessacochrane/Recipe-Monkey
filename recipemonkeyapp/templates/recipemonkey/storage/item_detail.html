@@ -8,7 +8,7 @@
 function get_objects(){
     new Ajax.Request('/recipemonkeyapp/ajax_object_request/', { 
     method: 'post',
-    parameters: $H({'type':$('id_object_type').getValue()}),
+    parameters: $H({'type':$('id_obj_type').getValue()}),
     onSuccess: function(transport) {
         var e = $('id_obj')
         if(transport.responseText)
