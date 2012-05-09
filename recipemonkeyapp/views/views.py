@@ -120,7 +120,7 @@ def scan(request, id):
 
     class StorageItemForm(ModelForm):
         
-        recipe = forms.ModelChoiceField(queryset=Recipe.objects.all(),required=True)
+        recipe = forms.ModelChoiceField(queryset=Recipe.objects.all(),required=False)
         ingredient = forms.ModelChoiceField(queryset=GroceryItem.objects.all(),required=False)
 
 
