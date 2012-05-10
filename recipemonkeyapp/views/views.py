@@ -143,7 +143,7 @@ def send_expiry_notifications(request):
     u = User.objects.get(username__exact='evandavey')
     
     if notification:
-        notification.send([u], "storage_near_expiry", {"item": StorageItem.objects.get(barcode=1)})
+        notification.send([u], "storage_nearing_expiry", {"item": StorageItem.objects.get(barcode=1)})
 
 
 class StorageItemForm(ModelForm):
