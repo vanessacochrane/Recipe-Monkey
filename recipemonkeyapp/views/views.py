@@ -203,11 +203,9 @@ def scan(request, id, mode='NEW'):
 
                 nsi.content_type=ContentType.objects.get_for_model(si.content_object)
 
-            if nsi.quantity > 0:
-                logging.debug('trying to save storage item... %s' % nsi)
-                nsi.save()
-            else:  
-                nsi.delete()
+            
+            logging.debug('trying to save storage item... %s' % nsi)
+            nsi.save()
                 
 
             return redirect('recipemonkeyapp.views.views.scan',id=nsi.barcode)

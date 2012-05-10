@@ -42,7 +42,9 @@ class StorageItem(models.Model):
 				sl.dateAdded=old.date_added
 				sl.save()
 				
+				if old.quantity <= 0:
+				    old.delete()
 				
 		
-		
-		super(StorageItem, self).save(*args, **kwargs) # Call the "real" save() method.
+		if self.quantity > 0:
+		    super(StorageItem, self).save(*args, **kwargs) # Call the "real" save() method.
