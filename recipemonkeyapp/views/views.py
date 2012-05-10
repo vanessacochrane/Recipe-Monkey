@@ -140,7 +140,7 @@ class StorageItemForm(ModelForm):
     
     OBJ_CHOICES = recipes
     OBJ_CHOICES.extend(items)
-    OBJ_CHOICE.insert(0,('-','--Select Type--'))
+    OBJ_CHOICES.insert(0,('-','--Select Type--'))
     
     
     obj = forms.ChoiceField(choices=OBJ_CHOICES,label='Object')
