@@ -193,7 +193,7 @@ def scan(request, id, mode='NEW'):
             return redirect('recipemonkeyapp.views.views.scan',id=si.barcode)
 
         else:
-            print 'form not valid...'
+            logging.debug('form not valid...')
     ct={
         'item': si,
         'form':form,
