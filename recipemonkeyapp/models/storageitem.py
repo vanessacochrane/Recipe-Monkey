@@ -35,8 +35,7 @@ class StorageItem(models.Model):
 	        else:
 	            m=1
 	            
-	        logging.debug(self.date_added+(self.content_object.expiryDays*m))
-	        return self.date_added+(self.content_object.expiryDays*m)
+	        return self.date_added+timedelta(days=self.content_object.expiryDays*m)
 	        
 	    except:
 	        logging.error('Error working out expiry')
