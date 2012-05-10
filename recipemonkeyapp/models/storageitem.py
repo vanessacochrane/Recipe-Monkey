@@ -28,14 +28,14 @@ class StorageItem(models.Model):
 	@property
 	def expiry(self):
 	    
-	    logging.debug(self.content_object.expiryDays)
+	    
 	    try:
 	        if self.storage.frozen:
 	            m=self.content_object.expiryFrozenMultiplier
 	        else:
 	            m=1
 	            
-	            
+	        logging.debug(self.content_object.expiryDays*m)
 	        return self.date_added+(self.content_object.expiryDays*m)
 	        
 	    except:
