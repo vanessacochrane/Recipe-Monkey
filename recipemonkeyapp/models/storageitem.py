@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from recipemonkeyapp.models.storagelog import StorageLog
+import logging
 
 MEASURE_CHOICES = (
     ('SERVES', 'Serves'),
@@ -37,6 +38,7 @@ class StorageItem(models.Model):
 	        return date_added+(self.content_object.expiryDays*m)
 	        
 	    except:
+	        logging.error('Error working out expiry')
 	        return None
 	
 	
