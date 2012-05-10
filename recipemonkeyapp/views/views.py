@@ -165,8 +165,11 @@ def scan(request, id):
         form=StorageItemForm(request.POST,instance=si)
         if form.is_valid():
            
-            i=form.cleaned_data['obj']
-        
+            if form.cleaned_data['obj_type']=='R':
+                i=Recipe.objects.get(pk=form.cleaned_data['obj'])
+            else:
+                i=GroceryItem.objects.get(pk=form.cleaned_data['obj'])
+                
             si=form.save(commit=False)
             si.content_object=i
             si.object_id=i.id
