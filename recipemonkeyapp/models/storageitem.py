@@ -42,7 +42,7 @@ class StorageItem(models.Model):
 				sl.dateAdded=old.date_added
 				sl.save()
 				
-				if old.quantity <= 0:
+				if self.quantity <= 0:
 				    old.delete()
 				
 		
