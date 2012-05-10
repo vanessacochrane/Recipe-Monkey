@@ -11,6 +11,7 @@ class Storage(models.Model):
 	
 	name=models.CharField(max_length=256)
 	items = generic.GenericRelation('StorageItem',related_name='storedItem')
+	frozen = models.BooleanField(default=False)
 	#url....
 	
 	def __unicode__(self):

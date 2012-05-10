@@ -39,6 +39,10 @@ class Recipe(models.Model):
     subrecipes = models.ManyToManyField('Recipe',related_name='subRecipes',through='SubRecipe',null=True,blank=True)
     #: taggit object for the assignment of tags
     tags = TaggableManager()
+    #: days until expiry if kept fresh
+    expiryDays=models.PositiveIntegerField(default=0)
+    #: multiplier applied to expiry if kept frozen
+	expiryFrozenMultiplier=models.PositiveIntegerField(default=1)
 
 
     @models.permalink

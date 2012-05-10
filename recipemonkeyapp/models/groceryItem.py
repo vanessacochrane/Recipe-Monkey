@@ -18,7 +18,9 @@ class GroceryItem(models.Model):
 	store=models.ForeignKey('Store',null=True,blank=True)
 	tescoid=models.CharField(max_length=256,null=True,blank=True)
 	tescoName=models.CharField(max_length=256,null=True,blank=True)
-	
+	expiryDays=models.PositiveIntegerField(default=0)
+	expiryFrozenMultiplier=models.PositiveIntegerField(default=1)
+    
 	seasonal=models.BooleanField(default=False)
 	EANBarcode=models.CharField(max_length=256,null=True,blank=True)
 	tags = TaggableManager()
