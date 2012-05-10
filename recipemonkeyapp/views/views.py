@@ -147,7 +147,7 @@ class StorageItemForm(ModelForm):
     
     #recipe = forms.ModelChoiceField(queryset=Recipe.objects.all(),required=False,widget=forms.Select(attrs={'onchange':'get_objects();'}))
     #ingredient = forms.ModelChoiceField(queryset=GroceryItem.objects.all(),required=False)
-    barcode = forms.CharField(max_length=255)
+    barcode = forms.CharField(max_length=255,widget=forms.HiddenInput())
 
 
     class Meta:

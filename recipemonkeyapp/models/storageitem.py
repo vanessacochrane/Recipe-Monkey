@@ -3,6 +3,12 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from recipemonkeyapp.models.storagelog import StorageLog
 
+MEASURE_CHOICES = (
+    ('SERVES', 'Serves'),
+    ('G', 'Grams'),
+)
+
+
 class StorageItem(models.Model):
 	
 	class Meta: 
@@ -13,7 +19,7 @@ class StorageItem(models.Model):
 	content_object = generic.GenericForeignKey('content_type', 'object_id')
 	content_type = models.ForeignKey(ContentType,blank=True,null=True)
 	quantity=models.FloatField()
-	quantityMeasure=models.CharField(max_length=256)
+	quantityMeasure=models.CharField(max_length=256,choices=MEASURE_CHOICES)
 	date_added=models.DateField(auto_now_add=True,null=True)
 	barcode=models.CharField(max_length=256,blank=True,null=True)
 	
