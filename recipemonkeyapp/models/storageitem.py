@@ -9,9 +9,9 @@ class StorageItem(models.Model):
 		app_label = 'recipemonkeyapp'
 		
 	storage=models.ForeignKey('Storage')
-	object_id = models.PositiveIntegerField(blank=True)
+	object_id = models.PositiveIntegerField(blank=True,null=True)
 	content_object = generic.GenericForeignKey('content_type', 'object_id')
-	content_type = models.ForeignKey(ContentType,blank=True)
+	content_type = models.ForeignKey(ContentType,blank=True,null=True)
 	quantity=models.FloatField()
 	quantityMeasure=models.CharField(max_length=256)
 	date_added=models.DateField(auto_now_add=True,null=True)
