@@ -150,7 +150,7 @@ class StorageItemForm(ModelForm):
 class StorageUpdateForm(ModelForm):
     class Meta:
         model = StorageItem
-        exclude = ('object_id','content_object','content_type','barcode','storage')
+        fields = ('quantity')
 
 
 def scan(request, id, mode='NEW'):
