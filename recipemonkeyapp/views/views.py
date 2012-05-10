@@ -125,6 +125,30 @@ def ajax_object_request(request):
 
     return render_to_response('recipemonkey/storage/ajax_object_request.html', locals())
 
+
+class StorageItemForm(ModelForm):
+    
+    CHOICES=(('R','Recipe'),('I','Ingredient'))
+    obj_type=forms.ChoiceField(widget=forms.Select(attrs={'onchange':'get_objects();'}), choices=CHOICES)
+    OBJ_CHOICES = [(r.id, r.name) for r in Recipe.objects.all()]
+    
+    obj = forms.ChoiceField(choices=OBJ_CHOICES)
+    
+    #recipe = forms.ModelChoiceField(queryset=Recipe.objects.all(),required=False,widget=forms.Select(attrs={'onchange':'get_objects();'}))
+    #ingredient = forms.ModelChoiceField(queryset=GroceryItem.objects.all(),required=False)
+    barcode = forms.CharField(max_length=255)
+
+    class Meta:
+        model = StorageItem
+        exclude = ('object_id','content_object','content_type')
+
+
+class StorageUpdateForm(ModelForm):
+    class Meta:
+        model = StorageItem
+        exclude = ('object_id','content_object','content_type','barcode','storage')
+
+
 def scan(request, id, mode='NEW'):
 
     from recipemonkeyapp.models import StorageItem
@@ -137,25 +161,12 @@ def scan(request, id, mode='NEW'):
     logging.debug('Scanned barcode %s' % id)
     
 
-    class StorageItemForm(ModelForm):
-        
-        CHOICES=(('R','Recipe'),('I','Ingredient'))
-        obj_type=forms.ChoiceField(widget=forms.Select(attrs={'onchange':'get_objects();'}), choices=CHOICES)
-        OBJ_CHOICES = [(r.id, r.name) for r in Recipe.objects.all()]
-        
-        obj = forms.ChoiceField(choices=OBJ_CHOICES)
-        
-        #recipe = forms.ModelChoiceField(queryset=Recipe.objects.all(),required=False,widget=forms.Select(attrs={'onchange':'get_objects();'}))
-        #ingredient = forms.ModelChoiceField(queryset=GroceryItem.objects.all(),required=False)
-        barcode = forms.CharField(max_length=255)
 
-        class Meta:
-            model = StorageItem
-            exclude = ('object_id','content_object','content_type')
             
     try:
         si = StorageItem.objects.get(barcode=id)
-        form=StorageItemForm(instance=si)
+        form=StorageUpdateForm(instance=si)
+        
     except StorageItem.DoesNotExist:
         form=StorageItemForm({'barcode':id})
         si = None

@@ -29,6 +29,15 @@ function get_objects(){
 {%if item %}
 <ul>
 	<li>{{item.content_object.name}}, {{item.quantity}} Added: {{item.date_added|date:"d M Y"}}</li>
+	<form method="post" action="">{% csrf_token %}
+		
+	    {{ form}}
+		<input type="submit" value="CONSUME" align="center"/>
+		<input type="submit" value="ADD" align="center"/>
+		
+		</table>
+
+	</form>
 </ul>
 	
 {%else%}
@@ -39,7 +48,7 @@ function get_objects(){
 <form method="post" action="">{% csrf_token %}
 	<table>
     {{ form.as_table }}
-	<tr><td span="2"><input type="submit" value="Update Storage" align="center"/></td></tr>
+	<tr><td span="2" align="center"><input type="submit" value="Update Storage" align="center"/></td></tr>
 	</table>
 	
 </form>
