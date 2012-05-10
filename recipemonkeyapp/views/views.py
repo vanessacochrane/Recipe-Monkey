@@ -6,7 +6,11 @@ from django.http import HttpResponse,HttpResponseRedirect
 from elaphe import barcode 
 from django.http import Http404
 import logging
-
+from recipemonkeyapp.models import StorageItem
+from django.forms import ModelForm
+from django import forms
+from django.db import models
+from django.contrib.contenttypes.models import ContentType
 
 #@login_required(login_url='/accounts/login/')
 #def limited_object_detail(*args, **kwargs):
@@ -151,11 +155,7 @@ class StorageUpdateForm(ModelForm):
 
 def scan(request, id, mode='NEW'):
 
-    from recipemonkeyapp.models import StorageItem
-    from django.forms import ModelForm
-    from django import forms
-    from django.db import models
-    from django.contrib.contenttypes.models import ContentType
+
     
     
     logging.debug('Scanned barcode %s' % id)
