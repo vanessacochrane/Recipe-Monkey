@@ -134,9 +134,9 @@ class StorageItemForm(ModelForm):
     
     CHOICES=(('-','--Choose--'),('R','Recipe'),('I','Ingredient'))
     obj_type=forms.ChoiceField(widget=forms.Select(attrs={'onchange':'get_objects();'}), choices=CHOICES)
-    OBJ_CHOICES = [(r.id, r.name) for r in Recipe.objects.all()]
+    #OBJ_CHOICES = [(r.id, r.name) for r in Recipe.objects.all()]
     
-    obj = forms.ChoiceField(choices=OBJ_CHOICES)
+    obj = forms.ChoiceField()
     
     #recipe = forms.ModelChoiceField(queryset=Recipe.objects.all(),required=False,widget=forms.Select(attrs={'onchange':'get_objects();'}))
     #ingredient = forms.ModelChoiceField(queryset=GroceryItem.objects.all(),required=False)
@@ -145,14 +145,8 @@ class StorageItemForm(ModelForm):
 
     class Meta:
         model = StorageItem
-        #exclude = ('object_id','content_object','content_type')
-        widgets = {
-                    'object_id': forms.HiddenInput(),
-                    'content_object': forms.HiddenInput(),
-                    'content_type': forms.HiddenInput(),
-                    
-                }
-
+        exclude = ('object_id','content_object','content_type')
+       
 
 class StorageUpdateForm(ModelForm):
     class Meta:
