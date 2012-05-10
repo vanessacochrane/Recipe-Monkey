@@ -151,14 +151,14 @@ def scan(request, id):
 
         class Meta:
             model = StorageItem
-            hidden = ('object_id','content_object','content_type')
+            exclude = ('object_id','content_object','content_type')
             
     try:
-        i = StorageItem.objects.get(barcode=id)
-        form=StorageItemForm(instance=i)
+        si = StorageItem.objects.get(barcode=id)
+        form=StorageItemForm(instance=si)
     except StorageItem.DoesNotExist:
         form=StorageItemForm({'barcode':id})
-        i = None
+        si = None
 
     if request.method == 'POST': # If the form has been submitted...
 
@@ -181,7 +181,7 @@ def scan(request, id):
         else:
             print 'form not valid...'
     ct={
-        'item': i,
+        'item': si,
         'form':form,
     }
 
