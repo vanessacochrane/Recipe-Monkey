@@ -133,16 +133,17 @@ def ajax_object_request(request):
 class StorageItemForm(ModelForm):
     
     CHOICES=(('-','--Choose--'),('R','Recipe'),('I','Ingredient'))
-    obj_type=forms.ChoiceField(widget=forms.Select(attrs={'onchange':'get_objects();'}), choices=CHOICES)
+    obj_type=forms.ChoiceField(label='Object Type',widget=forms.Select(attrs={'onchange':'get_objects();'}), choices=CHOICES)
     
     recipes = [(r.id, r.name) for r in Recipe.objects.all()]
     items = [(r.id, r.name) for r in GroceryItem.objects.all()]
     
     OBJ_CHOICES = recipes
     OBJ_CHOICES.extend(items)
+    OBJ_CHOICE.insert(0,('-','--Select Type--'))
     
     
-    obj = forms.ChoiceField(choices=OBJ_CHOICES)
+    obj = forms.ChoiceField(choices=OBJ_CHOICES,label='Object')
     
     #recipe = forms.ModelChoiceField(queryset=Recipe.objects.all(),required=False,widget=forms.Select(attrs={'onchange':'get_objects();'}))
     #ingredient = forms.ModelChoiceField(queryset=GroceryItem.objects.all(),required=False)
