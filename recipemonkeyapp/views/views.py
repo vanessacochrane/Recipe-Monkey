@@ -150,7 +150,7 @@ class StorageItemForm(ModelForm):
 class StorageUpdateForm(ModelForm):
     class Meta:
         model = StorageItem
-        fields = ('quantity')
+        fields = ['quantity']
 
 
 def scan(request, id, mode='NEW'):
