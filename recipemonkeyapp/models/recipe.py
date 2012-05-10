@@ -42,7 +42,7 @@ class Recipe(models.Model):
     #: days until expiry if kept fresh
     expiryDays=models.PositiveIntegerField(default=0)
     #: multiplier applied to expiry if kept frozen
-	expiryFrozenMultiplier=models.PositiveIntegerField(default=1)
+    expiryFrozenMultiplier=models.PositiveIntegerField(default=1)
 
 
     @models.permalink
