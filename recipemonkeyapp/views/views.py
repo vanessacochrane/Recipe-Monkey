@@ -147,7 +147,7 @@ def scan(request, id):
         
         #recipe = forms.ModelChoiceField(queryset=Recipe.objects.all(),required=False,widget=forms.Select(attrs={'onchange':'get_objects();'}))
         #ingredient = forms.ModelChoiceField(queryset=GroceryItem.objects.all(),required=False)
-        barcode = forms.CharField(max_length=255,editable=False)
+        barcode = forms.CharField(max_length=255)
 
         class Meta:
             model = StorageItem
