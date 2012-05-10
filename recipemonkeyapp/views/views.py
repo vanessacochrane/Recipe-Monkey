@@ -134,7 +134,7 @@ class StorageItemForm(ModelForm):
     
     CHOICES=(('-','--Choose--'),('R','Recipe'),('I','Ingredient'))
     obj_type=forms.ChoiceField(widget=forms.Select(attrs={'onchange':'get_objects();'}), choices=CHOICES)
-    OBJ_CHOICES = [(r.id, r.name) for r in (Recipe.objects.all() | GroceryItems.object.all)]
+    OBJ_CHOICES = [(r.id, r.name) for r in (Recipe.objects.all() | GroceryItem.object.all)]
     
     obj = forms.ChoiceField(choices=OBJ_CHOICES)
     
