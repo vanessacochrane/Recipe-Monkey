@@ -3,6 +3,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from recipemonkeyapp.models.storagelog import StorageLog
 import logging
+from datetime import *
 
 MEASURE_CHOICES = (
     ('SERVES', 'Serves'),
