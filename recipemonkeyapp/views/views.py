@@ -125,7 +125,7 @@ def ajax_object_request(request):
 
     return render_to_response('recipemonkey/storage/ajax_object_request.html', locals())
 
-def scan(request, id):
+def scan(request, id, mode='NEW'):
 
     from recipemonkeyapp.models import StorageItem
     from django.forms import ModelForm

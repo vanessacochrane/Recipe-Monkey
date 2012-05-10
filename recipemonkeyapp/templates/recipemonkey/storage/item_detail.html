@@ -33,19 +33,20 @@ function get_objects(){
 	
 {%else%}
 <ul>
-<li><strong>NONE</strong></li>
+<li><strong>Barcode not assigned</strong></li>
 </ul>
-{%endif%}
-
-
-<h3>Edit Content</h3>
+<h3>Add Item</h3>
 <form method="post" action="">{% csrf_token %}
 	<table>
     {{ form.as_table }}
+	<tr><td span="2"><input type="submit" value="Update Storage" align="center"/></td></tr>
 	</table>
-	<p align="center"><input type="submit" value="Update Storage" align="center"/></p>
-
+	
 </form>
+{%endif%}
+
+
+
 
 
 
