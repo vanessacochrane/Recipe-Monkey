@@ -7,12 +7,28 @@
 {% for i in item_list %}
 
 	<h3>{{i.name}}</h3>
-	<ul>
+	<table>
+		<thead>
+			<tr>
+				<th>Barcode</th>
+				<th>Content</th>
+				<th>Expiry</th>
+				<th>Added</th>
+			</tr>
+		</thead>
+		<tbody>
 		{% for s in i.storeditems %}
-		<li>{{s.content_object.name}}-{{s.quantity}} (added: {{s.date_added|date:"d/m/Y"}})  EXPIRY DATE: {{s.expiry|date:"d/m/Y"}}</li>
+		<tr>
+			<td>{{s.barcode}}</td>
+			<td>{{s.content_object.name}}</td>
+			<td>{{s.quantity} {{s.quantityMeasure|title}}</td>
+			<td>{{s.expiry|date:"d/m/Y"}}</td>
+			<td>{{s.date_added|date:"d/m/Y"}}</td>
+		</tr>
 		{% endfor %}
 		
-	</ul>
+		</tbody>
+	</table>
 
 
 
