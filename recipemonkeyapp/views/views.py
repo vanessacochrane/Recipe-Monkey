@@ -130,6 +130,22 @@ def ajax_object_request(request):
     return render_to_response('recipemonkey/storage/ajax_object_request.html', locals())
 
 
+def send_expiry_notifications(request):
+    from django.conf import settings
+
+    if "notification" in settings.INSTALLED_APPS:
+        from notification import models as notification
+    else:
+        notification = None
+    
+    from django.contrib.auth.models import User
+    
+    u = User.objects.get(username__exact='evandavey')
+    
+    if notification:
+        notification.send([u], "storage_near_expiry", {"item": StorageItem.objects.get(barcode=1)})
+
+
 class StorageItemForm(ModelForm):
     
     CHOICES=(('-','--Choose--'),('R','Recipe'),('I','Ingredient'))
