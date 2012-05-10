@@ -26,7 +26,7 @@ class RecipeTable(tables.Table):
     class Meta:
         model = Recipe
         exclude = ['id','photo','note']
-        
+        attrs = {'class': 'table'}
 
 
 def add_to_shopping(request,recipe_id):
