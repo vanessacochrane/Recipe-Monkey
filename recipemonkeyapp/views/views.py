@@ -155,7 +155,7 @@ def scan(request, id):
             
     try:
         si = StorageItem.objects.get(barcode=id)
-        form=StorageItemForm(instance=si)
+        form=StorageItemForm({'obj':si.content_object},instance=si)
     except StorageItem.DoesNotExist:
         form=StorageItemForm({'barcode':id})
         si = None
