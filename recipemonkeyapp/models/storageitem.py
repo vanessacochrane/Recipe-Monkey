@@ -28,6 +28,7 @@ class StorageItem(models.Model):
 	@property
 	def expiry(self):
 	    
+	    logging.debug(self.content_object.expiryDays)
 	    try:
 	        if self.storage.frozen:
 	            m=self.content_object.expiryFrozenMultiplier
