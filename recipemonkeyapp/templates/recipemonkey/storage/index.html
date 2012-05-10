@@ -9,7 +9,7 @@
 	<h3>{{i.name}}</h3>
 	<ul>
 		{% for s in i.storeditems %}
-		<li>{{s.content_object.name}}-{{s.quantity}} (added: {{s.date_added|date:"d/m/Y"}})</li>
+		<li>{{s.content_object.name}}-{{s.quantity}} (added: {{s.date_added|date:"d/m/Y"}})  EXPIRY DATE: {{s.expiry|date:"d/m/Y"}}</li>
 		{% endfor %}
 		
 	</ul>

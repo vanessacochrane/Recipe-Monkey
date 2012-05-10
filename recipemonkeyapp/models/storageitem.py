@@ -24,6 +24,22 @@ class StorageItem(models.Model):
 	barcode=models.CharField(max_length=256,blank=True,null=True)
 	
 	
+	@property
+	def expiry(self):
+	    
+	    try:
+	        if self.storage.frozen:
+	            m=self.content_object.expiryFrozenMultiplier
+	        else:
+	            m=1
+	            
+	            
+	        return date_added+(self.content_object.expiryDays*m)
+	        
+	    except:
+	        return None
+	
+	
 	def loadold(self):
 		
 		try:
