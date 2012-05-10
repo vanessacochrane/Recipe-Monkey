@@ -9,6 +9,7 @@ urlpatterns = patterns('recipemonkeyapp.views.views',
     (r'^barcodes/$', 'barcodes'),
     (r'^scan/(?P<id>\d+)/$', 'scan'),
     (r'^ajax_object_request/$', 'ajax_object_request'),
+    (r'^notifications/near_expiry/$', 'send_expiry_notifications'),
 	
 
 )
