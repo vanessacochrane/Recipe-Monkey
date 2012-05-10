@@ -201,7 +201,7 @@ def scan(request, id, mode='NEW'):
                     nsi.object_id=i.id
             
 
-                nsi.content_type=ContentType.objects.get_for_model(si.content_object)
+                nsi.content_type=ContentType.objects.get_for_model(nsi.content_object)
 
             
             logging.debug('trying to save storage item... %s' % nsi)
