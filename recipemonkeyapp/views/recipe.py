@@ -25,7 +25,7 @@ class RecipeTable(tables.Table):
     
     class Meta:
         model = Recipe
-        exclude = ['id','photo','note']
+        exclude = ['id','photo','note','expiryDays','expiryFrozenMultiplier']
         attrs = {'class': 'table'}
 
 
