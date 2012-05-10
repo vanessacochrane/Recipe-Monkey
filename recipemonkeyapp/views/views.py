@@ -132,7 +132,7 @@ def ajax_object_request(request):
 
 class StorageItemForm(ModelForm):
     
-    CHOICES=(('R','Recipe'),('I','Ingredient'))
+    CHOICES=(('-','--Choose--'),('R','Recipe'),('I','Ingredient'))
     obj_type=forms.ChoiceField(widget=forms.Select(attrs={'onchange':'get_objects();'}), choices=CHOICES)
     OBJ_CHOICES = [(r.id, r.name) for r in Recipe.objects.all()]
     
@@ -142,9 +142,16 @@ class StorageItemForm(ModelForm):
     #ingredient = forms.ModelChoiceField(queryset=GroceryItem.objects.all(),required=False)
     barcode = forms.CharField(max_length=255)
 
+
     class Meta:
         model = StorageItem
-        exclude = ('object_id','content_object','content_type')
+        #exclude = ('object_id','content_object','content_type')
+        widgets = {
+                    'object_id': forms.HiddenInput(),
+                    'content_object': forms.HiddenInput(),
+                    'content_type': forms.HiddenInput(),
+                    
+                }
 
 
 class StorageUpdateForm(ModelForm):
@@ -173,24 +180,37 @@ def scan(request, id, mode='NEW'):
 
     if request.method == 'POST': # If the form has been submitted...
 
-        form=StorageItemForm(request.POST,instance=si)
+        if si:
+            form=StorageUpdateForm(request.POST,instance=si)
+        else:
+            form=StorageItemForm(request.POST,instance=si)
+        
         if form.is_valid():
            
-            if form.cleaned_data['obj_type']=='R':
-                i=Recipe.objects.get(pk=form.cleaned_data['obj'])
-            else:
-                i=GroceryItem.objects.get(pk=form.cleaned_data['obj'])
+            nsi=form.save(commit=False)
+            
+            if not si:
+        
+                if form.cleaned_data['obj_type']=='R':
+                    i=Recipe.objects.get(pk=form.cleaned_data['obj'])
+                    nsi.content_object=i
+                    nsi.object_id=i.id
+                elif form.cleaned_data['obj_type']=='I':
+                    i=GroceryItem.objects.get(pk=form.cleaned_data['obj'])
+                    nsi.content_object=i
+                    nsi.object_id=i.id
+            
+
+                nsi.content_type=ContentType.objects.get_for_model(si.content_object)
+
+            if nsi.quantity > 0:
+                logging.debug('trying to save storage item... %s' % nsi)
+                nsi.save()
+            else:  
+                nsi.delete()
                 
-            si=form.save(commit=False)
-            si.content_object=i
-            si.object_id=i.id
-            si.content_type=ContentType.objects.get_for_model(i)
 
-            if si.quantity > 0:
-                logging.debug('trying to save storage item... %s' % si)
-                si.save()
-
-            return redirect('recipemonkeyapp.views.views.scan',id=si.barcode)
+            return redirect('recipemonkeyapp.views.views.scan',id=nsi.barcode)
 
         else:
             logging.debug('form not valid...')
