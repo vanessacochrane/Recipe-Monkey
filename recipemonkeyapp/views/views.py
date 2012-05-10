@@ -151,7 +151,7 @@ def scan(request, id):
 
         class Meta:
             model = StorageItem
-            exclude = ('object_id','content_object','content_type')
+            hidden = ('object_id','content_object','content_type')
             
     try:
         i = StorageItem.objects.get(barcode=id)
@@ -165,18 +165,15 @@ def scan(request, id):
         form=StorageItemForm(request.POST)
         if form.is_valid():
            
-            if form.cleaned_data['recipe']:
-                i=form.cleaned_data['recipe']
-            else: 
-                i=form.cleaned_data['ingredient']
-
+            i=form.cleaned_data['obj']
+        
             si=form.save(commit=False)
             si.content_object=i
             si.object_id=i.id
             si.content_type=ContentType.objects.get_for_model(i)
 
             if si.quantity > 0:
-                print 'trying to save storage item...'
+                logging.debug('trying to save storage item... %s' % si)
                 si.save()
 
             return redirect('recipemonkeyapp.views.views.scan',id=si.barcode)
