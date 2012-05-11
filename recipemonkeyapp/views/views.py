@@ -141,9 +141,9 @@ def send_expiry_notifications(request):
     from django.contrib.auth.models import User
     
     u = User.objects.get(username__exact='evandavey')
-    item=StorageItem.objects.get(barcode=1)
+    items = StorageItem.objects.all()
     if notification:
-        notification.send([u], "storage_nearing_expiry",{'item':item} )
+        notification.send([u], "storage_nearing_expiry",{'items':items} )
 
 
     return redirect('recipemonkeyapp.views.views.index')
