@@ -143,8 +143,13 @@ def send_expiry_notifications(request):
     u = User.objects.get(username__exact='evandavey')
     items = StorageItem.objects.all()
     
+    expiring=[]
+    for i in items:
+        if i.expiry - now() < 5:
+            expiring.append(i)
+    
     if notification:
-        notification.send([u], "storage_nearing_expiry",{'items':items} )
+        notification.send([u], "storage_nearing_expiry",{'items':items,'expiring':expiring} )
 
 
     return redirect('recipemonkeyapp.views.views.index')
