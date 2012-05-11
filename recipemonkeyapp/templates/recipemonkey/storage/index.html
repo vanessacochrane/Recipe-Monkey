@@ -30,7 +30,7 @@
 			<td>{{s.quantity}} {{s.quantityMeasure|title}}</td>
 			<td>{%if s.near_expiry%}<span class="label label-warning">{{s.expiry|date:"d/m/Y"}}</span>
 				{%else%}
-				{%if s.near_expiry%}<span class="label label-important">{{s.expiry|date:"d/m/Y"}}</span>
+				{%if s.expired%}<span class="label label-important">{{s.expiry|date:"d/m/Y"}}</span>
 				{%else%}{{s.expiry|date:"d/m/Y"}}
 				{%endif%}
 					{%endif%}		
