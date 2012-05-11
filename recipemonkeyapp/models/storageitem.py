@@ -41,7 +41,7 @@ class StorageItem(models.Model):
 	    
 	    res=False
 	    if expiry and not self.expired:
-	        if self.expiry-date.today()<timedelta(days=5)
+	        if self.expiry-date.today()<timedelta(days=5):
 	            return True
 	        
 	    return res
