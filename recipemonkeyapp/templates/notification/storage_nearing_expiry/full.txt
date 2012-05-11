@@ -1,5 +1,7 @@
 Expiring:
-{% for i in expiry %}* Barcode: {{i.barcode}}, {{i.content_object}} {{i.expiry|date:"d M Y"}} - {{i.storage}}{% endfor %}
+{% for i in expiring %}* Barcode: {{i.barcode}}, {{i.content_object}} {{i.expiry|date:"d M Y"}} - {{i.storage}}
+{% endfor %}
 
 All Items:
-{% for i in items %}* Barcode: {{i.barcode}}, {{i.content_object}} {{i.expiry|date:"d M Y"}} - {{i.storage}}{% endfor %}
+{% for i in items %}* Barcode: {{i.barcode}}, {{i.content_object}} {{i.expiry|date:"d M Y"}} - {{i.storage}}
+{% endfor %}
