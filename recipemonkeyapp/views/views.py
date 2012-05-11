@@ -132,7 +132,7 @@ def ajax_object_request(request):
 
 def send_expiry_notifications(request):
     from django.conf import settings
-
+    from datetime import *
     if "notification" in settings.INSTALLED_APPS:
         from notification import models as notification
     else:
@@ -142,6 +142,7 @@ def send_expiry_notifications(request):
     
     u = User.objects.get(username__exact='evandavey')
     items = StorageItem.objects.all()
+    
     if notification:
         notification.send([u], "storage_nearing_expiry",{'items':items} )
 

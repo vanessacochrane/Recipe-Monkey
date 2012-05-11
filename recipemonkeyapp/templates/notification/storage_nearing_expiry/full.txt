@@ -1,5 +1,5 @@
 {% for i in items %}
 
-{{i.barcode}}
+* Barcode: {{i.barcode}}, {{i.content_object}} {{i.expiry|date:"d M Y"}} - {{i.storage}}
 
 {% endfor %}
