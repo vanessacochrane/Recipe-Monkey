@@ -20,7 +20,7 @@
             {% for result in page.object_list %}
 
 				<p>
-			   {{result.content_type}}: {{result.object}}
+			   <a href="{{ result.object.get_absolute_url }}">{{result.object}}</a> ({{result.content_type}})
              	</p>
             {% empty %}
                 <p>No results found.</p>
