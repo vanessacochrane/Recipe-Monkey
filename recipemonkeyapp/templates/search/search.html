@@ -19,8 +19,9 @@
 
             {% for result in page.object_list %}
 
-			   {{result.content_type}}: {{result}}
-             
+				<p>
+			   {{result.content_type}}: {{result.object}}
+             	</p>
             {% empty %}
                 <p>No results found.</p>
             {% endfor %}
