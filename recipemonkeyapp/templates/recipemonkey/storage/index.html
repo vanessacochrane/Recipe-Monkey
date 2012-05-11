@@ -28,7 +28,13 @@
 			<td>{{s.barcode}}</td>
 			<td>{{s.content_object.name}}</td>
 			<td>{{s.quantity}} {{s.quantityMeasure|title}}</td>
-			<td>{{s.expiry|date:"d/m/Y"}}</td>
+			<td>{%if s.near_expiry%}<span class="label label-warning">{{s.expiry|date:"d/m/Y"}}</span>
+				{%else%}
+				{%if s.near_expiry%}<span class="label label-important">{{s.expiry|date:"d/m/Y"}}</span>
+				{%else%}{{s.expiry|date:"d/m/Y"}}
+				{%endif%}
+					{%endif%}		
+				</td>
 			<td>{{s.date_added|date:"d/m/Y"}}</td>
 		</tr>
 		{% endfor %}

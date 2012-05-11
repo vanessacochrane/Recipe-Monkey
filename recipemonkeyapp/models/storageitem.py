@@ -24,7 +24,27 @@ class StorageItem(models.Model):
 	quantityMeasure=models.CharField(max_length=256,choices=MEASURE_CHOICES)
 	date_added=models.DateField(auto_now_add=True,null=True)
 	barcode=models.CharField(max_length=256,blank=True,null=True)
+
+	@property
+	def expired(self):
+	    
+	    res=False
+	    if expiry:
+	        if self.expiry<date.today()
+	            return True
+	        
+	    return res
+
 	
+	@property
+	def near_expiry(self):
+	    
+	    res=False
+	    if expiry and not self.expired:
+	        if self.expiry-date.today()<timedelta(days=5)
+	            return True
+	        
+	    return res
 	
 	@property
 	def expiry(self):
