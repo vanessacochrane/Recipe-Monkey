@@ -16,7 +16,7 @@ from django.contrib.contenttypes.models import ContentType
 #def limited_object_detail(*args, **kwargs):
 #    return object_detail(*args, **kwargs)
 
-def search(request):
+def savedsearch(request):
 	
 	
 	ct={}
