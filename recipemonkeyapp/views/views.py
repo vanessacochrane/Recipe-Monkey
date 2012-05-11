@@ -16,6 +16,14 @@ from django.contrib.contenttypes.models import ContentType
 #def limited_object_detail(*args, **kwargs):
 #    return object_detail(*args, **kwargs)
 
+def search(request):
+	
+	
+	ct={}
+	
+	return render_to_response('recipemonkey/savedsearches.html',ct,context_instance=RequestContext(request))
+
+
 
 def index(request):
 	
