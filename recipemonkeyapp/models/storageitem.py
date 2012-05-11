@@ -40,7 +40,7 @@ class StorageItem(models.Model):
 	def near_expiry(self):
 	    
 	    res=False
-	    if expiry and not self.expired:
+	    if self.expiry and not self.expired:
 	        if self.expiry-date.today()<timedelta(days=5):
 	            return True
 	        
