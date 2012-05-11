@@ -145,7 +145,7 @@ def send_expiry_notifications(request):
     
     expiring=[]
     for i in items:
-        if i.expiry - now() < 5:
+        if i.expiry - today() < 5:
             expiring.append(i)
     
     if notification:
