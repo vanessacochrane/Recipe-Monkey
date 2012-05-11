@@ -22,7 +22,7 @@ class StorageItem(models.Model):
 	content_type = models.ForeignKey(ContentType,blank=True,null=True)
 	quantity=models.FloatField()
 	quantityMeasure=models.CharField(max_length=256,choices=MEASURE_CHOICES)
-	date_added=models.DateField(auto_now_add=True,null=True)
+	date_added=models.DateField(blank=True)
 	barcode=models.CharField(max_length=256,blank=True,null=True)
 
 	@property
@@ -73,6 +73,9 @@ class StorageItem(models.Model):
 	def save(self, *args, **kwargs):
 
 	
+	    if not self.date_added:
+	        self.date_added = date.today()
+	        
 		old=self.loadold()
 		
 	
