@@ -29,7 +29,7 @@ class StorageItem(models.Model):
 	def expired(self):
 	    
 	    res=False
-	    if expiry:
+	    if self.expiry:
 	        if self.expiry<date.today():
 	            return True
 	        
