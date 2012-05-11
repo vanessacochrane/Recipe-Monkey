@@ -4,17 +4,10 @@
 {% block content %}
 
 
-{{form}}
+
 
     <form method="get" action=".">
-       	<form method="get" action="/search/">
-          <table>
-            <tr>
-              <td><label for="id_q">Search:</label></td>
-              <td><input type="text" name="q" id="id_q" style="width: 110px;" value="{{ request.GET.q }}" /></td>
-              <td><input type="submit" value="Go" /></td>
-            </tr>
-          </table>
+       	{{form}}
         </form>
 
         {% if query %}
