@@ -1,8 +1,5 @@
-{% load i18n %}
-{% blocktrans %}
 {% for i in items %}
 
 {{i.barcode}}
 
 {% endfor %}
-{% endblocktrans %}
