@@ -183,9 +183,13 @@ class StorageItemForm(ModelForm):
     barcode = forms.CharField(max_length=255,widget=forms.HiddenInput())
 
 
+    date_added = forms.DateField(
+                widget=forms.TextInput(attrs={'class':'datepicker'}))
+
     class Meta:
         model = StorageItem
         exclude = ('object_id','content_object','content_type')
+        
         
 
 class StorageUpdateForm(ModelForm):
