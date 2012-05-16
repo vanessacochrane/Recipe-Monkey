@@ -6,6 +6,7 @@
 
 {% for r in recipes %}
 <div class="row">
+	<a href="{{r.get_absolute_url}}">
 	<div class="span2">
 	
 		<ul class="thumbnails">
@@ -22,6 +23,7 @@
 		{% if r.seasonal%}<span class="label label-success">Seasonal</span>{%endif%}
 		</p>
 	</div>
+	</a>
 	
 </div><!-- /row -->
 {% endfor %}
