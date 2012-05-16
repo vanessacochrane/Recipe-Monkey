@@ -7,9 +7,11 @@
 {% for r in recipes %}
 <div class="row">
 	<div class="span4">
+		{% if recipe.photo %}
 		<ul class="thumbnails">
-		<li><img src="{{MEDIA_URL}}{{r.photo}}"/></li>
+		<li><img src="{{ recipe.photo.url }}"/></li>
 		</ul>
+		{% endif %}
 	</div>
 	<div class="span8">
 		<h2>{{r.name}}</h2>
