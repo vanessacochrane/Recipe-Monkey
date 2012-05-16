@@ -25,7 +25,7 @@
 		<tbody>
 		{% for s in i.storeditems %}
 		<tr>
-			<td>{{s.barcode}}</td>
+			<td><a href="/recipemonkeyapp/scan/{{s.barcode}}">{{s.barcode}}</a></td>
 			<td>{{s.content_object.name}}</td>
 			<td>{{s.quantity}} {{s.quantityMeasure|title}}</td>
 			<td>{%if s.near_expiry%}
