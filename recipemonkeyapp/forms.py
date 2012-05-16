@@ -47,7 +47,7 @@ class StorageItemForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.helper = FormHelper()
         self.helper.form_id = 'id-storageitem'
-        self.helper.form_class = ''
+        self.helper.form_class = 'form-horizontal'
         self.helper.form_method = 'post'
         self.helper.form_action = ''
 

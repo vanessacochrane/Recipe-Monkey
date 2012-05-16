@@ -4,7 +4,7 @@
 <script type="text/javascript">
   $(document).ready(function() {
     var type = $('<input type="range" />').attr('type');
-    if (type != 'text') { // No HTML5 support
+    if (type == 'text') { // No HTML5 support
       $('#{{ attrs.id }}').attr("readonly", true);
       $('#{{ attrs.id }}-slider').slider({
         {% if value %}value: {{ value }},{% endif %}
