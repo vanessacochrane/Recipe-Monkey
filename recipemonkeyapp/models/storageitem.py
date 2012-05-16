@@ -24,7 +24,7 @@ class StorageItem(models.Model):
 	quantityMeasure=models.CharField(max_length=256,choices=MEASURE_CHOICES)
 	date_added=models.DateField(blank=True,default=date.today)
 	barcode=models.CharField(max_length=256,blank=True,null=True)
-	expiry=models.DateField(editiable=False,blank=True)
+	expiry=models.DateField(editable=False,blank=True)
 
 	@property
 	def expired(self):
