@@ -7,7 +7,7 @@
 
 {% for r in recipes %}
 <div class="row">
-	<a href="{{r.get_absolute_url}}" style="text-decoration: none">
+	
 	<div class="span2">
 	
 		<ul class="thumbnails">
@@ -19,12 +19,11 @@
 		{% endif %}
 	</div>
 	<div class="span10">
-		<h3>{{r.name}}</h3>
+		<a href="{{r.get_absolute_url}}" style="text-decoration: none"><h3>{{r.name}}</h3></a>
 		<p>{% if r.cuisine %}{{r.cuisine}}{%else%}Unknown{%endif%}, serves: {{r.serving}}
 		{% if r.seasonal%}<span class="label label-success">Seasonal</span>{%endif%}
 		</p>
 	</div>
-	</a>
 	
 </div><!-- /row -->
 {% endfor %}
