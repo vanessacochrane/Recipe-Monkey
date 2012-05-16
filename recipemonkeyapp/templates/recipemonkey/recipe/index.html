@@ -7,15 +7,18 @@
 {% for r in recipes %}
 <div class="row">
 	<div class="span4">
-		{% if recipe.photo %}
+	
 		<ul class="thumbnails">
-		<li><img src="{{ recipe.photo.url }}"/></li>
+		{% if r.photo %}
+		<li><img src="{{ r.photo.url }}"/></li>
+		{% else %}
+		<li><img src="http://placehold.it/350x150&text=no+image"></li>
 		</ul>
 		{% endif %}
 	</div>
 	<div class="span8">
-		<h2>{{r.name}}</h2>
-		<p>{{r.cuisine}}, serves: {{r.serving}}</p>
+		<h3>{{r.name}}</h3>
+		<p>{% if r.cuisine %}{{r.cuisine}}{%else%}Unknown{%endif%}, serves: {{r.serving}}</p>
 	</div>
 	
 </div><!-- /row -->
