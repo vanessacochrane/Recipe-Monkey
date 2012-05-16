@@ -10,9 +10,9 @@
 	
 		<ul class="thumbnails">
 		{% if r.photo %}
-		<li><img src="{{ r.photo.url }}"/></li>
+		<li><img src="{{ r.photo.url }} width="150" height="150"/></li>
 		{% else %}
-		<li><img src="http://placehold.it/350x150&text=no+image"></li>
+		<li><img src="http://placehold.it/150x150&text=no+image"></li>
 		</ul>
 		{% endif %}
 	</div>
