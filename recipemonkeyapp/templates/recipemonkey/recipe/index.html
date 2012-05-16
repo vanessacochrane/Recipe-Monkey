@@ -8,12 +8,12 @@
 <div class="row">
 	<div class="span4">
 		<ul class="thumbnails">
-		<li><img src="{{r.photo}}"/></li>
+		<li><img src="{{MEDIA_URL}}{{r.photo}}"/></li>
 		</ul>
 	</div>
 	<div class="span8">
 		<h2>{{r.name}}</h2>
-		<p>{{r.cusine}}, serves: {{r.serves}}</p>
+		<p>{{r.cuisine}}, serves: {{r.serving}}</p>
 	</div>
 	
 </div><!-- /row -->
