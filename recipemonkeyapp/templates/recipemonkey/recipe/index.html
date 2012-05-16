@@ -10,7 +10,7 @@
 	
 		<ul class="thumbnails">
 		{% if r.photo %}
-		<li><img src="{{ r.photo.url }} width="150" height="150"/></li>
+		<li><img src="{{ r.photo.url }} width="150" height="150""/></li>
 		{% else %}
 		<li><img src="http://placehold.it/150x150&text=no+image"></li>
 		</ul>
@@ -18,7 +18,9 @@
 	</div>
 	<div class="span10">
 		<h3>{{r.name}}</h3>
-		<p>{% if r.cuisine %}{{r.cuisine}}{%else%}Unknown{%endif%}, serves: {{r.serving}}</p>
+		<p>{% if r.cuisine %}{{r.cuisine}}{%else%}Unknown{%endif%}, serves: {{r.serving}}
+		{% if r.seasonal}<span class="label label-success">Seasonal</span>{%endif%}
+		</p>
 	</div>
 	
 </div><!-- /row -->
