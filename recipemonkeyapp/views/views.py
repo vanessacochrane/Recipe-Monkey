@@ -214,7 +214,7 @@ def scan(request, id, mode='NEW'):
         form=StorageUpdateForm(instance=si)
         
     except StorageItem.DoesNotExist:
-        form=StorageItemForm({'barcode':id,'date_added'=datetime.today().strftime('%Y-%m-%d')})
+        form=StorageItemForm({'barcode':id,'date_added':datetime.today().strftime('%Y-%m-%d')})
         si = None
 
     if request.method == 'POST': # If the form has been submitted...
