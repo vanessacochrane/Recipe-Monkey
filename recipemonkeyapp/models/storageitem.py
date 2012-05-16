@@ -96,7 +96,7 @@ class StorageItem(models.Model):
 		
 		if self.quantity > 0:
 		    
-		    if not self.expiry:
-		        self.expiry=self._calc_expiry()
+		    
+		    self.expiry=self._calc_expiry()
 		    
 		    super(StorageItem, self).save(*args, **kwargs) # Call the "real" save() method.
