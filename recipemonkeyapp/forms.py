@@ -40,6 +40,7 @@ class StorageItemForm(forms.ModelForm):
     #ingredient = forms.ModelChoiceField(queryset=GroceryItem.objects.all(),required=False)
     barcode = forms.CharField(max_length=255,widget=forms.HiddenInput())
 
+    quantity = forms.IntegerField()
 
     date_added = forms.DateField(widget=DatePicker)
 
