@@ -184,7 +184,7 @@ class StorageItemForm(ModelForm):
 
 
     date_added = forms.DateField(
-                widget=forms.TextInput(attrs={'class':'datepicker'}))
+                widget=forms.TextInput(attrs={'data-date-format':"yyyy/mm/dd"}))
 
     class Meta:
         model = StorageItem
