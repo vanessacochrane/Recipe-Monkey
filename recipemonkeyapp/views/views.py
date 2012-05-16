@@ -12,6 +12,7 @@ from django import forms
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from datetime import *
+from recipemonkeyapp.forms import UpdateStorageItemForm,StorageItemForm
 
 #@login_required(login_url='/accounts/login/')
 #def limited_object_detail(*args, **kwargs):
@@ -164,39 +165,39 @@ def send_expiry_notifications(request):
 
     return redirect('recipemonkeyapp.views.views.index')
 
-class StorageItemForm(ModelForm):
-    
-    CHOICES=(('-','--Choose--'),('R','Recipe'),('I','Ingredient'))
-    obj_type=forms.ChoiceField(label='Object Type',widget=forms.Select(attrs={'onchange':'get_objects();'}), choices=CHOICES)
-    
-    recipes = [(r.id, r.name) for r in Recipe.objects.all()]
-    items = [(r.id, r.name) for r in GroceryItem.objects.all()]
-    
-    OBJ_CHOICES = recipes
-    OBJ_CHOICES.extend(items)
-    OBJ_CHOICES.insert(0,('-','--Select Type--'))
-    
-    
-    obj = forms.ChoiceField(choices=OBJ_CHOICES,label='Object')
-    
-    #recipe = forms.ModelChoiceField(queryset=Recipe.objects.all(),required=False,widget=forms.Select(attrs={'onchange':'get_objects();'}))
-    #ingredient = forms.ModelChoiceField(queryset=GroceryItem.objects.all(),required=False)
-    barcode = forms.CharField(max_length=255,widget=forms.HiddenInput())
-
-
-    date_added = forms.DateField(
-                widget=forms.TextInput(attrs={'data-date-format':"yyyy-mm-dd","data-date":datetime.today().strftime('%d-%m-%Y')}))
-
-    class Meta:
-        model = StorageItem
-        exclude = ('object_id','content_object','content_type')
+# class StorageItemForm(ModelForm):
+#     
+#     CHOICES=(('-','--Choose--'),('R','Recipe'),('I','Ingredient'))
+#     obj_type=forms.ChoiceField(label='Object Type',widget=forms.Select(attrs={'onchange':'get_objects();'}), choices=CHOICES)
+#     
+#     recipes = [(r.id, r.name) for r in Recipe.objects.all()]
+#     items = [(r.id, r.name) for r in GroceryItem.objects.all()]
+#     
+#     OBJ_CHOICES = recipes
+#     OBJ_CHOICES.extend(items)
+#     OBJ_CHOICES.insert(0,('-','--Select Type--'))
+#     
+#     
+#     obj = forms.ChoiceField(choices=OBJ_CHOICES,label='Object')
+#     
+#     #recipe = forms.ModelChoiceField(queryset=Recipe.objects.all(),required=False,widget=forms.Select(attrs={'onchange':'get_objects();'}))
+#     #ingredient = forms.ModelChoiceField(queryset=GroceryItem.objects.all(),required=False)
+#     barcode = forms.CharField(max_length=255,widget=forms.HiddenInput())
+# 
+# 
+#     date_added = forms.DateField(
+#                 widget=forms.TextInput(attrs={'data-date-format':"yyyy-mm-dd","data-date":datetime.today().strftime('%d-%m-%Y')}))
+# 
+#     class Meta:
+#         model = StorageItem
+#         exclude = ('object_id','content_object','content_type')
         
         
 
-class StorageUpdateForm(ModelForm):
-    class Meta:
-        model = StorageItem
-        fields = ['quantity']
+# class StorageUpdateForm(ModelForm):
+#     class Meta:
+#         model = StorageItem
+#         fields = ['quantity']
 
 
 def scan(request, id, mode='NEW'):
@@ -211,7 +212,7 @@ def scan(request, id, mode='NEW'):
             
     try:
         si = StorageItem.objects.get(barcode=id)
-        form=StorageUpdateForm(instance=si)
+        form=UpdateStorageItemForm(instance=si)
         
     except StorageItem.DoesNotExist:
         form=StorageItemForm({'barcode':id,'date_added':datetime.today().strftime('%Y-%m-%d')})
