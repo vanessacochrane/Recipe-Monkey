@@ -6,7 +6,9 @@
 {% block extra_scripts %}
 <script>
 
-
+ $(function() {
+        $("#id_date_added").datepicker({ dateFormat: 'yy-mm-dd' });
+ });
 
 function get_objects(){
 	
