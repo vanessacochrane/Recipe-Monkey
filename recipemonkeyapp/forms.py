@@ -2,8 +2,10 @@ import floppyforms as forms
 #from django.forms import ModelForm
 from recipemonkeyapp.models import StorageItem, Recipe, GroceryItem
 #from django.forms import extras
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
 
-
+    
 class DatePicker(forms.DateInput):
     template_name = 'datepicker.html'
 
@@ -40,6 +42,18 @@ class StorageItemForm(forms.ModelForm):
 
 
     date_added = forms.DateField(widget=DatePicker)
+
+    def __init__(self, *args, **kwargs):
+        self.helper = FormHelper()
+        self.helper.form_id = 'id-storageitem'
+        self.helper.form_class = 'blueForms'
+        self.helper.form_method = 'post'
+        self.helper.form_action = ''
+
+        self.helper.add_input(Submit('submit', 'Submit'))
+        
+        super(StorageItemForm, self).__init__(*args, **kwargs)
+
     
     class Meta:
         model = StorageItem
