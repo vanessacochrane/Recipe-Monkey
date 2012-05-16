@@ -65,10 +65,9 @@ class QuantitySlider(forms.RangeInput):
 
 # Create the form class.
 class UpdateStorageItemForm(forms.ModelForm):
-	
-	
-	#date=forms.DateField(widget=widgets.AdminDateWidget())
-	num = forms.IntegerField(widget=QuantitySlider)
+
+
+    num = forms.IntegerField(widget=QuantitySlider)
 
     def clean_num(self):
         num = self.cleaned_data['num']
@@ -76,8 +75,7 @@ class UpdateStorageItemForm(forms.ModelForm):
             raise forms.ValidationError("Enter a value between 1 and 9999")
         return num
 
-	class Meta:
-		model = StorageItem
-		fields = ('quantity')
-	
-	
+    class Meta:
+        model = StorageItem
+        fields = ('quantity')
+
