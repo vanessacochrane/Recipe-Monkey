@@ -71,14 +71,8 @@ function get_objects(){
 {%else%}
 <h3>Add New</h3>
 
-<form method="post" action="">{% csrf_token %}
-	<table>
-    {% crispy form %}
+{% crispy form %}
 	
-	<tr><td colspan="2" align="center"><button type="submit" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add</button> </td></tr>
-	</table>
-	
-</form>
 {%endif%}
 
 
