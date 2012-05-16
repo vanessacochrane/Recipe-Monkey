@@ -85,7 +85,7 @@ function get_objects(){
 
 <form method="post" action="">{% csrf_token %}
 	<table>
-    {% form myform using "floppyforms/layouts/table.html" %}
+    {% form form using "floppyforms/layouts/table.html" %}
 	
 	<tr><td colspan="2" align="center"><button type="submit" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add</button> </td></tr>
 	</table>
