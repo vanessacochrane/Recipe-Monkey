@@ -7,7 +7,7 @@ from recipemonkeyapp.models import Storage
 
 def index(request):
     	
-	item_list=Storage.objects.all().order_by('expiry','desc')
+	item_list=Storage.objects.all()
 	
 	
 		
