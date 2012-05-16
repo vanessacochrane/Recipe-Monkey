@@ -185,7 +185,7 @@ class StorageItemForm(ModelForm):
 
 
     date_added = forms.DateField(
-                widget=forms.TextInput(attrs={'data-date-format':"yyyy-mm-dd","data-date":datetime.today().strftime('YYYY-MM-DD')}))
+                widget=forms.TextInput(attrs={'data-date-format':"yyyy-mm-dd","data-date":datetime.today().strftime('%Y-%m-%d')}))
 
     class Meta:
         model = StorageItem
