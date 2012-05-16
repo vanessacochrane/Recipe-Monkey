@@ -50,7 +50,7 @@ class StorageItemForm(forms.ModelForm):
         self.helper.form_method = 'post'
         self.helper.form_action = ''
 
-        self.helper.add_input(Submit('add', '<i class="icon-plus"></i> Add',css_class="btn-primary"))
+        self.helper.add_input(Submit('add', 'Add',css_class="btn-primary"))
         
         super(StorageItemForm, self).__init__(*args, **kwargs)
 
@@ -81,7 +81,7 @@ class QuantitySlider(forms.RangeInput):
 class UpdateStorageItemForm(forms.ModelForm):
 
 
-    quantity = forms.IntegerField(widget=QuantitySlider)
+    quantity = forms.IntegerField()
 
     def clean_quantity(self):
         quantity = self.cleaned_data['quantity']
