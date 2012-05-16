@@ -6,7 +6,7 @@
 
 {% for r in recipes %}
 <div class="row">
-	<div class="span4">
+	<div class="span2">
 	
 		<ul class="thumbnails">
 		{% if r.photo %}
@@ -16,7 +16,7 @@
 		</ul>
 		{% endif %}
 	</div>
-	<div class="span8">
+	<div class="span10">
 		<h3>{{r.name}}</h3>
 		<p>{% if r.cuisine %}{{r.cuisine}}{%else%}Unknown{%endif%}, serves: {{r.serving}}</p>
 	</div>
