@@ -1,9 +1,12 @@
 {% extends "recipemonkey/base.html" %}
+{% load pagination_tags %}
+
 {% block breadcrumb %}{{ block.super }} &raquo; <a href="/recipemonkeyapp/recipe">Recipes</a> {% endblock %}
 
 {% block title %}Recipes{% endblock %}
 {% block content %}
-
+{% autopaginate object_list %}
+{% paginate %}
 
 {% for r in recipes %}
 <div class="row">
