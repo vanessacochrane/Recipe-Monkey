@@ -7,10 +7,13 @@
 {% for r in recipes %}
 <div class="row">
 	<div class="span4">
-		{{r.photo}}
+		<ul class="thumbnails">
+		<li><img src="{{r.photo}}"/></li>
+		</ul>
 	</div>
 	<div class="span8">
-		{{r.name}}
+		<h2>{{r.name}}</h2>
+		<p>{{r.cusine}}, serves: {{r.serves}}</p>
 	</div>
 	
 </div><!-- /row -->
