@@ -31,20 +31,21 @@ function get_objects(){
 {%if item %}
 <h3>{{item.content_object.name}}</h3>
 <table class="table">
-	<thead>
-		<tr>
-			<th width="10%">Barcode</th>
-			<th width="60%">Content</th>
-			<th width="10%">Quantity</th>
-			<th width="10%">Expiry</th>
-			<th width="10%">Added</th>
-		</tr>
-	</thead>
 	<tbody>
 	<tr>
+		<th>Barcode</th>
 		<td><a href="/recipemonkeyapp/scan/{{s.barcode}}">{{item.barcode}}</a></td>
-		<td>{{item.content_object.name}}</td>
-		<td>{items.quantity}} {{item.quantityMeasure|title}}</td>
+	</tr>
+	<tr>
+		<th>Location</th>
+		<td>{{item.storage.name}}</td>
+	</tr>		
+	<tr>
+		<th>Quantity</th>
+		<td>{{items.quantity}} {{item.quantityMeasure|title}}</td>
+	</tr>		
+	<tr>
+		<th>Expiry</th>
 		<td>{%if item.near_expiry%}
 			<span class="label label-warning">{{item.expiry|date:"d/m/Y"}}</span>
 			{%else%}
@@ -55,6 +56,9 @@ function get_objects(){
 			{%endif%}
 				{%endif%}		
 		</td>
+	</tr>
+	<tr>
+		<th>Added</th>
 		<td>{{s.date_added|date:"d/m/Y"}}</td>
 	</tr>
 	
@@ -64,7 +68,7 @@ function get_objects(){
 <div class="span12">
    {{ form}}
 	<br/>
-	<button type="submit" class="btn btn-primary"><i class="icon-edit"></i> Update</button>
+	<button type="submit" class="btn btn-primary"><i class="icon-edit icon-white"></i> Update</button>
 </div>
 
 {%else%}
@@ -73,7 +77,7 @@ function get_objects(){
 <form method="post" action="">{% csrf_token %}
 	<table>
     {{ form.as_table }}
-	<tr><td colspan="2" align="center"><button type="submit" class="btn btn-primary"><i class="icon-plus"></i> Add</button> </td></tr>
+	<tr><td colspan="2" align="center"><button type="submit" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add</button> </td></tr>
 	</table>
 	
 </form>
