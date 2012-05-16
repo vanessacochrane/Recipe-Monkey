@@ -77,5 +77,5 @@ class UpdateStorageItemForm(forms.ModelForm):
 
     class Meta:
         model = StorageItem
-        fields = ('quantity')
+        fields = ['quantity']
 
