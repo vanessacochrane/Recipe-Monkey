@@ -86,7 +86,7 @@ class UpdateStorageItemForm(forms.ModelForm):
 
     def clean_quantity(self):
         quantity = self.cleaned_data['quantity']
-        if not 1 <= quantity <= 9999:
+        if not 0 <= quantity <= 9999:
             raise forms.ValidationError("Enter a value between 1 and 9999")
         return quantity
 
