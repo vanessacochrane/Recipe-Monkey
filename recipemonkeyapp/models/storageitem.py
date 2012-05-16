@@ -22,7 +22,7 @@ class StorageItem(models.Model):
 	content_type = models.ForeignKey(ContentType,blank=True,null=True)
 	quantity=models.FloatField()
 	quantityMeasure=models.CharField(max_length=256,choices=MEASURE_CHOICES)
-	date_added=models.DateField(blank=True,default=date.today())
+	date_added=models.DateField(blank=True,default=date.today)
 	barcode=models.CharField(max_length=256,blank=True,null=True)
 
 	@property
