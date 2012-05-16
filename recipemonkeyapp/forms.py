@@ -40,7 +40,7 @@ class StorageItemForm(forms.ModelForm):
     #ingredient = forms.ModelChoiceField(queryset=GroceryItem.objects.all(),required=False)
     barcode = forms.CharField(max_length=255,widget=forms.HiddenInput())
 
-    quantity = forms.PositiveIntegerField()
+    quantity = forms.IntegerField()
 
     date_added = forms.DateField(widget=DatePicker)
 
@@ -82,7 +82,7 @@ class QuantitySlider(forms.RangeInput):
 class UpdateStorageItemForm(forms.ModelForm):
 
 
-    quantity = forms.PositiveIntegerField()
+    quantity = forms.IntegerField()
 
     def clean_quantity(self):
         quantity = self.cleaned_data['quantity']
