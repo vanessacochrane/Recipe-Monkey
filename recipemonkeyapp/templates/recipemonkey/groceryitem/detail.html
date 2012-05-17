@@ -5,6 +5,9 @@
 {% block content_header %}{{item.name}}{% endblock %}
 
 {% block content %}
+
+<!-- ACTIONS MENU -->
+
 <div class="row" id="object-menu">
 	<div class="span4">
 	<div class="btn-group">
@@ -13,15 +16,33 @@
 	</div>
 	</div>
 </div>
-<div id="barcode">
-<img src="/recipemonkeyapp/groceryitem/{{item.id}}/barcode.png" class="align-right frame"/>
-</div>
-<b>Category: </b>{{item.category}}<br/>
-{%if item.seasonStart %}
-<b>Season: </b>{{item.seasonStart|date:"M"}} to {{item.seasonEnd|date:"M"}}<br/>
-{%endif %}
-<b>Tags: </b>{%for t in item.tags.all %}{%if forloop.first%}{%else%}, {%endif%}{{t}}{% endfor %}<br/>
 
+
+<!-- EXTRA INFO -->
+<div class="row">
+	<div class="span4">
+<table class="table table-condensed">
+	<tbody>
+		<tr>
+			<th>Category</th>
+			<td>{{item.category}}</td>
+		</tr>
+{%if item.seasonStart %}
+		<tr>
+			<th>Season</th>
+			<td>{{item.seasonStart|date:"M"}} to {{item.seasonEnd|date:"M"}}</td>
+		</tr>
+{%endif %}
+{%if item.tags %}
+		<tr>
+			<th>Tags</th>
+			<td>{%for t in item.tags.all %}{%if forloop.first%} {%else%}, {%endif%}{{t}}{% endfor %}</td>
+		</tr>
+{%endif %}
+</tbody>
+</table>
+</div>
+</div>
 
 <!-- STORED ITEMS -->
 
@@ -50,20 +71,26 @@
 
 {%for r in item.recipe_set.all%}
 {%if forloop.first%}
+<div class="row">
+<div class="span12" id="used">
 <h3>Used In</h3>
 <ul>
 {%endif%}
 <li><a href="{{r.get_absolute_url}}">{{r.name}}</a></li>
 {%if forloop.last%}
 </ul>
+</div>
+</div>
 {%endif%}
 {%endfor%}
 
-<br/>
-<br/>
-<br/>
-<br/>
+<!-- BARCODE -->
 
+<div class="row">
+<div id="barcode" class="span2 pull-right">
+	<img src="/recipemonkeyapp/groceryitem/{{item.id}}/barcode.png"/>
+</div>
+</div>
 
 
 
