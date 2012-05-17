@@ -1,4 +1,5 @@
 {% extends "recipemonkey/recipe/index.html" %}
+{% load agon_ratings_tags %}
 {% block extra_scripts %}
 <link rel="stylesheet" href="{{ STATIC_URL }}css/recipeprint.css" type="text/css" media="print"/>
 {%endblock%}
@@ -125,6 +126,10 @@
 {% endif %}
 {%endif%}
 </div>
+
+<div id="user_rating"></div>
+
+{% user_rating_js request.user obj %}
 
 
 {% endblock %}
