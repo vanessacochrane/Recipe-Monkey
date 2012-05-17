@@ -65,7 +65,7 @@ def barcodes(request):
     
     
     try:
-        end = int(request.GET.get('end',66))
+        end = int(request.GET.get('end',65))
     except:
         raise Exception('end must be an int')
     
@@ -79,7 +79,7 @@ def barcodes(request):
     
     
     
-    for i in range(start,end):
+    for i in range(start,end+1):
         url="https://%s/recipemonkeyapp/scan/%s%s/" % (request.get_host(),prefix,i)
 
         img=barcode('qrcode',url,data_mode='8bits',margin=0)
