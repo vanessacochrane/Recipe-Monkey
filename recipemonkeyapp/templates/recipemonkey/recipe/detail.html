@@ -131,14 +131,6 @@
 </div>
 </div>
 
-<!-- BARCODE -->
-
-
-<div class="row">
-<div id="barcode" class="span2 pull-right">
-<img src="/recipemonkeyapp/recipe/{{recipe.id}}/barcode.png"/>
-</div>
-</div>
 
 <!-- STORED ITEMS -->
 
@@ -149,13 +141,30 @@
 <h3>Stored Amount</h3>
 <ul>
 {% endif %}
-<li>{{s.storage}}-{{s.quantity}} {{s.quantityMeasure|title}} (expires: {{s.expiry|date:"d/m/Y"}})</li>
+<li>{{s.storage}}-{{s.quantity}} {{s.quantityMeasure|title}} (expires: {%if item.near_expiry%}
+	<span class="label label-warning">{{item.expiry|date:"d/m/Y"}}</span>
+	{%else%}
+	{%if item.expired%}
+	<span class="label label-important">{{item.expiry|date:"d/m/Y"}}</span>
+	{%else%}
+	<span class="label label-success">{{item.expiry|date:"d/m/Y"}}</span>
+	{%endif%}
+		{%endif%})</li>
 {% if forloop.last %}
 </ul>
 </div>
 </div>
 {% endif %}
 {% endfor %}
+
+<!-- BARCODE -->
+
+
+<div class="row">
+<div id="barcode" class="span2 pull-right">
+<img src="/recipemonkeyapp/recipe/{{recipe.id}}/barcode.png"/>
+</div>
+</div>
 
 
 {% endblock %}
