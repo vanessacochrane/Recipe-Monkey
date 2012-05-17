@@ -131,6 +131,9 @@
 </div>
 </div>
 
+<!-- BARCODE -->
+
+
 <div class="row">
 <div id="barcode" class="span2 pull-right">
 <img src="/recipemonkeyapp/recipe/{{recipe.id}}/barcode.png"/>
@@ -138,6 +141,7 @@
 </div>
 
 <!-- STORED ITEMS -->
+
 {%for s in recipe.storeditems %}
 {% if forloop.first %}
 <div class="row">
@@ -146,12 +150,12 @@
 <ul>
 {% endif %}
 <li>{{s.storage}}-{{s.quantity}}</li>
-{%endfor%}
 {% if forloop.last %}
 </ul>
 </div>
 </div>
 {% endif %}
-{%endif%}
+{% endfor %}
+
 
 {% endblock %}
