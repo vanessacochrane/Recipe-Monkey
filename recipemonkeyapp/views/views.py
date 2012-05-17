@@ -13,6 +13,7 @@ from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from datetime import *
 from recipemonkeyapp.forms import UpdateStorageItemForm,StorageItemForm
+from django.contrib.sites.models import Site
 
 #@login_required(login_url='/accounts/login/')
 #def limited_object_detail(*args, **kwargs):
@@ -56,8 +57,13 @@ def barcodes(request):
     os.chdir(tmp_folder)        
     texfile, texfilename = mkstemp(dir=tmp_folder)
    
-    for i in range(1,66):
-        url="https://%s/recipemonkeyapp/scan/%s/" % ('mothership.getoutsideandlive.com',i)
+    start = request.GET.get('start',1)
+    end = request.GET.get('end',66)
+    prefix = request.GET.get('end','X')
+
+    
+    for i in range(start,end):
+        url="https://%s/recipemonkeyapp/scan/%s%s/" % (Site.objects.get_current().domain,prefix,i)
 
         img=barcode('qrcode',url,data_mode='8bits',margin=0)
         from PIL import Image
