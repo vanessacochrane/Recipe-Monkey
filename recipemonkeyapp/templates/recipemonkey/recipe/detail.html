@@ -12,6 +12,8 @@
 {% block content_header %}{{recipe.name}}{% endblock %}
 {% block content %}
 
+<!-- RECIPE ACTIONS -->
+
 <div class="row" id="object-menu">
 	<div class="btn-group">
 		<div class="span4">
@@ -21,6 +23,9 @@
 	</div>
 	</div>
 </div>
+
+<!-- PHOTO -->
+
 
 <div class="row">
 {% if recipe.photo %}
@@ -33,13 +38,16 @@
 
 {% endif %}
 
+<!-- INGREDIENTS -->
+
+
 <div class="span8"
 <h3>Ingredients</h3>
 <ul>
 {% for i in ingredients%}
 	<li {%if i.keyIngredientFlag %}class="keyingredient"{%endif%}>
 		
-			{{i.quantity}} {{i.quantityMeasure}} <a href="/recipemonkeyapp/groceryitem/{{i.item.id}}">{{i.item.name}}</a> <span id="available">(<i>available {{i.item.quantity}} {{i.item.quantityMeasure}}</i>)</span>  {{i.processing}}
+			{{i.quantity}} {{i.quantityMeasure}} <a href="/recipemonkeyapp/groceryitem/{{i.item.id}}">{{i.item.name}}</a> <span id="available">(<i>available {{i.item.quantity}}</i>)</span>  {{i.processing}}
 	
 	</li> 
 {% endfor %}
@@ -47,10 +55,12 @@
 	</div>
 </div><!-- /row -->	
 
+<!-- INSTRUCTIONS -->
+
 <div class="row">
 	<div class="span12">
 <h3>Instructions</h3>
-<ol>>
+<ol>
 {% for i in instructions%}
 
 	<li>{{i.step}}</li> 
@@ -59,6 +69,7 @@
 </div>
 </div>
 
+<!-- SUB RECIPES -->
 
 {% for i in subrecipes%}
 {%if forloop.first%}
@@ -86,18 +97,39 @@
 </div>	
 {%endif%}
 
-
-
-<b>Servings: </b>{{recipe.serving}}<br/>
-<b>Source: </b>{{recipe.source.name}}<br/>
-<b>Cost Per Serve: </b>{{recipe.costPerServe}}<br/>
+<!-- EXTRA INFO -->
+<div class="row">
+	<div class="span4">
+<table class="table table-condensed">
+	<tbody>
+		<tr>
+			<th>Servings</th>
+			<td>{{recipe.serving}}</td>
+		</tr>
+		<tr>
+			<th>Source</th>
+			<td>{{recipe.source.name}</td>
+		</tr>
+		<td>
+			<th>Cost Per Serve</th>
+			<td>{{recipe.costPerServe}}</td>
+		</tr>
 {%if recipe.seasonStart %}
-<b>Season: </b>{{recipe.seasonStart|date:"M"}} to {{recipe.seasonEnd|date:"M"}}<br/>
+		<tr>
+			<th>Season</th>
+			<td>{{recipe.seasonStart|date:"M"}} to {{recipe.seasonEnd|date:"M"}}</td>
+		</tr>
 {%endif %}
 {%if recipe.tags %}
-
-<b>Tags:</b>{%for t in recipe.tags.all %}{%if forloop.first%} {%else%}, {%endif%}{{t}}{% endfor %}
+		<tr>
+			<th>Tags</th>
+			<td>{%for t in recipe.tags.all %}{%if forloop.first%} {%else%}, {%endif%}{{t}}{% endfor %}</td>
+		</tr>
 {%endif %}
+</tbody>
+</table>
+</div>
+</div>
 
 <div class="row">
 <div id="barcode" class="span2 pull-right">
@@ -105,58 +137,21 @@
 </div>
 </div>
 
-<div id="stored">
-{%if formset %}
-<h3>Stored Amount</h3>
-<form method="post" action="">
-    {{ formset.management_form }}
-{{ formset.non_form_errors.as_ul }}
-<table id="formset" class="form">
-{% for form in formset.forms %}
-{{formset.media}}
-  {% if forloop.first %}
-  <thead><tr>
-    {% for field in form.visible_fields %}
-    <th>{{ field.label|capfirst }}</th>
-    {% endfor %}
-  </tr></thead>
-  {% endif %}
-  <tr class="{% cycle row1,row2 %}">
-  {% for field in form.visible_fields %}
-    <td>
-    {# Include the hidden fields in the form #}
-    {% if forloop.first %}
-      {% for hidden in form.hidden_fields %}
-      {{ hidden }}
-      {% endfor %}
-    {% endif %}
-      {{ field.errors.as_ul }}
-      {{ field }}
-    </td>
-  {% endfor %}
-  </tr>
-{% endfor %}
-</table>
-<p align="center"><input type="submit" value="Update Storage" align="center"/></p>
-</form>
-
-
-{%else%}
+<!-- STORED ITEMS -->
 {%for s in recipe.storeditems %}
 {% if forloop.first %}
+<div class="row">
+<div class="span12" id="stored">
 <h3>Stored Amount</h3>
 <ul>
 {% endif %}
-
 <li>{{s.storage}}-{{s.quantity}}</li>
 {%endfor%}
 {% if forloop.last %}
 </ul>
+</div>
+</div>
 {% endif %}
 {%endif%}
-</div>
-
-
-
 
 {% endblock %}
