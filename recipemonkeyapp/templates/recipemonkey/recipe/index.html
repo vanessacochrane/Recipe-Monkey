@@ -1,5 +1,6 @@
 {% extends "recipemonkey/base.html" %}
 {% load pagination_tags %}
+{% load agon_ratings_tags %}
 
 {% block breadcrumb %}{{ block.super }} &raquo; <a href="/recipemonkeyapp/recipe">Recipes</a> {% endblock %}
 
@@ -10,7 +11,7 @@
 
 {% for r in recipes %}
 <div class="row">
-	
+	{% overall_rating r as the_overall_rating %}
 	<div class="span2">
 	
 		<ul class="thumbnails">
@@ -26,6 +27,11 @@
 		<p>{% if r.cuisine %}{{r.cuisine}}{%else%}Unknown{%endif%}, serves: {{r.serving}}
 		{% if r.seasonal%}<span class="label label-success">Seasonal</span>{%endif%}
 		</p>
+		<div class="row">
+		<div class="span10">
+			{{ the_overall_rating }}
+		</div>
+		</div>
 	</div>
 	
 </div><!-- /row -->
