@@ -97,7 +97,7 @@ def barcodes(request):
         
         
         region.save(fname, 'EPS')
-        barcodes_list.append({'code':prefix+i,'name':os.path.basename(fname)})
+        barcodes_list.append({'code':prefix+str(i),'name':os.path.basename(fname)})
         f=None
 
     
