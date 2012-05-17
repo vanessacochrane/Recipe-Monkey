@@ -4,7 +4,7 @@ body {margin:0; padding:0; line-height: 1.4em; word-spacing:1px; letter-spacing:
 /*Remove Element*/
 #header,#footer,#available,#breadcrumbs,#object-menu,#stored {display:none;}
 
-.navbar {display:none;}
+div.navbar {display:none;}
 
 /* Show URL */
 a:link, a:visited {background: transparent; color:#333; text-decoration:none;}

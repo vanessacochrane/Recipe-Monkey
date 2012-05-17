@@ -11,11 +11,18 @@
 {% block breadcrumb %}{{ block.super }} &raquo; {{recipe.name}} {% endblock %}
 {% block content_header %}{{recipe.name}}{% endblock %}
 {% block content %}
+
+<div class="row" id="object-menu">
+	<div class="btn-group">
+	 	<a class="btn" href="{% url admin:recipemonkeyapp_recipe_change recipe.id %}">Edit</a></li>
+		<a class="btn" href="{% url recipemonkeyapp.views.recipe.cook recipe.id %}">Cook</a></li>
+		<a class="btn" href="{% url recipemonkeyapp.views.recipe.add_to_shopping recipe.id %}">Add To Shopping</a>
+	</div>
+</div>
+
 <div id="object-menu">
 	<ul>
-	<li><a href="{% url admin:recipemonkeyapp_recipe_change recipe.id %}">Edit</a></li>
-	<li><a href="{% url recipemonkeyapp.views.recipe.cook recipe.id %}">Cook</a></li>
-	<li><a href="{% url recipemonkeyapp.views.recipe.add_to_shopping recipe.id %}">Add To Shopping</a></li>
+
 	</ul>
 </div>
 {% if recipe.photo %}
