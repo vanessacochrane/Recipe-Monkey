@@ -37,6 +37,17 @@
 		</p>
 		</div>
 		</div>
+		{%for r in i.recipe_set.all%}
+		{%if forloop.first%}
+		<div class="row">
+		<div class="span10">
+		Used in: {{r.name}}{%else%},{{r.name}}{%endif%}
+		{%if forloop.last%}
+		</div>
+		</div>
+		{%endif%}
+		{%endfor%}
+		
 
 	</div>
 	
