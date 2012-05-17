@@ -22,10 +22,31 @@
 	</div>
 	<div class="span10">
 		<a href="{{r.get_absolute_url}}" style="text-decoration: none"><h3>{{r.name}}</h3></a>
-		<p>{% if r.cuisine %}{{r.cuisine}}{%else%}Unknown{%endif%}, serves: {{r.serving}}
-		{% if r.seasonal%}<span class="label label-success">Seasonal</span>{%endif%}
-		</p>
-
+		<div class="row">
+			<div class="span12">
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>Cuisine</th>
+						<td>{% if r.cuisine %}{{r.cuisine}}{%else%}Unknown{%endif%}</td>
+					</tr>
+					<tr>
+						<th>Serves</th>
+						<td>{{r.serving}}</td>
+					</tr>
+					{% if r.seasonal%}
+					<tr>
+						
+						<th>&nbsp;</th>
+						<td><span class="label label-success">Seasonal</span></td>
+					
+					</tr>
+					{%endif%}
+				</tbody>
+			</table>
+			
+			</div>	
+		</div>
 	</div>
 	
 </div><!-- /row -->
