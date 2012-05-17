@@ -57,10 +57,26 @@ def barcodes(request):
     os.chdir(tmp_folder)        
     texfile, texfilename = mkstemp(dir=tmp_folder)
    
-    start = request.GET.get('start',1)
-    end = request.GET.get('end',66)
+    try:
+        start = int(request.GET.get('start',1))
+    except:
+        raise Exception('start must be an int')
+    
+    
+    try:
+        end = int(request.GET.get('end',66))
+    except:
+        raise Exception('end must be an int')
+    
+    
+    if start>end:
+        raise Exception('end value must be greater than start value')
+        
+    
     prefix = request.GET.get('end','X')
 
+    
+    
     
     for i in range(start,end):
         url="https://%s/recipemonkeyapp/scan/%s%s/" % (Site.objects.get_current().domain,prefix,i)
