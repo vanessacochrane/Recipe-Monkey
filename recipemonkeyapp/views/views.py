@@ -144,7 +144,7 @@ def barcodes(request):
     os.rmdir(tmp_folder)
   
 
-    messages.add_message(request, messages.SUCCESS, 'Generated barcodes')
+    #messages.add_message(request, messages.SUCCESS, 'Generated barcodes')
     return response
 
 
