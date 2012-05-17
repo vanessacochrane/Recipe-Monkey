@@ -26,12 +26,14 @@
 {% if recipe.photo %}
 
 	<div class="span4" id="recipe-photo">
-    <img src="{{MEDIA_URL}}{{ recipe.photo.url }}" width="200px" height="200px"/>
+	<ul class="thumbnails">
+    <li><img src="{{MEDIA_URL}}{{ recipe.photo.url }}"/></li>
+	</ul>
 	</div>
 
 {% endif %}
 
-<div class="span4"
+<div class="span8"
 <h3>Ingredients</h3>
 <ul>
 {% for i in ingredients%}
