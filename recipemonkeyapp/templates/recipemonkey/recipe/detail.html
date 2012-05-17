@@ -22,15 +22,16 @@
 	</div>
 </div>
 
-
+<div class="row">
 {% if recipe.photo %}
-	<div class="row">
-	<div class="span4 pull-right" id="recipe-photo">
+
+	<div class="span4" id="recipe-photo">
     <img src="{{MEDIA_URL}}{{ recipe.photo.url }}" width="200px" height="200px"/>
 	</div>
-	</div>
+
 {% endif %}
 
+<div class="span4"
 <h3>Ingredients</h3>
 <ul>
 {% for i in ingredients%}
@@ -40,7 +41,9 @@
 	
 	</li> 
 {% endfor %}
-</ul>	
+</ul>
+	</div>
+</div><!-- /row -->	
 
 <h3>Instructions</h3>
 <ul>
