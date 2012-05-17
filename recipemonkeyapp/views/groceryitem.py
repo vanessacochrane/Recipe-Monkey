@@ -56,6 +56,7 @@ def index(request):
     table.order_by = request.GET.get("sort")
 
     ct={'table':table,
+        'items': GroceryItem.objects.all(),
     }
 
     return render_to_response('recipemonkey/groceryitem/index.html',ct,context_instance=RequestContext(request))

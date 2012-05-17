@@ -1,5 +1,6 @@
 {% extends "recipemonkey/base.html" %}
-{% load django_tables2 %}
+{% load pagination_tags %}
+
 
 {% block title %}Groceries{% endblock %}
 {% block breadcrumb %}{{ block.super }} &raquo; <a href="/recipemonkeyapp/groceryitem">Groceries</a>{% endblock %}
@@ -7,7 +8,36 @@
 {% block content %}
 
 
-{% render_table table %}
+{% autopaginate items %}
+{% paginate %}
+
+{% for i in items %}
+<div class="row">
+	<div class="span2">
+	
+		<ul class="thumbnails">
+		{% if i.photo %}
+		<li><img src="{{MEDIA_URL}}{{ i.photo.url }}"/></li>
+		{% else %}
+		<li><img src="http://placehold.it/150x150&text=no+image"></li>
+		</ul>
+		{% endif %}
+	</div>
+	<div class="span10">
+		<a href="{{i.get_absolute_url}}" style="text-decoration: none"><h3>{{i.name}}</h3></a>
+		<div class="row">
+		<p>i.category</p>
+		</div>
+		<div class="row">
+		<p>
+		{% if i.seasonal%}<span class="label label-success">Seasonal</span>{%endif%}
+		</p>
+		</div>
+
+	</div>
+	
+</div><!-- /row -->
+{% endfor %}
 
 
 {% endblock %}
