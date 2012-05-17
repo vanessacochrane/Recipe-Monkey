@@ -14,9 +14,11 @@
 
 <div class="row" id="object-menu">
 	<div class="btn-group">
+		<div class="span4 offset3">
 	 	<a class="btn" href="{% url admin:recipemonkeyapp_recipe_change recipe.id %}">Edit</a></li>
 		<a class="btn" href="{% url recipemonkeyapp.views.recipe.cook recipe.id %}">Cook</a></li>
 		<a class="btn" href="{% url recipemonkeyapp.views.recipe.add_to_shopping recipe.id %}">Add To Shopping</a>
+	</div>
 	</div>
 </div>
 
