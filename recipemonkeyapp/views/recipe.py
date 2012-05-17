@@ -49,7 +49,7 @@ def index(request):
     table.order_by = request.GET.get("sort")
     
     ct={'table':table,
-    'recipes':Recipe.objects.all(),
+    'recipes':Recipe.objects.all().order_by('name'),
     }
     
     return render_to_response('recipemonkey/recipe/index.html',ct,context_instance=RequestContext(request))
