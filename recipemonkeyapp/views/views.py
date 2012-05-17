@@ -48,6 +48,7 @@ def barcodes(request):
     from tempfile import mkdtemp, mkstemp
     from django.template.loader import render_to_string
     import glob
+    from django.contrib import messages
 
     response = HttpResponse(mimetype='application/pdf')
     response['Content-Disposition'] = 'attachment; filename=barcodes.pdf'
@@ -73,13 +74,13 @@ def barcodes(request):
         raise Exception('end value must be greater than start value')
         
     
-    prefix = request.GET.get('end','X')
+    prefix = request.GET.get('prefix','X')
 
     
     
     
     for i in range(start,end):
-        url="https://%s/recipemonkeyapp/scan/%s%s/" % (Site.objects.get_current().domain,prefix,i)
+        url="https://%s/recipemonkeyapp/scan/%s%s/" % (request.get_host(),prefix,i)
 
         img=barcode('qrcode',url,data_mode='8bits',margin=0)
         from PIL import Image
@@ -143,7 +144,7 @@ def barcodes(request):
     os.rmdir(tmp_folder)
   
 
-
+    messages.add_message(request, messages.SUCCESS, 'Generated barcodes')
     return response
 
 
