@@ -149,7 +149,7 @@
 <h3>Stored Amount</h3>
 <ul>
 {% endif %}
-<li>{{s.storage}}-{{s.quantity}}</li>
+<li>{{s.storage}}-{{s.quantity}} {{s.quantityMeasure|title}} (expires: {{s.expiry|date:"d/m/Y"}})</li>
 {% if forloop.last %}
 </ul>
 </div>
