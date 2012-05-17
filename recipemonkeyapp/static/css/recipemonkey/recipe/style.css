@@ -1,0 +1,20 @@
+#barcode { 
+    float:right; 
+    margin: 0 0 15px 15px; 
+}
+
+
+#recipe-photo { 
+    float:right; 
+    margin: 15px 0 15px 15px; 
+}
+
+.note {
+  color: 0;
+  padding: 8px 10px;
+  border:2px solid;
+  border-radius: 0.4em;
+  -moz-border-radius: 0.4em;
+  -webkit-border-radius: 0.4em;
+  overflow-x: auto;
+}
