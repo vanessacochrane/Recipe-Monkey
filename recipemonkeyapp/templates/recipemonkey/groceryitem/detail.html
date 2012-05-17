@@ -23,51 +23,30 @@
 <b>Tags: </b>{%for t in item.tags.all %}{%if forloop.first%}{%else%}, {%endif%}{{t}}{% endfor %}<br/>
 
 
-{%if formset %}
-<h3>Stored Amount</h3>
-<form method="post" action="">
-    {{ formset.management_form }}
-{{ formset.non_form_errors.as_ul }}
-<table id="formset" class="form">
-{% for form in formset.forms %}
-{{formset.media}}
-  {% if forloop.first %}
-  <thead><tr>
-    {% for field in form.visible_fields %}
-    <th>{{ field.label|capfirst }}</th>
-    {% endfor %}
-  </tr></thead>
-  {% endif %}
-  <tr class="{% cycle row1,row2 %}">
-  {% for field in form.visible_fields %}
-    <td>
-    {# Include the hidden fields in the form #}
-    {% if forloop.first %}
-      {% for hidden in form.hidden_fields %}
-      {{ hidden }}
-      {% endfor %}
-    {% endif %}
-      {{ field.errors.as_ul }}
-      {{ field }}
-    </td>
-  {% endfor %}
-  </tr>
-{% endfor %}
-</table>
-<p align="center"><input type="submit" value="Update Storage" align="center"/></p>
-</form>
+<!-- STORED ITEMS -->
 
-{%else%}
 {%for s in item.storeditems %}
-{%if forloop.first%}
+{% if forloop.first %}
+<div class="row">
+<div class="span12" id="stored">
 <h3>Stored Amount</h3>
-<ul>{%endif%}
-<li>{{s.storage}}-{{s.quantity}}</li>
-{%if forloop.last%}
-</ul>{%endif%}
-{%endfor%}
-
-{%endif%}
+<ul>
+{% endif %}
+<li>{{s.storage}}-{{s.quantity}} {{s.quantityMeasure|title}} (expires: {%if s.near_expiry%}
+	<span class="label label-warning">{{s.expiry|date:"d/m/Y"}}</span>
+	{%else%}
+	{%if s.expired%}
+	<span class="label label-important">{{s.expiry|date:"d/m/Y"}}</span>
+	{%else%}
+	<span class="label label-success">{{s.expiry|date:"d/m/Y"}}</span>
+	{%endif%}
+		{%endif%})</li>
+{% if forloop.last %}
+</ul>
+</div>
+</div>
+{% endif %}
+{% endfor %}
 
 {%for r in item.recipe_set.all%}
 {%if forloop.first%}

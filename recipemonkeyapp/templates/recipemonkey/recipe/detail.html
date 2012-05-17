@@ -141,7 +141,7 @@
 <h3>Stored Amount</h3>
 <ul>
 {% endif %}
-<li>{{s.storage}}-{{s.quantity}} {{s.quantityMeasure|title}} (expires: {%if item.near_expiry%}
+<li>{{s.storage}}-{{s.quantity}} {{s.quantityMeasure|title}} (expires: {%if s.near_expiry%}
 	<span class="label label-warning">{{s.expiry|date:"d/m/Y"}}</span>
 	{%else%}
 	{%if s.expired%}
