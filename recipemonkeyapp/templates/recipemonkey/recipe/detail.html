@@ -14,7 +14,7 @@
 
 <div class="row" id="object-menu">
 	<div class="btn-group">
-		<div class="span4 offset3">
+		<div class="span4">
 	 	<a class="btn" href="{% url admin:recipemonkeyapp_recipe_change recipe.id %}">Edit</a></li>
 		<a class="btn" href="{% url recipemonkeyapp.views.recipe.cook recipe.id %}">Cook</a></li>
 		<a class="btn" href="{% url recipemonkeyapp.views.recipe.add_to_shopping recipe.id %}">Add To Shopping</a>
@@ -22,14 +22,12 @@
 	</div>
 </div>
 
-<div id="object-menu">
-	<ul>
 
-	</ul>
-</div>
 {% if recipe.photo %}
-	<div id="recipe-photo">
-    <img src="{{ recipe.photo.url }}" width="200px" height="200px" class="align-right frame"/>
+	<div class="row">
+	<div class="span4 pull-right" id="recipe-photo">
+    <img src="{{ recipe.photo.url }}" width="200px" height="200px"/>
+	</div>
 	</div>
 {% endif %}
 
@@ -38,7 +36,7 @@
 {% for i in ingredients%}
 	<li {%if i.keyIngredientFlag %}class="keyingredient"{%endif%}>
 		
-			{{i.quantity}} {{i.quantityMeasure}} <a href="/recipemonkeyapp/groceryitem/{{i.item.id}}">{{i.item.name}}</a> <span id="available">(<i>available {{i.item.quantity}}</i>)</span>  {{i.processing}}
+			{{i.quantity}} {{i.quantityMeasure}} <a href="/recipemonkeyapp/groceryitem/{{i.item.id}}">{{i.item.name}}</a> <span id="available">(<i>available {{i.item.quantity}} {{i.item.quantityMeasure}}</i>)</span>  {{i.processing}}
 	
 	</li> 
 {% endfor %}
@@ -82,11 +80,15 @@
 {%if recipe.seasonStart %}
 <b>Season: </b>{{recipe.seasonStart|date:"M"}} to {{recipe.seasonEnd|date:"M"}}<br/>
 {%endif %}
+{%if recipe.tags %}
+
 <b>Tags:</b>{%for t in recipe.tags.all %}{%if forloop.first%} {%else%}, {%endif%}{{t}}{% endfor %}
+{%endif %}
 
-
-<div id="barcode">
+<div class="row">
+<div id="barcode" class="span2 pull-right">
 <img src="/recipemonkeyapp/recipe/{{recipe.id}}/barcode.png"/>
+</div>
 </div>
 
 <div id="stored">
