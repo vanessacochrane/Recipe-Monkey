@@ -8,6 +8,8 @@ from datetime import *
 MEASURE_CHOICES = (
     ('SERVES', 'Serves'),
     ('G', 'Grams'),
+    ('ITEMS', 'Items'),
+    ('ML','Milliletres'),
 )
 
 
