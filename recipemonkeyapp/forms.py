@@ -89,6 +89,18 @@ class UpdateStorageItemForm(forms.ModelForm):
         if not 0 <= quantity <= 9999:
             raise forms.ValidationError("Enter a value between 1 and 9999")
         return quantity
+        
+    def __init__(self, *args, **kwargs):
+           self.helper = FormHelper()
+           self.helper.form_id = 'id-storageitem'
+           self.helper.form_class = 'form-horizontal'
+           self.helper.form_method = 'post'
+           self.helper.form_action = ''
+
+           self.helper.add_input(Submit('Update', 'Update',css_class="btn-primary"))
+
+           super(UpdateStorageItemForm, self).__init__(*args, **kwargs)
+    
 
     class Meta:
         model = StorageItem
