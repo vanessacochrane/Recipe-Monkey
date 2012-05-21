@@ -244,7 +244,7 @@ def scan(request, id, mode='NEW'):
     if request.method == 'POST': # If the form has been submitted...
 
         if si:
-            form=StorageUpdateForm(request.POST,instance=si)
+            form=UpdateStorageItemForm(request.POST,instance=si)
         else:
             form=StorageItemForm(request.POST,instance=si)
         
