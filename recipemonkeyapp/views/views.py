@@ -14,6 +14,7 @@ from django.contrib.contenttypes.models import ContentType
 from datetime import *
 from recipemonkeyapp.forms import UpdateStorageItemForm,StorageItemForm
 from django.contrib.sites.models import Site
+from django.conf import settings
 
 #@login_required(login_url='/accounts/login/')
 #def limited_object_detail(*args, **kwargs):
@@ -164,8 +165,7 @@ def ajax_object_request(request):
 
 
 def send_expiry_notifications(request):
-    from django.conf import settings
-    from datetime import *
+  
     if "notification" in settings.INSTALLED_APPS:
         from notification import models as notification
     else:
